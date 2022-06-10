@@ -8,7 +8,7 @@ Developed by:
 
 Description:
 
-This DataBase, made in SQL, is a project made for Clube de Programacao, an student initiative, from SENAI CIMATEC and as a end of subject Database project. Its been developed by members of the club with the purpose for acting as a managent tool for the activites conducted on the initiative. Members, tournaments, workshops... those datas are the things the Database is going to store.
+This DataBase, made in SQL, is a project made for Clube de Programacao, an student initiative, from SENAI CIMATEC and as a end of Database subject project. Its been developed by members of the club with the purpose for acting as a managent tool for the activites conducted on the initiative. Members, tournaments, workshops... those datas are the things the Database is going to store.
 
 
 The Future:

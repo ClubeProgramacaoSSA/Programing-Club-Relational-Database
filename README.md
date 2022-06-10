@@ -1,10 +1,10 @@
 # Banco-de-Dados
 
 Developed by:
-- Orlando Mota Pires GitHub:
-- Antonio Horacio Magalhaes GitHub:
-- Fernando Antonio Marques Schettini GitHub: https://github.com/FernandoSchett
-- Joao Santos GitHub:
+- Orlando Mota Pires | GitHub:
+- Antonio Horacio Magalhaes | GitHub:
+- Fernando Antonio Marques Schettini | GitHub: https://github.com/FernandoSchett
+- Joao Santos | GitHub:
 
 Description:
 

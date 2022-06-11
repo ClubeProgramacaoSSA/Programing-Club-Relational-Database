@@ -15,12 +15,12 @@ This Relational DataBase, made in SQL, is a project made for Clube de Programaca
 
 We plan to get these DataBase as a studie objet for other members that want to study SQL and Data Modeling. Besides that we also plan to conect the database with our Website, that we will create on the Future. 
 
-## Documentacion:
-*All DataBase Documentacion is also present at and .pdf arquive on the Repository. 
+## Documentation:
+*All DataBase Documentation  is also present at and .pdf arquive on the Repository. 
 
 
 1. MODELO DE DADOS CONCEITUAL
-2.	
+	
 A seguir segue o modelo conceitual de dados, nele está representado o banco de dados de uma maneira mais superficial e abstrata, para facilitar o entendimento geral. O modelo foi desenvolvido com a metodologia DER (Diagrama Entidade Relacionamento:
 
 2. MODELO DE DADOS RELACIONAL

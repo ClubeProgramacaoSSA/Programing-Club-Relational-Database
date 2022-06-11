@@ -1,4 +1,4 @@
-# Programing Club Relational Database
+# Programing Club Relational Database 🦆
 
 Developed by:
 - Adrian Widmer | GitHub: https://github.com/Awi-24

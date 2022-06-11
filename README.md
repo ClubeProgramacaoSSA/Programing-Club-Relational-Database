@@ -19,10 +19,12 @@ We plan to get these DataBase as a studie objet for other members that want to s
 *All DataBase Documentacion is also present at and .pdf arquive on the Repository. 
 
 
-1. MODELO DE DADOS CONCEITUAL	
+1. MODELO DE DADOS CONCEITUAL
+2.	
 A seguir segue o modelo conceitual de dados, nele está representado o banco de dados de uma maneira mais superficial e abstrata, para facilitar o entendimento geral. O modelo foi desenvolvido com a metodologia DER (Diagrama Entidade Relacionamento:
 
-2. MODELO DE DADOS RELACIONAL	
+2. MODELO DE DADOS RELACIONAL
+	
 A seguir segue o modelo relacional de dados, nele está representado um esquemático do banco, com as tabelas, atributos e tabelas associativas que estarão no banco de dados final:
  
 6.DICIONÁRIO DE DADOS

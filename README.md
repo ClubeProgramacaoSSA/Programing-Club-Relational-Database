@@ -33,7 +33,8 @@ A seguir segue o modelo relacional de dados, nele está representado um esquemá
     PK; 
     FK;
     Not null; 
-    Check default; 
+    Check;
+    Default; 
     Identity;
     Unique.
 

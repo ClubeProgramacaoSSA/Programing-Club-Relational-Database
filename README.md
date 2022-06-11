@@ -35,6 +35,5 @@ A seguir segue o modelo relacional de dados, nele está representado um esquemá
     Not null; 
     Check;
     Default; 
-    Identity;
     Unique.
 

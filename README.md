@@ -1,10 +1,11 @@
 # Banco-de-Dados
 
 Developed by:
-- Orlando Mota Pires | GitHub: https://github.com/orlandomotapires
+- Adrian Widmer | GitHub: https://github.com/Awi-24
 - Antonio Horacio Magalhaes | GitHub:
 - Fernando Antonio Marques Schettini | GitHub: https://github.com/FernandoSchett
 - Joao Santos | GitHub:
+- Orlando Mota Pires | GitHub: https://github.com/orlandomotapires
 
 Description:
 

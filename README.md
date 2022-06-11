@@ -16,5 +16,4 @@ The Future:
 We plan to get these DataBase as a studie objet for other members that want to study SQL and Data Modeling. Besides that we also plan to conect the database with our Website, that we will create on the Future. 
 
 Documentacion:
-
-The DataBase Documentacion is present at and .pdf arquive on the Repository. 
+*All DataBase Documentacion is also present at and .pdf arquive on the Repository. 

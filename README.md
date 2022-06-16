@@ -2,9 +2,9 @@
 
 Developed by:
 - Adrian Widmer | GitHub: https://github.com/Awi-24
-- Antonio Horácio Magalhaes | GitHub:
+- Antonio Horácio Magalhaes | GitHub: https://github.com/antoniohoracio77
 - Fernando Antonio Marques Schettini | GitHub: https://github.com/FernandoSchett
-- João Pedro Moreira de Almeida Santos | GitHub:
+- João Pedro Moreira de Almeida Santos | GitHub: https://github.com/joao7878
 - Orlando Mota Pires | GitHub: https://github.com/orlandomotapires
 
 ## Description:

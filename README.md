@@ -18,22 +18,19 @@ We plan to get these DataBase as a studie objet for other members that want to s
 ## Documentation:
 *All DataBase Documentation  is also present at and .pdf arquive on the Repository. 
 
+1. The Conceptual Data Model
+	The following is the conceptual data model, in which the database is represented in a more superficial and abstract way, to facilitate general understanding. The model was developed using the DER (Entity Relationship Diagram) methodology.
 
-1. MODELO DE DADOS CONCEITUAL
-	
-A seguir segue o modelo conceitual de dados, nele está representado o banco de dados de uma maneira mais superficial e abstrata, para facilitar o entendimento geral. O modelo foi desenvolvido com a metodologia DER (Diagrama Entidade Relacionamento:
-
-2. MODELO DE DADOS RELACIONAL
-	
-A seguir segue o modelo relacional de dados, nele está representado um esquemático do banco, com as tabelas, atributos e tabelas associativas que estarão no banco de dados final:
+2. The Relational Data Model
+	Below is the relational data model, in which a schematic of the database is represented, with the tables, attributes and associative tables that will be in the final database:
  
-6.DICIONÁRIO DE DADOS
-	A seguir segue o dicionário de dados do banco nele, cada atributo de cada tabela tem uma descrição e uma restrição de domínio. 
-	*Na restrição de domínio, podem haver as seguintes características:
-    PK; 
-    FK;
-    Not null; 
-    Check;
-    Default; 
-    Unique.
+6.DATA DICTIONARY	
+	Following follows the database data dictionary in it, each attribute of each table has a description and a domain constraint.
+	*In the domain restriction, there may be the following characteristics:
+  	  PK; 
+  	  FK;
+    	  Not null; 
+    	  Check;
+          Default; 
+    	  Unique.
 

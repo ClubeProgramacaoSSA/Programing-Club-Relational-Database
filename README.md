@@ -24,7 +24,7 @@ We plan to get these DataBase as a studie objet for other members that want to s
 2. The Relational Data Model
 	Below is the relational data model, in which a schematic of the database is represented, with the tables, attributes and associative tables that will be in the final database:
  
-6. DATA DICTIONARY	
+6. Data Dictionary	
 	Following follows the database data dictionary in it, each attribute of each table has a description and a domain constraint.
 	*In the domain restriction, there may be the following characteristics:
   		PK; 

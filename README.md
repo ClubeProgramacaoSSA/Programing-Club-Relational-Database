@@ -1,6 +1,5 @@
 
-## 🦆 Programing Club Relational Database 🦆
-
+<h1 align="center">🦆 Programing Club Relational Database 🦆</h1>
 
 <div align="center">
 	<img height = "250em" src = "https://user-images.githubusercontent.com/80331486/174205946-fca931d0-ce3c-419c-9eec-2e6bddc4b1d6.png" />

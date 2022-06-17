@@ -1,12 +1,12 @@
 
-##🦆 Programing Club Relational Database 🦆
+## 🦆 Programing Club Relational Database 🦆
 
 
 <div align="center">
 	<img height = "250em" src = "https://user-images.githubusercontent.com/80331486/174205946-fca931d0-ce3c-419c-9eec-2e6bddc4b1d6.png" />
 </div>
 
-##Developed by:
+## Developed by:
 - [Adrian Widmer](https://github.com/Awi-24)
 - [Antonio Horácio Magalhaes](https://github.com/antoniohoracio77)
 - [Fernando Antonio Marques Schettini](https://github.com/FernandoSchett)

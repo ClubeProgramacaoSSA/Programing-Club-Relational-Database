@@ -1,11 +1,15 @@
 # Programing Club Relational Database 🦆
 
+<div align="center">
+	<img height = "250em" src = "https://i.imgur.com/7i8wUigh.jpg?raw=true" />
+</div>
+
 Developed by:
-- Adrian Widmer | GitHub: https://github.com/Awi-24
-- Antonio Horácio Magalhaes | GitHub: https://github.com/antoniohoracio77
-- Fernando Antonio Marques Schettini | GitHub: https://github.com/FernandoSchett
-- João Pedro Moreira de Almeida Santos | GitHub: https://github.com/joao7878
-- Orlando Mota Pires | GitHub: https://github.com/orlandomotapires
+- [Adrian Widmer](https://github.com/Awi-24)
+- [Antonio Horácio Magalhaes](https://github.com/antoniohoracio77)
+- [Fernando Antonio Marques Schettini](https://github.com/FernandoSchett)
+- [João Pedro Moreira de Almeida Santos](https://github.com/joao7878)
+- [Orlando Mota Pires](https://github.com/orlandomotapires)
 
 ## Description:
 

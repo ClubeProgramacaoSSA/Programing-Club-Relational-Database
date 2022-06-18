@@ -1,6 +1,6 @@
 -- Esse Script é responsável por fazer o povoamento artificial do Banco de Dados para poder realizar testes de consultas e checar se o banco está funcionando de maneira esperada
 
--- Disponivel emÇ https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database
+-- Disponivel em https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database
     -- Made by:
         --Adrian WIDmer | GitHub: https://github.com/Awi-24
         --Antonio Horácio Magalhaes | GitHub: https://github.com/antoniohoracio77

@@ -1,5 +1,5 @@
 -- Esse Script e responsavel por criar as tabelas do Banco de dados Relacional e estabelecer suas restricoes.
--- Disponivel emÇ https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database
+-- Disponivel em https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database
     -- Made by:
         --Adrian WIDmer | GitHub: https://github.com/Awi-24
         --Antonio Horácio Magalhaes | GitHub: https://github.com/antoniohoracio77

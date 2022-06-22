@@ -55,8 +55,7 @@
 	
 <h3>4. SCRIPT</h3>
 	
-&emsp;&emsp;&emsp;Following the database script, it contains all the manufacturing products to bring the design database to life.
-	
+&emsp;&emsp;&emsp;Following the database script, it contains all the manufacturing products to bring the design database to life.	
 &emsp;&emsp;&emsp;The project Script is composed of three main SQL files: the first file, DML.sql, responsible for creating the database tables, the DDLsql file, responsible for filling the database with fictitious data and, finally, the Consultas_BD_Clube_Programacao.sql file which is composed of three models for reports within the database.
 
 

@@ -24,25 +24,25 @@
 ## Documentation:
 <i>*All DataBase Documentation  is also present at and .pdf arquive on the Repository.</i>
 
-1. The Conceptual Data Model
+<h3>1. The Conceptual Data Model</h3>
 	
-	The following is the conceptual data model, in which the database is represented in a more superficial and abstract way, to facilitate general understanding. The model was developed using the DER (Entity Relationship Diagram) methodology.
+&emsp;&emsp;&emsp;The following is the conceptual data model, in which the database is represented in a more superficial and abstract way, to facilitate general understanding. The model was developed using the DER (Entity Relationship Diagram) methodology.
 
 <div align="center">
 	<img height = 500em src = "./Documentation/modelo_conceitual_clube_programacao.png" />
 </div>
 <br>
 
-2. The Relational Data Model
+<h3>2. The Relational Data Model</h3>
 	
-	Below is the relational data model, in which a schematic of the database is represented, with the tables, attributes and associative tables that will be in the final database:
+&emsp;&emsp;&emsp;Below is the relational data model, in which a schematic of the database is represented, with the tables, attributes and associative tables that will be in the final database:
 	
 <div align="center">
 	<img  height = 500em src = "./Documentation/modelo_relacional_clube_programacao.png" />
 </div>
 <br>
 	
-3. Data Dictionary	
+<h3>3. Data Dictionary</h3>	
 	
 &emsp;&emsp;&emsp;The dictionary contains each attribute of each table with his description and a domain constraint. The dictionary will be avaliable at the repository.
 	<br>&emsp;&emsp;&emsp;<i>*In the domain restriction, there may be the following characteristics:</i>
@@ -53,7 +53,7 @@
 	<br>= Default; 
     	<br>= Unique.
 	
-4. SCRIPT
+<h3>4. SCRIPT</h3>
 	
 &emsp;&emsp;&emsp;Following the database script, it contains all the manufacturing products to bring the design database to life.
 	
@@ -61,11 +61,12 @@
 
 
 
-5. BANK REPORTS
+<h3>5. BANK REPORTS</h3>
+	
 	
 About the Bank Reports:
 	
-<b>- First proposal:</b> <ins>Tournament Report.</ins>
+<h4><b>- First proposal:</b> <ins>Tournament Report.</ins> </h4>
 
 &emsp;&emsp;&emsp;A report built on the basis of informing about a certain tournament, our scope for consultation will result in: name of the tournament, how many phases made up the tournament, the name of the teams that participated in the tournament, its members, the name of its captain, its placements, questions they got wrong and which they got right, how many attempts it took, questions that were applied in the tournament, their subjects, estimated difficulty.
 	
@@ -78,7 +79,7 @@ About the Bank Reports:
 &emsp;&emsp;&emsp;A report built on the basis of reporting on the status of a project's progress, our scope for query will result in: Project status (progress), project name, project objective, project team members, project leader, start date, expected end date, effective end date (if any), project description.
 
 
-6. REFERENCES
+<h3>6. REFERENCES</h3>
 	
 [1] SOUSSA, Marcio. SQL. 22 de junho de 2022.
 	

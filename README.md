@@ -25,12 +25,24 @@
 <i>*All DataBase Documentation  is also present at and .pdf arquive on the Repository.</i>
 
 1. The Conceptual Data Model
+	
 	The following is the conceptual data model, in which the database is represented in a more superficial and abstract way, to facilitate general understanding. The model was developed using the DER (Entity Relationship Diagram) methodology.
 
+<div align="center">
+	<img height = 500em src = "./Documentation/modelo_conceitual_clube_programacao.png" />
+</div>
+<br>
+
 2. The Relational Data Model
+	
 	Below is the relational data model, in which a schematic of the database is represented, with the tables, attributes and associative tables that will be in the final database:
- 
-6. Data Dictionary	
+	
+<div align="center">
+	<img  height = 500em src = "./Documentation/modelo_relacional_clube_programacao.png" />
+</div>
+<br>
+	
+3. Data Dictionary	
 	
 	Following follows the database data dictionary in it, each attribute of each table has a description and a domain constraint.
 	<br><i>*In the domain restriction, there may be the following characteristics:</i>
@@ -40,4 +52,9 @@
 	<br>Check;
 	<br>Default; 
     	<br>Unique.
+	
+4. SCRIPT
+	
+	A seguir segue o script do banco de dados, nele estão todos os comandos necessários para dar vida ao banco de dados projetado. 
+	O Script do projeto é composto por três arquivos SQL’s principais: O primeiro arquivo, DML.sql, responsável por criar as tabelas do banco de dados, o arquivo DDLsql, responsável por povoar o banco com dados fictícios, e por fim o arquivo consultas.sql que é composto por três modelos para consultas dentro do banco. 
 

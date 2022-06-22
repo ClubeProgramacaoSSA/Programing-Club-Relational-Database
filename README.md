@@ -44,17 +44,43 @@
 	
 3. Data Dictionary	
 	
-	Following follows the database data dictionary in it, each attribute of each table has a description and a domain constraint.
-	<br><i>*In the domain restriction, there may be the following characteristics:</i>
-	<br>PK;
-	<br>FK;
-	<br>Not null;
-	<br>Check;
-	<br>Default; 
-    	<br>Unique.
+&emsp;&emsp;&emsp;The dictionary contains each attribute of each table with his description and a domain constraint. The dictionary will be avaliable at the repository.
+	<br>&emsp;&emsp;&emsp;<i>*In the domain restriction, there may be the following characteristics:</i>
+	<br>= PK;
+	<br>= FK;
+	<br>= Not null;
+	<br>= Check;
+	<br>= Default; 
+    	<br>= Unique.
 	
 4. SCRIPT
 	
-	A seguir segue o script do banco de dados, nele estão todos os comandos necessários para dar vida ao banco de dados projetado. 
-	O Script do projeto é composto por três arquivos SQL’s principais: O primeiro arquivo, DML.sql, responsável por criar as tabelas do banco de dados, o arquivo DDLsql, responsável por povoar o banco com dados fictícios, e por fim o arquivo consultas.sql que é composto por três modelos para consultas dentro do banco. 
+&emsp;&emsp;&emsp;Following the database script, it contains all the manufacturing products to bring the design database to life.
+	
+&emsp;&emsp;&emsp;The project Script is composed of three main SQL files: the first file, DML.sql, responsible for creating the database tables, the DDLsql file, responsible for filling the database with fictitious data and, finally, the Consultas_BD_Clube_Programacao.sql file which is composed of three models for reports within the database.
+
+
+
+5. BANK REPORTS
+	
+About the Bank Reports:
+	
+<b>- First proposal:</b> <ins>Tournament Report.</ins>
+
+&emsp;&emsp;&emsp;A report built on the basis of informing about a certain tournament, our scope for consultation will result in: name of the tournament, how many phases made up the tournament, the name of the teams that participated in the tournament, its members, the name of its captain, its placements, questions they got wrong and which they got right, how many attempts it took, questions that were applied in the tournament, their subjects, estimated difficulty.
+	
+<b>- Second proposal:<b> <ins>Report of meetings held in a specific month.</ins>
+	
+&emsp;&emsp;&emsp;A report built on the basis of reporting on the club's activity in a certain month, our scope for consultation will result in: Date and time of the meeting, members present, the subject of the meeting, organizer of the meeting, description of the results that were discussed, modality (in person or online), place where the meeting was held or platform (if online).
+	
+<b>- Third proposal:</b> <ins>Project report.</ins>
+	
+&emsp;&emsp;&emsp;A report built on the basis of reporting on the status of a project's progress, our scope for query will result in: Project status (progress), project name, project objective, project team members, project leader, start date, expected end date, effective end date (if any), project description.
+
+
+6. REFERENCES
+	
+[1] SOUSSA, Marcio. SQL. 22 de junho de 2022.
+	
+[2] SQL Tutorial, W3 School. Avaliable in: <https://www.w3schools.com/sql/default.asp>. Access in em 22 de junho de 2022.
 

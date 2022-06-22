@@ -9,18 +9,15 @@
         --Orlando Mota Pires | GitHub: https://github.com/orlandomotapires
         
         
-/* Primeira proposta: Relatório do Torneio Equipes que participaram, seus integrantes, 
-suas colocações, questões que eles acertaram e quais acertaram. Nome dos torneios, questões
-que foram aplicadas no torneio, seu assuntos, dificuldade estimada, quantas tentativas,
-demoraram para acertar.
+/* Primeira proposta: Relatório do Torneio. 
+Um relatório construído com base para informar sobre um certo torneio, nosso escopo para consulta resultará em: nome do torneio, quantas fases compuseram o torneio, o nome das equipes que participaram do torneio, seus integrantes, o nome de seu capitão, suas colocações, questões que eles erraram e quais acertaram,quantas tentativas demoraram, questões que foram aplicadas no torneio, seu assuntos, dificuldade estimada.
+Segunda proposta: Relatório dos encontros realizados em um mês específico.
 
-Segunda proposta: Relatório dos encontros realizados naquele mês Data e horário do encontro,
-membros presentes, o assunto, organizador, descrição dos resultados que foram discutidos, 
-modalidade (presencial ou online).
-
-Terceira proposta: Relatório do projeto Status do projeto (andamento), nome, objetivo, membros,
-concluído, não organizado que fizeram o projeto, organizador do projeto, data inicio, 
-data fim, descrição. */
+Um relatório construído com base para informar sobre a atividade do clube em um certo mês, nosso escopo para consulta resultará em: Data e horário do encontro,membros presentes, o assunto do encontro, organizador do encontro, descrição dos resultados que foram discutidos, modalidade (presencial ou online), local onde o encontro foi realizado ou plataforma (caso for on-line).
+Terceira proposta: Relatório do projeto.
+ 
+Um relatório construído com base para informar sobre o status de andamento de um projeto, nosso escopo para consulta resultará em: Status do projeto (andamento), nome do projeto, objetivo do projeto, membros que compõem a equipe do projeto, líder do projeto, data do início, data do fim previsto, data do fim efetivo (se houver), descrição do projeto. 
+*/
 
 --Primeira consulta:
 

@@ -29,7 +29,7 @@
 &emsp;&emsp;&emsp;The following is the conceptual data model, in which the database is represented in a more superficial and abstract way, to facilitate general understanding. The model was developed using the DER (Entity Relationship Diagram) methodology.
 
 <div align="center">
-	<img height = 500em src = "./Documentation/modelo_conceitual_clube_programacao.png" />
+	<img height = 500em src = "./Documentation/modelo_conceitual_clube_programacao.jpg" />
 </div>
 <br>
 

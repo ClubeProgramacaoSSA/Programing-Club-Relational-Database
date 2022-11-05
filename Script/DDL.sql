@@ -28,7 +28,6 @@ CREATE TABLE IF NOT EXISTS TB_club_account(
     login VARCHAR(100) NOT NULL,     
     jpq_score INT NOT NULL,     
     password VARCHAR(500) NOT NULL 
-
 );    
 
 -- 4

@@ -1,655 +1,665 @@
--- Esse Script e responsavel por criar as tabelas do Banco de dados Relacional e estabelecer suas restricoes.
--- Disponivel em https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database
+-- This Script is responsible for creating the Relational Database tables and establishing their restrictions.
+
+-- Available at https://github.com/clubProgramacaoSSA/Programing-Club-Relational-Database
     -- Made by:
-        --Adrian WIDmer | GitHub: https://github.com/Awi-24
+        --Adrian Widmer | GitHub: https://github.com/Awi-24
         --Antonio Horácio Magalhaes | GitHub: https://github.com/antoniohoracio77
         --Fernando Antonio Marques Schettini | GitHub: https://github.com/FernandoSchett
-        --João Pedro Moreira de Almeida Santos | GitHub: https://github.com/joao7878
         --Orlando Mota Pires | GitHub: https://github.com/orlandomotapires
 
+-- 1    
+CREATE TABLE IF NOT EXISTS TB_captain(     
+    ID_captain SERIAL NOT NULL,     
+    ID_member INT NOT NULL,     
+    captain_name VARCHAR(50) NOT NULL 
+);   
 
+-- 2    
+CREATE TABLE IF NOT EXISTS TB_city(     
+    ID_city SERIAL NOT NULL,     
+    ID_state INT NOT NULL,     
+    name VARCHAR(50) NOT NULL 
+);  
 
--- 1
-CREATE TABLE TB_assunto(
-    ID_assunto SERIAL NOT NULL,
-    assunto VARCHAR(100)
-);
+-- 3    
+CREATE TABLE IF NOT EXISTS TB_club_account(     
+    ID_club_account SERIAL NOT NULL,     
+    ID_member INT NOT NULL,     
+    login VARCHAR(100) NOT NULL,     
+    jpq_score INT NOT NULL,     
+    password VARCHAR(500) NOT NULL 
 
--- 2 
-CREATE TABLE TB_assunto_encontro(
-    ID_assunto_encontro SERIAL NOT NULL,
-    ID_assunto INT NOT NULL,
-    ID_encontro INT NOT NULL
-);
-
--- 3 
-CREATE TABLE TB_assunto_projeto(
-    ID_assunto_projeto SERIAL NOT NULL,
-    ID_assunto INT NOT NULL,
-    ID_projeto INT NOT NULL
-);
+);    
 
 -- 4
-CREATE TABLE TB_assunto_questao(
-    ID_assunto_questao SERIAL NOT NULL,
-    ID_assunto INT NOT NULL,
-    ID_questao INT NOT NULL,
-    pontos_jpq_maximo INT
-);
+CREATE TABLE IF NOT EXISTS TB_country(     
+    ID_country SERIAL NOT NULL,     
+    name VARCHAR(50) 
+);     
 
 -- 5
-CREATE TABLE TB_categoria_imagem(
-    ID_categoria_imagem SERIAL NOT NULL,
-    nome VARCHAR(50) UNIQUE
-); 
+CREATE TABLE IF NOT EXISTS TB_course(     
+    ID_course SERIAL NOT NULL,     
+    name VARCHAR(50) NOT NULL UNIQUE 
+);    
 
 -- 6
-CREATE TABLE TB_capitao(
-    ID_capitao SERIAL NOT NULL,
-    ID_membro INT NOT NULL,
-    nome_capitao VARCHAR(50) NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_difficulty_degree(     
+    ID_difficulty_degree SERIAL NOT NULL,     
+    difficulty VARCHAR(50) NOT NULL
+);    
 
 -- 7
-CREATE TABLE TB_cargo_membro(
-    ID_cargo_membro SERIAL NOT NULL,
-    ID_cargo INT NOT NULL,
-    ID_membro INT NOT NULL, 
-    DT_entrada_cargo DATE NOT NULL,
-    DT_saida_cargo DATE,
-    pontos_jpq_maximo INT
-);
+CREATE TABLE IF NOT EXISTS TB_education_institution(     
+    ID_education_institution SERIAL NOT NULL,     
+    ID_public_place INT NOT NULL,     
+    name VARCHAR(50) NOT NULL 
+);   
 
 -- 8
-CREATE TABLE TB_cidade(
-    ID_cidade SERIAL NOT NULL,
-    ID_estado INT NOT NULL,
-    nome VARCHAR(50) NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_encounter(     
+    ID_encounter SERIAL NOT NULL,     
+    ID_organizer INT NOT NULL,     
+    ID_project INT NOT NULL,     
+    DT_start DATE,     
+    DT_end DATE  
+);   
 
 -- 9
-CREATE TABLE TB_comite_organizador(
-    ID_comite_organizador SERIAL NOT NULL,
-    ID_evento INT NOT NULL,
-    ID_membro INT NOT NULL
-);
-
-CREATE TABLE TB_conta_clube(
-    ID_conta_clube SERIAL NOT NULL,
-    ID_membro INT NOT NULL,
-    login VARCHAR(100) NOT NULL,
-    pontos_jpq INT NOT NULL,
-    senha VARCHAR(500) NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_encounter_attendance(
+    ID_encounter_attendance SERIAL NOT NULL,
+    ID_encounter INT NOT NULL,
+    ID_member INT NOT NULL 
+);   
 
 -- 10
-CREATE TABLE TB_curso(
-    ID_curso SERIAL NOT NULL,
-    nome VARCHAR(50) NOT NULL UNIQUE
+CREATE TABLE IF NOT EXISTS TB_encounter_image(
+    ID_encounter_image SERIAL NOT NULL,
+    ID_encounter INT NOT NULL,
+    ID_image INT NOT NULL 
 );
 
 -- 11
-CREATE TABLE TB_curso_instituicao(
-    ID_curso_instituicao SERIAL NOT NULL,
-    ID_curso INT NOT NULL,
-    ID_instituicao INT NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_encounter_subject(
+    ID_encounter_subject SERIAL NOT NULL,
+    ID_subject INT NOT NULL,
+    ID_encounter INT NOT NULL 
+);   
 
 -- 12
-CREATE TABLE TB_encontro(
-    ID_encontro SERIAL NOT NULL,
-    ID_organizador INT NOT NULL,
-    ID_projeto INT NOT NULL,
-    DT_inicio DATE,
-    DT_termino DATE
-);
+CREATE TABLE IF NOT EXISTS TB_event(
+    ID_event SERIAL NOT NULL,
+    ID_place INT NOT NULL,
+    description VARCHAR(100),
+    DT_start DATE,
+    DT_end DATE,
+    name VARCHAR(50) NOT NULL 
+);    
 
 -- 13
-CREATE TABLE TB_encontro_online(
-    ID_encontro_online SERIAL NOT NULL,
-    ID_plataforma INT NOT NULL,
-    ID_encontro INT NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_event_attendance(
+    ID_event_attendance SERIAL NOT NULL,
+    ID_member INT NOT NULL,
+    ID_event INT NOT NULL,
+    max_jpq_score INT  
+);    
 
 -- 14
-CREATE TABLE TB_encontro_presencial(
-    ID_encontro_presencial SERIAL NOT NULL,
-    ID_encontro INT NOT NULL,
-    ID_local INT NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_event_image(
+    ID_event_image SERIAL NOT NULL,
+    ID_event INT NOT NULL,
+    ID_image INT NOT NULL   
+);    
 
--- 15
-CREATE TABLE TB_equipe(
-    ID_equipe SERIAL NOT NULL,
-    ID_capitao INT NOT NULL,
-    DT_criacao DATE NOT NULL,
-    nome VARCHAR(50) NOT NULL
-);
+-- 15  
+CREATE TABLE IF NOT EXISTS TB_function(
+    ID_function SERIAL NOT NULL,
+    name_function VARCHAR(50) NOT NULL,
+    function_description VARCHAR(100) NOT NULL 
+);    
 
 -- 16
-CREATE TABLE TB_equipe_torneio(
-    ID_equipe_torneio SERIAL NOT NULL,
-    ID_equipe INT NOT NULL,
-    ID_torneio INT NOT NULL,
-    colocacao INT NOT NULL UNIQUE
-);
+CREATE TABLE IF NOT EXISTS TB_image(
+    ID_image SERIAL NOT NULL,
+    ID_image_category INT NOT NULL,
+    description VARCHAR(100),
+    image oid NOT NULL,
+    name VARCHAR(200),
+    DT_image DATE 
+);    
 
 -- 17
-CREATE TABLE TB_equipe_torneio_fase(
-    ID_equipe_torneio_fase SERIAL NOT NULL,
-    ID_equipe_torneio INT NOT NULL,
-    ID_fase INT NOT NULL,
-    colocacao_fase INT NOT NULL UNIQUE,
-    pontos_jpq_maximo INT
-);
+CREATE TABLE IF NOT EXISTS TB_image_category(
+    ID_image_category SERIAL NOT NULL,
+    name VARCHAR(50) UNIQUE 
+);    
 
 -- 18
-CREATE TABLE TB_estado(
-    ID_estado SERIAL NOT NULL,
-    ID_pais INT NOT NULL,
-    nome VARCHAR(50) NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_institution_course(
+    ID_institution_course SERIAL NOT NULL,
+    ID_course INT NOT NULL,
+    ID_institution INT NOT NULL 
+);   
 
 -- 19
-CREATE TABLE TB_evento(
-    ID_evento SERIAL NOT NULL,
-    ID_local INT NOT NULL,
-    descricao VARCHAR(100),
-    DT_inicio DATE,
-    DT_fim DATE,
-    nome VARCHAR(50) NOT NULL
+CREATE TABLE IF NOT EXISTS TB_leader(
+    ID_leader SERIAL NOT NULL,
+    ID_member INT NOT NULL,
+    name_leader VARCHAR(50) NOT NULL 
 );
 
 -- 20
-CREATE TABLE TB_fase(
-    ID_fase SERIAL NOT NULL,
-    ID_torneio INT NOT NULL,
-    numero INT NOT NULL,
-    DT_inicio DATE NOT NULL,
-    DT_fim DATE NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_member(
+    ID_member SERIAL NOT NULL,
+    ID_institution_course INT NOT NULL,
+    ID_member_photo INT NOT NULL,
+    DT_birth DATE,
+    DT_club_entrance DATE NOT NULL,
+    DT_college_entrance DATE NOT NULL,
+    gender CHAR(1) NOT NULL,
+    login VARCHAR(50) NOT NULL,
+    member_name VARCHAR(50) NOT NULL,
+    occupation VARCHAR(50) 
+);   
 
 -- 21
-CREATE TABLE TB_fase_online(
-    ID_fase_online SERIAL NOT NULL,
-    ID_fase INT NOT NULL,
-    ID_plataforma INT NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_member_project(
+    ID_member_project SERIAL NOT NULL,
+    ID_member INT NOT NULL,
+    ID_project INT NOT NULL,
+    ID_function INT NOT NULL,
+    DT_enter_project DATE NOT NULL,
+    DT_exit_project DATE 
+);    
 
 -- 22
-CREATE TABLE TB_fase_presencial(
-    ID_fase_presencial SERIAL NOT NULL,
-    ID_fase INT NOT NULL,
-    ID_local INT NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_member_role(
+    ID_member_role SERIAL NOT NULL,
+    ID_role INT NOT NULL,
+    ID_member INT NOT NULL,
+    DT_role_enter DATE NOT NULL,
+    DT_role_exit DATE,
+    max_jpq_score INT 
+);   
 
 -- 23
-CREATE TABLE TB_fase_questao_equipe(
-    ID_fase_questao_equipe SERIAL NOT NULL,
-    ID_equipe_torneio_fase INT NOT NULL,
-    ID_questao INT NOT NULL,
-    ID_status INT NOT NULL, 
-    numero_tentativas INT NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_member_team(
+    ID_member_team SERIAL NOT NULL,
+    ID_team INT NOT NULL,
+    ID_member INT NOT NULL 
+);    
 
 -- 24
-CREATE TABLE TB_funcao(
-    ID_funcao SERIAL NOT NULL,
-    nome_funcao VARCHAR(50) NOT NULL,
-    descricao_funcao VARCHAR(100) NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_online_encounter(
+    ID_online_encounter SERIAL NOT NULL,
+    ID_platform INT NOT NULL,
+    ID_encounter INT NOT NULL 
+);    
 
 -- 25
-CREATE TABLE TB_grau_dificuldade(
-    ID_grau_dificuldade SERIAL NOT NULL,
-    dificuldade VARCHAR(50) NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_online_phase(
+    ID_online_phase SERIAL NOT NULL,
+    ID_phase INT NOT NULL,
+    ID_platform INT NOT NULL 
+);   
 
 -- 26
-CREATE TABLE TB_imagem(
-    ID_imagem SERIAL NOT NULL,
-    ID_categoria_imagem INT NOT NULL,
-    descricao VARCHAR(100),
-    imagem oid NOT NULL,
-    nome VARCHAR(200),
-    DT_imagem DATE
-);
+CREATE TABLE IF NOT EXISTS TB_organizer(
+    ID_organizer SERIAL NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    description VARCHAR(50) 
+);   
 
 -- 27
-CREATE TABLE TB_imagem_encontro(
-    ID_imagem_encontro SERIAL NOT NULL,
-    ID_encontro INT NOT NULL,
-    ID_imagem INT NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_organizer_comittee(
+    ID_organizer_comittee SERIAL NOT NULL,
+    ID_event INT NOT NULL,
+    ID_member INT NOT NULL 
+);    
 
 -- 28
-CREATE TABLE TB_imagem_projeto(
-    ID_imagem_projeto SERIAL NOT NULL,
-    ID_imagem INT NOT NULL,
-    ID_projeto INT NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_phase(
+    ID_phase SERIAL NOT NULL,
+    ID_tournament INT NOT NULL,
+    number INT NOT NULL,
+    DT_start DATE NOT NULL,
+    DT_end DATE NOT NULL 
+);   
 
 -- 29
-CREATE TABLE TB_imagem_evento(
-    ID_imagem_evento SERIAL NOT NULL,
-    ID_evento INT NOT NULL,
-    ID_imagem INT NOT NULL  
-);
+CREATE TABLE IF NOT EXISTS TB_place(
+    ID_place SERIAL NOT NULL,
+    ID_public_place INT NOT NULL,
+    description VARCHAR(50) NOT NULL,
+    name VARCHAR(50) NOT NULL 
+);    
 
 -- 30
-CREATE TABLE TB_instituicao_ensino(
-    ID_instituicao_ensino SERIAL NOT NULL,
-    ID_logradouro INT NOT NULL,
-    nome VARCHAR(50) NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_platform(
+    ID_platform SERIAL NOT NULL,
+    URL_platform VARCHAR(100) NOT NULL UNIQUE,
+    platform_name VARCHAR(50) NOT NULL UNIQUE 
+);    
 
 -- 31
-CREATE TABLE TB_lider(
-    ID_lider SERIAL NOT NULL,
-    ID_membro INT NOT NULL,
-    nome_lider VARCHAR(50) NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_presencial_encounter(
+    ID_presencial_encounter SERIAL NOT NULL,
+    ID_encounter INT NOT NULL,
+    ID_place INT NOT NULL 
+);    
 
 -- 32
-CREATE TABLE TB_local(
-    ID_local SERIAL NOT NULL,
-    ID_logradouro INT NOT NULL,
-    descricao VARCHAR(50) NOT NULL,
-    nome VARCHAR(50) NOT NULL
+CREATE TABLE IF NOT EXISTS TB_presential_phase(
+    ID_presential_phase SERIAL NOT NULL,
+    ID_phase INT NOT NULL,
+    ID_place INT NOT NULL 
 );    
 
 -- 33
-CREATE TABLE TB_logradouro(
-    ID_logradouro SERIAL NOT NULL,
-    ID_cidade INT NOT NULL,
-    nome VARCHAR(50)
-);
+CREATE TABLE IF NOT EXISTS TB_project(
+    ID_project SERIAL NOT NULL,
+    ID_project_type INT NOT NULL,
+    ID_leader INT NOT NULL,
+    description VARCHAR(100),
+    DT_start DATE,
+    DT_foreseen_end DATE,
+    name VARCHAR(50),
+    max_jpq_score INT,
+    URL_gitHub VARCHAR(100) 
+);    
 
 -- 34
-CREATE TABLE TB_membro(
-    ID_membro SERIAL NOT NULL,
-    ID_curso_instituicao INT NOT NULL,
-    ID_foto_membro INT NOT NULL,
-    DT_nascimento DATE,
-    DT_ingresso_clube DATE NOT NULL,
-    DT_ingresso_faculdade DATE NOT NULL,
-    genero CHAR(1) NOT NULL,
-    login VARCHAR(50) NOT NULL,
-    nome_membro VARCHAR(50) NOT NULL,
-    oficio VARCHAR(50)
-);
-
+CREATE TABLE IF NOT EXISTS TB_project_image(
+    ID_project_image SERIAL NOT NULL,
+    ID_image INT NOT NULL,
+    ID_project INT NOT NULL 
+);   
+ 
 -- 35
-CREATE TABLE TB_membro_equipe(
-    ID_membro_equipe SERIAL NOT NULL,
-    ID_equipe INT NOT NULL,
-    ID_membro INT NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_project_subject(
+    ID_project_subject SERIAL NOT NULL,
+    ID_subject INT NOT NULL,
+    ID_project INT NOT NULL 
+);   
 
 -- 36
-CREATE TABLE TB_membro_projeto(
-    ID_membro_projeto SERIAL NOT NULL,
-    ID_membro INT NOT NULL,
-    ID_projeto INT NOT NULL,
-    ID_funcao INT NOT NULL,
-    DT_entrada_projeto DATE NOT NULL,
-    DT_saida_projeto DATE
+CREATE TABLE IF NOT EXISTS TB_project_type(
+    ID_project_type SERIAL NOT NULL,
+    title VARCHAR(50) NOT NULL 
 );
-
+  
 -- 37
-CREATE TABLE TB_movimentacao_ponto(
-    ID_movimentacao_ponto SERIAL NOT NULL,
-    ID_conta_clube INT NOT NULL,
-    ID_tipo_movimentacao_ponto INT NOT NULL,
-    quantidade_pontos_jpq INT
+CREATE TABLE IF NOT EXISTS TB_public_place(
+    ID_public_place SERIAL NOT NULL,
+    ID_city INT NOT NULL,
+    name VARCHAR(50) 
 );
 
 -- 38
-CREATE TABLE TB_movimentacao_ponto_cargo(
-    ID_movimentacao_ponto_cargo SERIAL NOT NULL,
-    ID_cargo_membro INT NOT NULL,
-    ID_movimentacao_ponto INT NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_question(
+    ID_question SERIAL NOT NULL,
+    ID_difficulty_degree INT NOT NULL,
+    enunciado VARCHAR(200) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    correct_answer VARCHAR(500),
+    max_jpq_score INT 
+);    
 
 -- 39
-CREATE TABLE TB_movimentacao_ponto_evento(
-    ID_movimentacao_ponto_evento SERIAL NOT NULL,
-    ID_movimentacao_ponto INT NOT NULL,
-    ID_presenca_evento INT NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_question_origin(
+    ID_question_origin SERIAL NOT NULL,
+    question_origin VARCHAR (100) NOT NULL 
+);   
 
 -- 40
-CREATE TABLE TB_movimentacao_ponto_projeto(
-    ID_movimentacao_ponto_projeto SERIAL NOT NULL,
-    ID_movimentacao_ponto INT NOT NULL,
-    ID_projeto INT NOT NULL,
-    avaliacao_projeto VARCHAR(500)
+CREATE TABLE IF NOT EXISTS TB_question_subject(
+    ID_question_subject SERIAL NOT NULL,
+    ID_subject INT NOT NULL,
+    ID_question INT NOT NULL,
+    max_jpq_score INT  
 );
 
 -- 41
-CREATE TABLE TB_movimentacao_ponto_questao(
-    ID_movimentacao_ponto_questao SERIAL NOT NULL,
-    ID_movimentacao_ponto INT NOT NULL,
-    ID_questao INT NOT NULL,
-    avaliacao_questao VARCHAR(500) 
-);
+CREATE TABLE IF NOT EXISTS TB_score_transaction(
+    ID_score_transaction SERIAL NOT NULL,
+    ID_club_account INT NOT NULL,
+    ID_transaction_score_type INT NOT NULL,
+    score_jpq_quantity INT 
+);    
 
 -- 42
-CREATE TABLE TB_movimentacao_ponto_torneio(
-    ID_movimentacao_ponto_torneio SERIAL NOT NULL,
-    ID_equipe_torneio_fase INT NOT NULL,
-    ID_movimentacao_ponto INT NOT NULL
+CREATE TABLE IF NOT EXISTS TB_score_transaction_event_attendance(
+    ID_score_transaction_event_attendance SERIAL NOT NULL,
+    ID_score_transaction INT NOT NULL,
+    ID_event_attendance INT NOT NULL 
 );
 
 -- 43
-CREATE TABLE TB_organizador(
-    ID_organizador SERIAL NOT NULL,
-    nome VARCHAR(50) NOT NULL,
-    descricao VARCHAR(50)
-);
+CREATE TABLE IF NOT EXISTS TB_score_transaction_member_role(
+    ID_score_transaction_member_role SERIAL NOT NULL,
+    ID_member_role INT NOT NULL,
+    ID_score_transaction INT NOT NULL 
+);   
 
 -- 44
-CREATE TABLE TB_pais(
-    ID_pais SERIAL NOT NULL,
-    nome VARCHAR(50)
-);
-
+CREATE TABLE IF NOT EXISTS TB_score_transaction_project(
+    ID_score_transaction_project SERIAL NOT NULL,
+    ID_score_transaction INT NOT NULL,
+    ID_project INT NOT NULL,
+    project_rating VARCHAR(500) 
+);   
+ 
 -- 45
-CREATE TABLE TB_presenca_encontro(
-    ID_presenca_encontro SERIAL NOT NULL,
-    ID_encontro INT NOT NULL,
-    ID_membro INT NOT NULL
+CREATE TABLE IF NOT EXISTS TB_score_transaction_question(
+    ID_score_transaction_question SERIAL NOT NULL,
+    ID_score_transaction INT NOT NULL,
+    ID_question INT NOT NULL,
+    question_rating VARCHAR(500)  
 );
 
 -- 46
-CREATE TABLE TB_presenca_evento(
-    ID_presenca_evento SERIAL NOT NULL,
-    ID_membro INT NOT NULL,
-    ID_evento INT NOT NULL,
-    pontos_jpq_maximo INT 
-);
+CREATE TABLE IF NOT EXISTS TB_score_transaction_tournament_team_phase(
+    ID_score_transaction_tournament_team_phase SERIAL NOT NULL,
+    ID_tournament_team_phase INT NOT NULL,
+    ID_score_transaction INT NOT NULL 
+);   
 
 -- 47
-CREATE TABLE TB_procedencia_questao(
-    ID_procedencia_questao SERIAL NOT NULL,
-    procedencia_questao VARCHAR (100) NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_state(
+    ID_state SERIAL NOT NULL,
+    ID_country INT NOT NULL,
+    name VARCHAR(50) NOT NULL 
+);   
 
 -- 48
-CREATE TABLE TB_projeto(
-    ID_projeto SERIAL NOT NULL,
-    ID_tipo_projeto INT NOT NULL,
-    ID_lider INT NOT NULL,
-    descricao VARCHAR(100),
-    DT_inicio DATE,
-    DT_fim_previsto DATE,
-    nome VARCHAR(50),
-    pontos_jpq_maximo INT,
-    URL_gitHub VARCHAR(100)
+CREATE TABLE IF NOT EXISTS TB_status(
+    ID_status SERIAL NOT NULL,
+    description VARCHAR(100) NOT NULL 
 );
 
 -- 49
-CREATE TABLE TB_plataforma(
-    ID_plataforma SERIAL NOT NULL,
-    URL_plataforma VARCHAR(100) NOT NULL UNIQUE,
-    nome_plataforma VARCHAR(50) NOT NULL UNIQUE
+CREATE TABLE IF NOT EXISTS TB_subject(
+    ID_subject SERIAL NOT NULL,
+    subject VARCHAR(100) 
 );
 
 -- 50
-CREATE TABLE TB_questao( 
-    ID_questao SERIAL NOT NULL,
-    ID_grau_dificuldade INT NOT NULL,
-    enunciado VARCHAR(200) NOT NULL,
-    nome VARCHAR(100) NOT NULL,
-    resposta_certa VARCHAR(500),
-    pontos_jpq_maximo INT
+CREATE TABLE IF NOT EXISTS TB_team(
+    ID_team SERIAL NOT NULL,
+    ID_captain INT NOT NULL,
+    DT_criation DATE NOT NULL,
+    name VARCHAR(50) NOT NULL 
 );
 
 -- 51
-CREATE TABLE TB_status(
-    ID_status SERIAL NOT NULL,
-    descricao VARCHAR(100) NOT NULL
-);
-
+CREATE TABLE IF NOT EXISTS TB_team_question_phase(
+    ID_team_question_phase SERIAL NOT NULL,
+    ID_tournament_team_phase INT NOT NULL,
+    ID_question INT NOT NULL,
+    ID_status INT NOT NULL,
+    number_try INT NOT NULL 
+);   
+ 
 -- 52
-CREATE TABLE TB_tipo_movimentacao_ponto(
-    ID_tipo_movimentacao_ponto SERIAL  NOT NULL,
-    tipo_movimentacao_ponto VARCHAR (100) NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_tournament_team(
+    ID_tournament_team SERIAL NOT NULL,
+    ID_team INT NOT NULL,
+    ID_tournament INT NOT NULL,
+    team_position INT NOT NULL UNIQUE 
+);   
 
 -- 53
-CREATE TABLE TB_tipo_projeto(
-    ID_tipo_projeto SERIAL NOT NULL,
-    titulo VARCHAR(50) NOT NULL
-);
+CREATE TABLE IF NOT EXISTS TB_tournament_team_phase(
+    ID_tournament_team_phase SERIAL NOT NULL,
+    ID_tournament_team INT NOT NULL,
+    ID_phase INT NOT NULL,
+    team_position_phase INT NOT NULL UNIQUE,
+    max_jpq_score INT 
+);  
 
 -- 54
-CREATE TABLE TB_torneio(
-    ID_torneio SERIAL NOT NULL,
-    ID_organizador INT NOT NULL,
-    nome VARCHAR(50) NOT NULL,
-    DT_inicio DATE,
-    DT_termino DATE
+CREATE TABLE IF NOT EXISTS TB_transaction_score_type(     
+    ID_transaction_score_type SERIAL  NOT NULL,     
+    transaction_score_type VARCHAR (100) NOT NULL 
+);  
+
+-- 55
+CREATE TABLE IF NOT EXISTS TB_tournament(
+    ID_tournament SERIAL NOT NULL,
+    ID_organizer INT NOT NULL,     
+    name VARCHAR(50) NOT NULL,     
+    DT_start DATE,     
+    DT_end DATE 
 );
 
--- Restricao de genero.
-ALTER TABLE TB_membro ADD CONSTRAINT CK_GENERO_membro CHECK(genero in('F','M'));
+-- GENDER CONSTRAINT
+ALTER TABLE TB_member ADD CONSTRAINT CK_gender_member CHECK(gender in('F','M'));
 
--- Restricoes de chave primaria.
-ALTER TABLE TB_assunto ADD CONSTRAINT PK_assunto PRIMARY KEY (ID_assunto); 
-ALTER TABLE TB_assunto_encontro ADD CONSTRAINT PK_assunto_encontro PRIMARY KEY (ID_assunto_encontro); 
-ALTER TABLE TB_assunto_projeto ADD CONSTRAINT PK_assunto_projeto PRIMARY KEY (ID_assunto_projeto); 
-ALTER TABLE TB_assunto_questao ADD CONSTRAINT PK_assunto_questao PRIMARY KEY(ID_assunto_questao); 
-ALTER TABLE TB_categoria_imagem ADD CONSTRAINT PK_categoria_imagem PRIMARY KEY (ID_categoria_imagem); 
-ALTER TABLE TB_capitao ADD CONSTRAINT PK_capitao PRIMARY KEY (ID_capitao); 
-ALTER TABLE TB_cargo_membro ADD CONSTRAINT PK_cargo_membro PRIMARY KEY (ID_cargo_membro);
-ALTER TABLE TB_cidade ADD CONSTRAINT PK_cidade PRIMARY KEY (ID_cidade); 
-ALTER TABLE TB_comite_organizador ADD CONSTRAINT PK_comite_organizador PRIMARY KEY (ID_comite_organizador); 
-ALTER TABLE TB_conta_clube ADD CONSTRAINT PK_conta_clube PRIMARY KEY (ID_conta_clube);
-ALTER TABLE TB_curso ADD CONSTRAINT PK_curso PRIMARY KEY (ID_curso); 
-ALTER TABLE TB_curso_instituicao ADD CONSTRAINT PK_curso_instituicao PRIMARY KEY (ID_curso_instituicao); 
-ALTER TABLE TB_encontro ADD CONSTRAINT PK_encontro PRIMARY KEY (ID_encontro); 
-ALTER TABLE TB_encontro_online ADD CONSTRAINT PK_encontro_online PRIMARY KEY (ID_encontro_online); 
-ALTER TABLE TB_encontro_presencial ADD CONSTRAINT PK_encontro_presencial PRIMARY KEY (ID_encontro_presencial);
-ALTER TABLE TB_equipe ADD CONSTRAINT PK_equipe PRIMARY KEY (ID_equipe); 
-ALTER TABLE TB_equipe_torneio ADD CONSTRAINT PK_equipe_torneio PRIMARY KEY (ID_equipe_torneio); 
-ALTER TABLE TB_equipe_torneio_fase ADD CONSTRAINT PK_equipe_torneio_fase PRIMARY KEY (ID_equipe_torneio_fase); 
-ALTER TABLE TB_estado ADD CONSTRAINT PK_estado PRIMARY KEY (ID_estado); 
-ALTER TABLE TB_evento ADD CONSTRAINT PK_evento PRIMARY KEY (ID_evento); 
-ALTER TABLE TB_fase ADD CONSTRAINT PK_fase PRIMARY KEY (ID_fase); 
-ALTER TABLE TB_fase_online ADD CONSTRAINT PK_fase_online PRIMARY KEY (ID_fase_online); 
-ALTER TABLE TB_fase_presencial ADD CONSTRAINT PK_fase_presencial PRIMARY KEY (ID_fase_presencial); 
-ALTER TABLE TB_fase_questao_equipe ADD CONSTRAINT PK_fase_questao_equipe PRIMARY KEY (ID_fase_questao_equipe); 
-ALTER TABLE TB_funcao ADD CONSTRAINT PK_funcao PRIMARY KEY (ID_funcao); 
-ALTER TABLE TB_grau_dificuldade ADD CONSTRAINT PK_grau_dificuldade PRIMARY KEY (ID_grau_dificuldade); 
-ALTER TABLE TB_imagem ADD CONSTRAINT PK_imagem PRIMARY KEY (ID_imagem); 
-ALTER TABLE TB_imagem_encontro ADD CONSTRAINT PK_imagem_encontro PRIMARY KEY (ID_imagem_encontro); 
-ALTER TABLE TB_imagem_projeto ADD CONSTRAINT PK_imagem_projeto PRIMARY KEY (ID_imagem_projeto); 
-ALTER TABLE TB_imagem_evento ADD CONSTRAINT PK_imagem_evento PRIMARY KEY (ID_imagem_evento); 
-ALTER TABLE TB_instituicao_ensino ADD CONSTRAINT PK_instituicao_ensino PRIMARY KEY (ID_instituicao_ensino); 
-ALTER TABLE TB_lider ADD CONSTRAINT PK_lider PRIMARY KEY (ID_lider); 
-ALTER TABLE TB_local ADD CONSTRAINT PK_local PRIMARY KEY (ID_local); 
-ALTER TABLE TB_logradouro ADD CONSTRAINT PK_logradouro PRIMARY KEY (ID_logradouro); 
-ALTER TABLE TB_membro ADD CONSTRAINT PK_membro PRIMARY KEY (ID_membro); 
-ALTER TABLE TB_membro_equipe ADD CONSTRAINT PK_membro_equipe PRIMARY KEY (ID_membro_equipe); 
-ALTER TABLE TB_membro_projeto ADD CONSTRAINT PK_membro_projeto PRIMARY KEY (ID_membro_projeto); 
-ALTER TABLE TB_movimentacao_ponto ADD CONSTRAINT PK_movimentacao_ponto PRIMARY KEY (ID_movimentacao_ponto); 
-ALTER TABLE TB_movimentacao_ponto_cargo ADD CONSTRAINT PK_movimentacao_ponto_cargo PRIMARY KEY (ID_movimentacao_ponto_cargo); 
-ALTER TABLE TB_movimentacao_ponto_evento ADD CONSTRAINT PK_movimentacao_ponto_evento PRIMARY KEY (ID_movimentacao_ponto_evento); 
-ALTER TABLE TB_movimentacao_ponto_projeto ADD CONSTRAINT PK_movimentacao_ponto_projeto PRIMARY KEY (ID_movimentacao_ponto_projeto); 
-ALTER TABLE TB_movimentacao_ponto_questao ADD CONSTRAINT PK_movimentacao_ponto_questao PRIMARY KEY (ID_movimentacao_ponto_questao); 
-ALTER TABLE TB_movimentacao_ponto_torneio ADD CONSTRAINT PK_movimentacao_ponto_torneio PRIMARY KEY (ID_movimentacao_ponto_torneio); 
-ALTER TABLE TB_organizador ADD CONSTRAINT PK_organizador PRIMARY KEY(ID_organizador);
-ALTER TABLE TB_pais ADD CONSTRAINT PK_pais PRIMARY KEY (ID_pais); 
-ALTER TABLE TB_presenca_encontro ADD CONSTRAINT PK_preseca_encontro PRIMARY KEY (ID_presenca_encontro); 
-ALTER TABLE TB_presenca_evento ADD CONSTRAINT PK_presenca_evento PRIMARY KEY (ID_presenca_evento); 
-ALTER TABLE TB_procedencia_questao ADD CONSTRAINT PK_procedencia_questao PRIMARY KEY (ID_procedencia_questao); 
-ALTER TABLE TB_projeto ADD CONSTRAINT PK_projeto PRIMARY KEY (ID_projeto); 
-ALTER TABLE TB_plataforma ADD CONSTRAINT PK_platafomra PRIMARY KEY (ID_plataforma); 
-ALTER TABLE TB_questao ADD CONSTRAINT PK_questao PRIMARY KEY (ID_questao); 
+-- PRIMARY KEY CONSTRAINTS
+ALTER TABLE TB_captain ADD CONSTRAINT PK_captain PRIMARY KEY (ID_captain); 
+ALTER TABLE TB_city ADD CONSTRAINT PK_city PRIMARY KEY (ID_city); 
+ALTER TABLE TB_club_account ADD CONSTRAINT PK_club_account PRIMARY KEY (ID_club_account);
+ALTER TABLE TB_country ADD CONSTRAINT PK_country PRIMARY KEY (ID_country); 
+ALTER TABLE TB_course ADD CONSTRAINT PK_course PRIMARY KEY (ID_course); 
+ALTER TABLE TB_difficulty_degree ADD CONSTRAINT PK_difficulty_degree PRIMARY KEY (ID_difficulty_degree); 
+ALTER TABLE TB_education_institution ADD CONSTRAINT PK_education_institution PRIMARY KEY (ID_education_institution); 
+ALTER TABLE TB_encounter ADD CONSTRAINT PK_encounter PRIMARY KEY (ID_encounter); 
+ALTER TABLE TB_encounter_attendance ADD CONSTRAINT PK_preseca_encounter PRIMARY KEY (ID_encounter_attendance); 
+ALTER TABLE TB_encounter_image ADD CONSTRAINT PK_encounter_image PRIMARY KEY (ID_encounter_image); 
+ALTER TABLE TB_encounter_subject ADD CONSTRAINT PK_encounter_subject PRIMARY KEY (ID_encounter_subject); 
+ALTER TABLE TB_event ADD CONSTRAINT PK_event PRIMARY KEY (ID_event); 
+ALTER TABLE TB_event_attendance ADD CONSTRAINT PK_event_attendance PRIMARY KEY (ID_event_attendance); 
+ALTER TABLE TB_event_image ADD CONSTRAINT PK_event_image PRIMARY KEY (ID_event_image); 
+ALTER TABLE TB_function ADD CONSTRAINT PK_function PRIMARY KEY (ID_function); 
+ALTER TABLE TB_image ADD CONSTRAINT PK_image PRIMARY KEY (ID_image); 
+ALTER TABLE TB_image_category ADD CONSTRAINT PK_image_category PRIMARY KEY (ID_image_category); 
+ALTER TABLE TB_institution_course ADD CONSTRAINT PK_institution_course PRIMARY KEY (ID_institution_course); 
+ALTER TABLE TB_leader ADD CONSTRAINT PK_leader PRIMARY KEY (ID_leader); 
+ALTER TABLE TB_member ADD CONSTRAINT PK_member PRIMARY KEY (ID_member); 
+ALTER TABLE TB_member_project ADD CONSTRAINT PK_member_project PRIMARY KEY (ID_member_project); 
+ALTER TABLE TB_member_role ADD CONSTRAINT PK_member_role PRIMARY KEY (ID_member_role);
+ALTER TABLE TB_member_team ADD CONSTRAINT PK_member_team PRIMARY KEY (ID_member_team); 
+ALTER TABLE TB_online_encounter ADD CONSTRAINT PK_online_encounter PRIMARY KEY (ID_online_encounter); 
+ALTER TABLE TB_online_phase ADD CONSTRAINT PK_online_phase PRIMARY KEY (ID_online_phase); 
+ALTER TABLE TB_organizer ADD CONSTRAINT PK_organizer PRIMARY KEY(ID_organizer);
+ALTER TABLE TB_organizer_comittee ADD CONSTRAINT PK_organizer_comittee PRIMARY KEY (ID_organizer_comittee); 
+ALTER TABLE TB_phase ADD CONSTRAINT PK_phase PRIMARY KEY (ID_phase); 
+ALTER TABLE TB_place ADD CONSTRAINT PK_place PRIMARY KEY (ID_place); 
+ALTER TABLE TB_platform ADD CONSTRAINT PK_platafomra PRIMARY KEY (ID_platform); 
+ALTER TABLE TB_presencial_encounter ADD CONSTRAINT PK_presencial_encounter PRIMARY KEY (ID_presencial_encounter);
+ALTER TABLE TB_presential_phase ADD CONSTRAINT PK_presential_phase PRIMARY KEY (ID_presential_phase); 
+ALTER TABLE TB_project ADD CONSTRAINT PK_project PRIMARY KEY (ID_project); 
+ALTER TABLE TB_project_image ADD CONSTRAINT PK_project_image PRIMARY KEY (ID_project_image); 
+ALTER TABLE TB_project_subject ADD CONSTRAINT PK_project_subject PRIMARY KEY (ID_project_subject); 
+ALTER TABLE TB_project_type ADD CONSTRAINT PK_project_type PRIMARY KEY (ID_project_type);
+ALTER TABLE TB_public_place ADD CONSTRAINT PK_public_place PRIMARY KEY (ID_public_place); 
+ALTER TABLE TB_question ADD CONSTRAINT PK_question PRIMARY KEY (ID_question); 
+ALTER TABLE TB_question_origin ADD CONSTRAINT PK_question_origin PRIMARY KEY (ID_question_origin); 
+ALTER TABLE TB_question_subject ADD CONSTRAINT PK_question_subject PRIMARY KEY(ID_question_subject); 
+ALTER TABLE TB_score_transaction ADD CONSTRAINT PK_score_transaction PRIMARY KEY (ID_score_transaction); 
+ALTER TABLE TB_score_transaction_event_attendance ADD CONSTRAINT PK_score_transaction_event_attendance PRIMARY KEY (ID_score_transaction_event_attendance); 
+ALTER TABLE TB_score_transaction_member_role ADD CONSTRAINT PK_score_transaction_member_role PRIMARY KEY (ID_score_transaction_member_role); 
+ALTER TABLE TB_score_transaction_project ADD CONSTRAINT PK_score_transaction_project PRIMARY KEY (ID_score_transaction_project); 
+ALTER TABLE TB_score_transaction_question ADD CONSTRAINT PK_score_transaction_question PRIMARY KEY (ID_score_transaction_question); 
+ALTER TABLE TB_score_transaction_tournament_team_phase ADD CONSTRAINT PK_score_transaction_tournament_team_phase PRIMARY KEY (ID_score_transaction_tournament_team_phase); 
+ALTER TABLE TB_state ADD CONSTRAINT PK_state PRIMARY KEY (ID_state); 
 ALTER TABLE TB_status ADD CONSTRAINT PK_status PRIMARY KEY (ID_status); 
-ALTER TABLE TB_tipo_movimentacao_ponto ADD CONSTRAINT PK_tipo_movimentacao_ponto PRIMARY KEY (ID_tipo_movimentacao_ponto);
-ALTER TABLE TB_tipo_projeto ADD CONSTRAINT PK_tipo_projeto PRIMARY KEY (ID_tipo_projeto);
-ALTER TABLE TB_torneio ADD CONSTRAINT PK_torneio PRIMARY KEY (ID_torneio); 
+ALTER TABLE TB_subject ADD CONSTRAINT PK_subject PRIMARY KEY (ID_subject); 
+ALTER TABLE TB_team ADD CONSTRAINT PK_team PRIMARY KEY (ID_team); 
+ALTER TABLE TB_team_question_phase ADD CONSTRAINT PK_team_question_phase PRIMARY KEY (ID_team_question_phase); 
+ALTER TABLE TB_tournament ADD CONSTRAINT PK_tournament PRIMARY KEY (ID_tournament); 
+ALTER TABLE TB_tournament_team ADD CONSTRAINT PK_tournament_team PRIMARY KEY (ID_tournament_team); 
+ALTER TABLE TB_tournament_team_phase ADD CONSTRAINT PK_tournament_team_phase PRIMARY KEY (ID_tournament_team_phase); 
+ALTER TABLE TB_transaction_score_type ADD CONSTRAINT PK_transaction_score_type PRIMARY KEY (ID_transaction_score_type);
 
--- Restricoes de chave estrangeira. 
 
--- TB_assunto_encontro
-ALTER TABLE TB_assunto_encontro ADD CONSTRAINT FK_assunto_encontro_assunto FOREIGN KEY (ID_assunto) REFERENCES TB_assunto(ID_assunto);
-ALTER TABLE TB_assunto_encontro ADD CONSTRAINT FK_assunto_encontro_encontro FOREIGN KEY (ID_encontro) REFERENCES TB_encontro(ID_encontro);
+-- FOREIGN KEY CONSTRAINTS
 
--- TB_assunto_projeto
-ALTER TABLE TB_assunto_projeto ADD CONSTRAINT FK_assunto_projeto_assunto FOREIGN KEY (ID_assunto) REFERENCES TB_assunto(ID_assunto);
-ALTER TABLE TB_assunto_projeto ADD CONSTRAINT FK_assunto_projeto_projeto FOREIGN KEY (ID_projeto) REFERENCES TB_projeto(ID_projeto);
+-- TB_captain
+ALTER TABLE TB_captain ADD CONSTRAINT FK_captain_member FOREIGN KEY (ID_member) REFERENCES TB_member(ID_member);
 
--- TB_assunto_questao
-ALTER TABLE TB_assunto_questao ADD CONSTRAINT FK_assunto_questao_assunto FOREIGN KEY (ID_assunto) REFERENCES TB_assunto (ID_assunto);
-ALTER TABLE TB_assunto_questao ADD CONSTRAINT FK_assunto_questao_questao FOREIGN KEY (ID_questao) REFERENCES TB_questao (ID_questao);
+-- TB_city
+ALTER TABLE TB_city ADD CONSTRAINT FK_city_state FOREIGN KEY (ID_state) REFERENCES TB_state(ID_state);
 
--- TB_capitao
-ALTER TABLE TB_capitao ADD CONSTRAINT FK_capitao_membro FOREIGN KEY (ID_membro) REFERENCES TB_membro(ID_membro);
+-- TB_clube_account
+ALTER TABLE TB_club_account ADD CONSTRAINT FK_club_account_member FOREIGN KEY (ID_member) REFERENCES TB_member(ID_member);
 
---TB_cargo_membro
-ALTER TABLE TB_cargo_membro ADD CONSTRAINT FK_cargo_membro_funcao FOREIGN KEY (ID_cargo) REFERENCES TB_funcao(ID_funcao);
-ALTER TABLE TB_cargo_membro ADD CONSTRAINT FK_cargo_membro_membro FOREIGN KEY (ID_membro) REFERENCES TB_membro(ID_membro);
+-- TB_education_institution
+ALTER TABLE TB_education_institution ADD CONSTRAINT FK_education_institution_public_place FOREIGN KEY (ID_public_place) REFERENCES  TB_public_place (ID_public_place);
 
--- TB_cidade
-ALTER TABLE TB_cidade ADD CONSTRAINT FK_cidade_estado FOREIGN KEY (ID_estado) REFERENCES TB_estado(ID_estado);
+-- TB_encounter
+ALTER TABLE TB_encounter ADD CONSTRAINT FK_encounter_organizer FOREIGN KEY (ID_organizer) REFERENCES TB_member(ID_member);
+ALTER TABLE TB_encounter ADD CONSTRAINT FK_encounter_project FOREIGN KEY (ID_project) REFERENCES TB_project(ID_project);
 
--- TB_comite_organizador
-ALTER TABLE TB_comite_organizador ADD CONSTRAINT FK_comite_organizador_evento FOREIGN KEY (ID_evento) REFERENCES  TB_evento(ID_evento);
-ALTER TABLE TB_comite_organizador ADD CONSTRAINT FK_comite_organizador_membro FOREIGN KEY (ID_membro) REFERENCES  TB_membro(ID_membro);
+-- TB_encounter_attendence
+ALTER TABLE TB_encounter_attendance ADD CONSTRAINT FK_encounter_attendance_encounter FOREIGN KEY (ID_encounter) REFERENCES  TB_encounter(ID_encounter);
+ALTER TABLE TB_encounter_attendance ADD CONSTRAINT FK_encounter_attendance_member FOREIGN KEY (ID_member) REFERENCES  TB_member(ID_member);
 
--- TB_conta_clube
-ALTER TABLE TB_conta_clube ADD CONSTRAINT FK_conta_clube_membro FOREIGN KEY (ID_membro) REFERENCES TB_membro(ID_membro);
+-- TB_encounter_image
+ALTER TABLE TB_encounter_image ADD CONSTRAINT FK_encounter_image_encounter FOREIGN KEY (ID_encounter) REFERENCES  TB_encounter (ID_encounter);
+ALTER TABLE TB_encounter_image ADD CONSTRAINT FK_encounter_image_image FOREIGN KEY (ID_image) REFERENCES  TB_image(ID_image);
 
--- TB_curso_instituicao
-ALTER TABLE TB_curso_instituicao ADD CONSTRAINT FK_curso_instituicao_curso FOREIGN KEY (ID_curso) REFERENCES  TB_curso(ID_curso);
-ALTER TABLE TB_curso_instituicao ADD CONSTRAINT FK_curso_instituicao_instituicao_ensino FOREIGN KEY (ID_instituicao) REFERENCES  TB_instituicao_ensino(ID_instituicao_ensino);
+-- TB_encounter_subject
+ALTER TABLE TB_encounter_subject ADD CONSTRAINT FK_encounter_subject_encounter FOREIGN KEY (ID_encounter) REFERENCES TB_encounter(ID_encounter);
+ALTER TABLE TB_encounter_subject ADD CONSTRAINT FK_encounter_subject_subject FOREIGN KEY (ID_subject) REFERENCES TB_subject(ID_subject);
 
--- TB_encontro
-ALTER TABLE TB_encontro ADD CONSTRAINT FK_encontro_organizador FOREIGN KEY (ID_organizador) REFERENCES TB_membro(ID_membro);
-ALTER TABLE TB_encontro ADD CONSTRAINT FK_encontro_projeto FOREIGN KEY (ID_projeto) REFERENCES TB_projeto(ID_projeto);
+-- TB_event
+ALTER TABLE TB_event ADD CONSTRAINT FK_event_place FOREIGN KEY (ID_place) REFERENCES TB_place(ID_place);
 
--- TB_encontro_online 
-ALTER TABLE TB_encontro_online ADD CONSTRAINT FK_encontro_online_plataforma FOREIGN KEY (ID_plataforma) REFERENCES TB_plataforma(ID_plataforma);
-ALTER TABLE TB_encontro_online ADD CONSTRAINT FK_encontro_online_encontro FOREIGN KEY (ID_encontro) REFERENCES TB_encontro(ID_encontro);
+-- TB_event_attendence
+ALTER TABLE TB_event_attendance ADD CONSTRAINT FK_event_attendance_event FOREIGN KEY (ID_event) REFERENCES  TB_event(ID_event);
+ALTER TABLE TB_event_attendance ADD CONSTRAINT FK_event_attendance_member FOREIGN KEY (ID_member) REFERENCES  TB_member(ID_member);
 
--- TB_encontro_presencial
-ALTER TABLE TB_encontro_presencial ADD CONSTRAINT FK_encontro_presencial_encontro FOREIGN KEY (ID_encontro) REFERENCES TB_encontro(ID_encontro);
-ALTER TABLE TB_encontro_presencial ADD CONSTRAINT FK_encontro_presencial_local FOREIGN KEY (ID_local) REFERENCES  TB_local(ID_local);
+-- TB_event_image
+ALTER TABLE TB_event_image ADD CONSTRAINT FK_event_image_event FOREIGN KEY (ID_event) REFERENCES  TB_event(ID_event);
+ALTER TABLE TB_event_image ADD CONSTRAINT FK_event_image_image FOREIGN KEY (ID_image) REFERENCES  TB_image(ID_image);
 
--- TB_equipe
-ALTER TABLE TB_equipe ADD CONSTRAINT FK_equipe_capitao FOREIGN KEY (ID_capitao) REFERENCES  TB_capitao(ID_capitao);
+-- TB_image
+ALTER TABLE TB_image ADD CONSTRAINT FK_image_image_category FOREIGN KEY (ID_image_category) REFERENCES TB_image_category(ID_image_category);
 
--- TB_equipe_torneio
-ALTER TABLE TB_equipe_torneio ADD CONSTRAINT FK_equipe_torneio_equipe FOREIGN KEY (ID_equipe) REFERENCES  TB_equipe(ID_equipe);
-ALTER TABLE TB_equipe_torneio ADD CONSTRAINT FK_equipe_torneio_torneio FOREIGN KEY (ID_torneio) REFERENCES  TB_torneio(ID_torneio);
+-- TB_institution_course
+ALTER TABLE TB_institution_course ADD CONSTRAINT FK_institution_course_course FOREIGN KEY (ID_course) REFERENCES  TB_course(ID_course);
+ALTER TABLE TB_institution_course ADD CONSTRAINT FK_institution_course_education_institution FOREIGN KEY (ID_institution) REFERENCES  TB_education_institution(ID_education_institution);
 
--- TB_equipe_torneio_fase
-ALTER TABLE TB_equipe_torneio_fase ADD CONSTRAINT FK_equipe_torneio_fase_equipe_torneio FOREIGN KEY (ID_equipe_torneio) REFERENCES  TB_equipe_torneio(ID_equipe_torneio);
-ALTER TABLE TB_equipe_torneio_fase ADD CONSTRAINT FK_equipe_torneio_fase_fase FOREIGN KEY (ID_fase) REFERENCES  TB_fase(ID_fase);
+-- TB_leader
+ALTER TABLE TB_leader ADD CONSTRAINT FK_leader_member FOREIGN KEY (ID_member) REFERENCES  TB_member (ID_member);
 
--- TB_estado
-ALTER TABLE TB_estado ADD CONSTRAINT FK_estado_pais FOREIGN KEY (ID_pais) REFERENCES  TB_pais(ID_pais);
+-- TB_member
+ALTER TABLE TB_member ADD CONSTRAINT FK_member_image FOREIGN KEY (ID_member_photo) REFERENCES  TB_image(ID_image);
+ALTER TABLE TB_member ADD CONSTRAINT FK_member_institution_course FOREIGN KEY (ID_institution_course) REFERENCES  TB_institution_course(ID_institution_course);
 
--- TB_evento
-ALTER TABLE TB_evento ADD CONSTRAINT FK_evento_local FOREIGN KEY (ID_local) REFERENCES TB_local(ID_local);
+-- TB_member_project
+ALTER TABLE TB_member_project ADD CONSTRAINT FK_member_project_function FOREIGN KEY (ID_function) REFERENCES  TB_function(ID_function);
+ALTER TABLE TB_member_project ADD CONSTRAINT FK_member_project_member FOREIGN KEY (ID_member) REFERENCES  TB_member(ID_member);
+ALTER TABLE TB_member_project ADD CONSTRAINT FK_member_project_project FOREIGN KEY (ID_project) REFERENCES  TB_project(ID_project);
 
--- TB_fase
-ALTER TABLE TB_fase ADD CONSTRAINT FK_fase_torneio FOREIGN KEY (ID_torneio) REFERENCES  TB_torneio (ID_torneio);
+-- TB_member_role
+ALTER TABLE TB_member_role ADD CONSTRAINT FK_member_role_function FOREIGN KEY (ID_role) REFERENCES TB_function(ID_function);
+ALTER TABLE TB_member_role ADD CONSTRAINT FK_member_role_member FOREIGN KEY (ID_member) REFERENCES TB_member(ID_member);
 
--- TB_fase_online
-ALTER TABLE TB_fase_online ADD CONSTRAINT FK_fase_online_fase FOREIGN KEY (ID_fase) REFERENCES  TB_fase(ID_fase);
-ALTER TABLE TB_fase_online ADD CONSTRAINT FK_fase_online_plataforma FOREIGN KEY (ID_plataforma) REFERENCES  TB_plataforma(ID_plataforma);
+-- TB_member_team
+ALTER TABLE TB_member_team ADD CONSTRAINT FK_member_team_member FOREIGN KEY (ID_member) REFERENCES  TB_member(ID_member);
+ALTER TABLE TB_member_team ADD CONSTRAINT FK_member_team_team FOREIGN KEY(ID_team) REFERENCES  TB_team(ID_team);
 
--- TB_fase_presencial
-ALTER TABLE TB_fase_presencial ADD CONSTRAINT FK_fase_presencial_fase FOREIGN KEY (ID_fase) REFERENCES  TB_fase(ID_fase);
-ALTER TABLE TB_fase_presencial ADD CONSTRAINT FK_fase_presencial_local FOREIGN KEY (ID_local) REFERENCES  TB_local(ID_local);
+-- TB_online_encounter
+ALTER TABLE TB_online_encounter ADD CONSTRAINT FK_online_encounter_encounter FOREIGN KEY (ID_encounter) REFERENCES TB_encounter(ID_encounter);
+ALTER TABLE TB_online_encounter ADD CONSTRAINT FK_online_encounter_platform FOREIGN KEY (ID_platform) REFERENCES TB_platform(ID_platform);
 
--- TB_fase_questao_equipe
-ALTER TABLE TB_fase_questao_equipe ADD CONSTRAINT FK_fase_questao_equipe_equipe_torneio_fase FOREIGN KEY (ID_equipe_torneio_fase) REFERENCES  TB_equipe_torneio_fase (ID_equipe_torneio_fase);
-ALTER TABLE TB_fase_questao_equipe ADD CONSTRAINT FK_fase_questao_equipe_questao FOREIGN KEY (ID_questao) REFERENCES  TB_questao(ID_questao);
-ALTER TABLE TB_fase_questao_equipe ADD CONSTRAINT FK_fase_questao_equipe_status FOREIGN KEY (ID_status) REFERENCES  TB_status(ID_status);
+-- TB_online_phase
+ALTER TABLE TB_online_phase ADD CONSTRAINT FK_online_phase_phase FOREIGN KEY (ID_phase) REFERENCES  TB_phase(ID_phase);
+ALTER TABLE TB_online_phase ADD CONSTRAINT FK_online_phase_platform FOREIGN KEY (ID_platform) REFERENCES  TB_platform(ID_platform);
 
--- TB_imagem
-ALTER TABLE TB_imagem ADD CONSTRAINT FK_imagem_categoria_imagem FOREIGN KEY (ID_categoria_imagem) REFERENCES TB_categoria_imagem(ID_categoria_imagem);
+-- TB_organizer_comittee
+ALTER TABLE TB_organizer_comittee ADD CONSTRAINT FK_organizer_comittee_event FOREIGN KEY (ID_event) REFERENCES  TB_event(ID_event);
+ALTER TABLE TB_organizer_comittee ADD CONSTRAINT FK_organizer_comittee_member FOREIGN KEY (ID_member) REFERENCES  TB_member(ID_member);
 
--- TB_imagem_encontro
-ALTER TABLE TB_imagem_encontro ADD CONSTRAINT FK_imagem_encontro_encontro FOREIGN KEY (ID_encontro) REFERENCES  TB_encontro (ID_encontro);
-ALTER TABLE TB_imagem_encontro ADD CONSTRAINT FK_imagem_encontro_imagem FOREIGN KEY (ID_imagem) REFERENCES  TB_imagem(ID_imagem);
+-- TB_phase
+ALTER TABLE TB_phase ADD CONSTRAINT FK_phase_tournament FOREIGN KEY (ID_tournament) REFERENCES  TB_tournament (ID_tournament);
 
--- TB_imagem_projeto
-ALTER TABLE TB_imagem_projeto ADD CONSTRAINT FK_imagem_projeto_imagem FOREIGN KEY (ID_imagem) REFERENCES  TB_imagem(ID_imagem);
-ALTER TABLE TB_imagem_projeto ADD CONSTRAINT FK_imagem_projeto_projeto FOREIGN KEY (ID_projeto) REFERENCES  TB_projeto (ID_projeto);
+-- TB_place
+ALTER TABLE TB_place ADD CONSTRAINT FK_place_public_place FOREIGN KEY (ID_public_place) REFERENCES  TB_public_place (ID_public_place);
 
--- TB_imagem_evento
-ALTER TABLE TB_imagem_evento ADD CONSTRAINT FK_imagem_evento_evento FOREIGN KEY (ID_evento) REFERENCES  TB_evento(ID_evento);
-ALTER TABLE TB_imagem_evento ADD CONSTRAINT FK_imagem_evento_imagem FOREIGN KEY (ID_imagem) REFERENCES  TB_imagem(ID_imagem);
+-- TB_-- TB_presencial_encounter
+ALTER TABLE TB_presencial_encounter ADD CONSTRAINT FK_presencial_encounter_encounter FOREIGN KEY (ID_encounter) REFERENCES TB_encounter(ID_encounter);
+ALTER TABLE TB_presencial_encounter ADD CONSTRAINT FK_presencial_encounter_place FOREIGN KEY (ID_place) REFERENCES  TB_place(ID_place);
 
--- TB_instituicao_ensino
-ALTER TABLE TB_instituicao_ensino ADD CONSTRAINT FK_instituicao_ensino_logradouro FOREIGN KEY (ID_logradouro) REFERENCES  TB_logradouro (ID_logradouro);
 
--- TB_lider
-ALTER TABLE TB_lider ADD CONSTRAINT FK_lider_membro FOREIGN KEY (ID_membro) REFERENCES  TB_membro (ID_membro);
+-- TB_presential_phase
+ALTER TABLE TB_presential_phase ADD CONSTRAINT FK_presential_phase_phase FOREIGN KEY (ID_phase) REFERENCES  TB_phase(ID_phase);
+ALTER TABLE TB_presential_phase ADD CONSTRAINT FK_presential_phase_place FOREIGN KEY (ID_place) REFERENCES  TB_place(ID_place);
 
--- TB_local
-ALTER TABLE TB_local ADD CONSTRAINT FK_local_logradouro FOREIGN KEY (ID_logradouro) REFERENCES  TB_logradouro (ID_logradouro);
 
--- TB_logradouro
-ALTER TABLE TB_logradouro ADD CONSTRAINT FK_logradouro_cidade FOREIGN KEY (ID_cidade) REFERENCES  TB_cidade(ID_cidade);
+-- TB_project
+ALTER TABLE TB_project ADD CONSTRAINT FK_project_leader FOREIGN KEY (ID_leader) REFERENCES  TB_leader(ID_leader);
+ALTER TABLE TB_project ADD CONSTRAINT FK_project_project_type FOREIGN KEY (ID_project_type) REFERENCES TB_project_type (ID_project_type);
 
--- TB_membro
-ALTER TABLE TB_membro ADD CONSTRAINT FK_membro_curso_instituicao FOREIGN KEY (ID_curso_instituicao) REFERENCES  TB_curso_instituicao(ID_curso_instituicao);
-ALTER TABLE TB_membro ADD CONSTRAINT FK_membro_imagem FOREIGN KEY (ID_foto_membro) REFERENCES  TB_imagem(ID_imagem);
 
--- TB_membro_equipe
-ALTER TABLE TB_membro_equipe ADD CONSTRAINT FK_membro_equipe_equipe FOREIGN KEY(ID_equipe) REFERENCES  TB_equipe(ID_equipe);
-ALTER TABLE TB_membro_equipe ADD CONSTRAINT FK_membro_equipe_membro FOREIGN KEY (ID_membro) REFERENCES  TB_membro(ID_membro);
+-- TB_project_image
+ALTER TABLE TB_project_image ADD CONSTRAINT FK_project_image_image FOREIGN KEY (ID_image) REFERENCES  TB_image(ID_image);
+ALTER TABLE TB_project_image ADD CONSTRAINT FK_project_image_project FOREIGN KEY (ID_project) REFERENCES  TB_project (ID_project);
 
--- TB_membro_projeto 
-ALTER TABLE TB_membro_projeto ADD CONSTRAINT FK_membro_projeto_membro FOREIGN KEY (ID_membro) REFERENCES  TB_membro(ID_membro);
-ALTER TABLE TB_membro_projeto ADD CONSTRAINT FK_membro_projeto_projeto FOREIGN KEY (ID_projeto) REFERENCES  TB_projeto(ID_projeto);
-ALTER TABLE TB_membro_projeto ADD CONSTRAINT FK_membro_projeto_funcao FOREIGN KEY (ID_funcao) REFERENCES  TB_funcao(ID_funcao);
 
---TB_movimentacao_ponto
-ALTER TABLE TB_movimentacao_ponto ADD CONSTRAINT FK_movimentacao_ponto_conta_clube FOREIGN KEY (ID_conta_clube) REFERENCES  TB_conta_clube(ID_conta_clube);
-ALTER TABLE TB_movimentacao_ponto ADD CONSTRAINT FK_movimentacao_ponto_tipo_movimentacao_ponto FOREIGN KEY (ID_tipo_movimentacao_ponto) REFERENCES  TB_tipo_movimentacao_ponto(ID_tipo_movimentacao_ponto);
+-- TB_project_subject
+ALTER TABLE TB_project_subject ADD CONSTRAINT FK_project_subject_project FOREIGN KEY (ID_project) REFERENCES TB_project(ID_project);
+ALTER TABLE TB_project_subject ADD CONSTRAINT FK_project_subject_subject FOREIGN KEY (ID_subject) REFERENCES TB_subject(ID_subject);
 
---TB_movimentacao_ponto_cargo
-ALTER TABLE TB_movimentacao_ponto_cargo ADD CONSTRAINT FK_movimentacao_ponto_cargo_cargo_membro FOREIGN KEY (ID_cargo_membro) REFERENCES  TB_cargo_membro(ID_cargo_membro);
-ALTER TABLE TB_movimentacao_ponto_cargo ADD CONSTRAINT FK_movimentacao_ponto_cargo_movimentacao_ponto FOREIGN KEY (ID_movimentacao_ponto) REFERENCES  TB_movimentacao_ponto(ID_movimentacao_ponto);
+-- TB_public_place
+ALTER TABLE TB_public_place ADD CONSTRAINT FK_public_place_city FOREIGN KEY (ID_city) REFERENCES  TB_city(ID_city);
 
---TB_movimentacao_ponto_evento
-ALTER TABLE TB_movimentacao_ponto_evento ADD CONSTRAINT FK_movimentacao_ponto_evento_movimentacao_ponto FOREIGN KEY (ID_movimentacao_ponto) REFERENCES  TB_movimentacao_ponto(ID_movimentacao_ponto);
-ALTER TABLE TB_movimentacao_ponto_evento ADD CONSTRAINT FK_movimentacao_ponto_presenca_evento FOREIGN KEY (ID_presenca_evento) REFERENCES  TB_presenca_evento(ID_presenca_evento);
+-- TB_question
+ALTER TABLE TB_question ADD CONSTRAINT FK_question_difficulty_degree FOREIGN KEY (ID_difficulty_degree) REFERENCES  TB_difficulty_degree(ID_difficulty_degree);
 
--- TB_movimentacao_ponto_projeto
-ALTER TABLE TB_movimentacao_ponto_projeto ADD CONSTRAINT FK_movimentacao_ponto_projeto_movimentacao_ponto FOREIGN KEY (ID_movimentacao_ponto) REFERENCES TB_movimentacao_ponto(ID_movimentacao_ponto);
-ALTER TABLE TB_movimentacao_ponto_projeto ADD CONSTRAINT FK_movimentacao_ponto_projeto_projeto FOREIGN KEY (ID_projeto) REFERENCES TB_projeto(ID_projeto);
+-- TB_question_subject
+ALTER TABLE TB_question_subject ADD CONSTRAINT FK_question_subject_question FOREIGN KEY (ID_question) REFERENCES TB_question (ID_question);
+ALTER TABLE TB_question_subject ADD CONSTRAINT FK_question_subject_subject FOREIGN KEY (ID_subject) REFERENCES TB_subject (ID_subject);
 
--- TB_movimentacao_ponto_questao
-ALTER TABLE TB_movimentacao_ponto_questao ADD CONSTRAINT FK_movimentacao_ponto_questao_movimentacao_ponto FOREIGN KEY (ID_movimentacao_ponto) REFERENCES TB_movimentacao_ponto(ID_movimentacao_ponto);
-ALTER TABLE TB_movimentacao_ponto_questao ADD CONSTRAINT FK_movimentacao_ponto_questao_questao FOREIGN KEY (ID_questao) REFERENCES TB_questao(ID_questao);
+-- TB_scor_transaction
+ALTER TABLE TB_score_transaction ADD CONSTRAINT FK_score_transaction_club_account FOREIGN KEY (ID_club_account) REFERENCES  TB_club_account(ID_club_account);
+ALTER TABLE TB_score_transaction ADD CONSTRAINT FK_score_transaction_transaction_score_type FOREIGN KEY (ID_transaction_score_type) REFERENCES  TB_transaction_score_type(ID_transaction_score_type);
 
--- TB_movimentacao_ponto_torneio
-ALTER TABLE TB_movimentacao_ponto_torneio ADD CONSTRAINT FK_movimentacao_ponto_torneio_equipe_torneio_fase FOREIGN KEY (ID_equipe_torneio_fase) REFERENCES TB_equipe_torneio_fase(ID_equipe_torneio_fase);
-ALTER TABLE TB_movimentacao_ponto_torneio ADD CONSTRAINT FK_movimentacao_ponto_torneio_movimentacao_ponto FOREIGN KEY (ID_movimentacao_ponto) REFERENCES TB_movimentacao_ponto(ID_movimentacao_ponto);
+-- TB_score_transaction_event_attendance
+ALTER TABLE TB_score_transaction_event_attendance ADD CONSTRAINT FK_score_transaction_event_attendance FOREIGN KEY (ID_event_attendance) REFERENCES  TB_event_attendance(ID_event_attendance);
+ALTER TABLE TB_score_transaction_event_attendance ADD CONSTRAINT FK_score_transaction_event_attendance_score_transaction FOREIGN KEY (ID_score_transaction) REFERENCES  TB_score_transaction(ID_score_transaction);
 
--- TB_presenca_evento
-ALTER TABLE TB_presenca_evento ADD CONSTRAINT FK_presenca_evento_evento FOREIGN KEY (ID_evento) REFERENCES  TB_evento(ID_evento);
-ALTER TABLE TB_presenca_evento ADD CONSTRAINT FK_presenca_evento_membro FOREIGN KEY (ID_membro) REFERENCES  TB_membro(ID_membro);
 
--- TB_presenca_encontro
-ALTER TABLE TB_presenca_encontro ADD CONSTRAINT FK_presenca_encontro_encontro FOREIGN KEY (ID_encontro) REFERENCES  TB_encontro(ID_encontro);
-ALTER TABLE TB_presenca_encontro ADD CONSTRAINT FK_presenca_encontro_membro FOREIGN KEY (ID_membro) REFERENCES  TB_membro(ID_membro);
+-- TB_score_transection_member_role
+ALTER TABLE TB_score_transaction_member_role ADD CONSTRAINT FK_score_transaction_member_role_member_role FOREIGN KEY (ID_member_role) REFERENCES  TB_member_role(ID_member_role);
+ALTER TABLE TB_score_transaction_member_role ADD CONSTRAINT FK_score_transaction_member_role_score_transaction FOREIGN KEY (ID_score_transaction) REFERENCES  TB_score_transaction(ID_score_transaction);
 
--- TB_projeto
-ALTER TABLE TB_projeto ADD CONSTRAINT FK_projeto_lider FOREIGN KEY (ID_lider) REFERENCES  TB_lider(ID_lider);
-ALTER TABLE TB_projeto ADD CONSTRAINT FK_projeto_tipo_projeto FOREIGN KEY (ID_tipo_projeto) REFERENCES TB_tipo_projeto (ID_tipo_projeto);
+-- TB_score_transaction_project
+ALTER TABLE TB_score_transaction_project ADD CONSTRAINT FK_score_transaction_project_project FOREIGN KEY (ID_project) REFERENCES TB_project(ID_project);
+ALTER TABLE TB_score_transaction_project ADD CONSTRAINT FK_score_transaction_project_score_transaction FOREIGN KEY (ID_score_transaction) REFERENCES TB_score_transaction(ID_score_transaction);
 
--- TB_questao
-ALTER TABLE TB_questao ADD CONSTRAINT FK_questao_grau_dificuldade FOREIGN KEY (ID_grau_dificuldade) REFERENCES  TB_grau_dificuldade(ID_grau_dificuldade);
+-- TB_score_transaction_question
+ALTER TABLE TB_score_transaction_question ADD CONSTRAINT FK_score_transaction_question_question FOREIGN KEY (ID_question) REFERENCES TB_question(ID_question);
+ALTER TABLE TB_score_transaction_question ADD CONSTRAINT FK_score_transaction_question_score_transaction FOREIGN KEY (ID_score_transaction) REFERENCES TB_score_transaction(ID_score_transaction);
 
--- TB_torneio
-ALTER TABLE TB_torneio ADD CONSTRAINT FK_torneio_organizador FOREIGN KEY (ID_organizador) REFERENCES  TB_organizador(ID_organizador);
+
+-- TB_score_transaction_tournament_team_phase
+ALTER TABLE TB_score_transaction_tournament_team_phase ADD CONSTRAINT FK_score_transaction_tournament_team_phase_score_transaction FOREIGN KEY (ID_score_transaction) REFERENCES TB_score_transaction(ID_score_transaction);
+ALTER TABLE TB_score_transaction_tournament_team_phase ADD CONSTRAINT FK_score_transaction_tournament_team_phase_tournament_team_phas FOREIGN KEY (ID_tournament_team_phase) REFERENCES TB_tournament_team_phase(ID_tournament_team_phase);
+
+-- TB_state
+ALTER TABLE TB_state ADD CONSTRAINT FK_state_country FOREIGN KEY (ID_country) REFERENCES  TB_country(ID_country);
+
+-- TB_team
+ALTER TABLE TB_team ADD CONSTRAINT FK_team_captain FOREIGN KEY (ID_captain) REFERENCES  TB_captain(ID_captain);
+
+-- TB_team_question_phase
+ALTER TABLE TB_team_question_phase ADD CONSTRAINT FK_team_question_phase_question FOREIGN KEY (ID_question) REFERENCES  TB_question(ID_question);
+ALTER TABLE TB_team_question_phase ADD CONSTRAINT FK_team_question_phase_status FOREIGN KEY (ID_status) REFERENCES  TB_status(ID_status);
+ALTER TABLE TB_team_question_phase ADD CONSTRAINT FK_team_question_phase_tournament_team_phase FOREIGN KEY (ID_tournament_team_phase) REFERENCES  TB_tournament_team_phase (ID_tournament_team_phase);
+
+-- TB_tournament
+ALTER TABLE TB_tournament ADD CONSTRAINT FK_tournament_organizer FOREIGN KEY (ID_organizer) REFERENCES  TB_organizer(ID_organizer);
+
+-- TB_tournament_team
+ALTER TABLE TB_tournament_team ADD CONSTRAINT FK_tournament_team_team FOREIGN KEY (ID_team) REFERENCES  TB_team(ID_team);
+ALTER TABLE TB_tournament_team ADD CONSTRAINT FK_tournament_team_tournament FOREIGN KEY (ID_tournament) REFERENCES  TB_tournament(ID_tournament);
+
+-- TB_tournament_team_phase
+ALTER TABLE TB_tournament_team_phase ADD CONSTRAINT FK_tournament_team_phase_phase FOREIGN KEY (ID_phase) REFERENCES  TB_phase(ID_phase);
+ALTER TABLE TB_tournament_team_phase ADD CONSTRAINT FK_tournament_team_phase_tournament_team FOREIGN KEY (ID_tournament_team) REFERENCES  TB_tournament_team(ID_tournament_team);
+
+
+

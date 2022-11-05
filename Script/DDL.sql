@@ -396,7 +396,7 @@ CREATE TABLE TB_plataforma(
 );
 
 -- 50
-CREATE TABLE TB_questao(
+CREATE TABLE TB_questao( 
     ID_questao INT NOT NULL,
     ID_grau_dificuldade INT NOT NULL,
     enunciado VARCHAR(200) NOT NULL,

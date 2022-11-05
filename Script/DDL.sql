@@ -11,27 +11,27 @@
 
 -- 1
 CREATE TABLE TB_assunto(
-    ID_assunto INT NOT NULL,
+    ID_assunto SERIAL NOT NULL,
     assunto VARCHAR(100)
 );
 
 -- 2 
 CREATE TABLE TB_assunto_encontro(
-    ID_assunto_encontro INT NOT NULL,
+    ID_assunto_encontro SERIAL NOT NULL,
     ID_assunto INT NOT NULL,
     ID_encontro INT NOT NULL
 );
 
 -- 3 
 CREATE TABLE TB_assunto_projeto(
-    ID_assunto_projeto INT NOT NULL,
+    ID_assunto_projeto SERIAL NOT NULL,
     ID_assunto INT NOT NULL,
     ID_projeto INT NOT NULL
 );
 
 -- 4
 CREATE TABLE TB_assunto_questao(
-    ID_assunto_questao INT NOT NULL,
+    ID_assunto_questao SERIAL NOT NULL,
     ID_assunto INT NOT NULL,
     ID_questao INT NOT NULL,
     pontos_jpq_maximo INT
@@ -39,20 +39,20 @@ CREATE TABLE TB_assunto_questao(
 
 -- 5
 CREATE TABLE TB_categoria_imagem(
-    ID_categoria_imagem INT NOT NULL,
+    ID_categoria_imagem SERIAL NOT NULL,
     nome VARCHAR(50) UNIQUE
 ); 
 
 -- 6
 CREATE TABLE TB_capitao(
-    ID_capitao INT NOT NULL,
+    ID_capitao SERIAL NOT NULL,
     ID_membro INT NOT NULL,
     nome_capitao VARCHAR(50) NOT NULL
 );
 
 -- 7
 CREATE TABLE TB_cargo_membro(
-    ID_cargo_membro INT NOT NULL,
+    ID_cargo_membro SERIAL NOT NULL,
     ID_cargo INT NOT NULL,
     ID_membro INT NOT NULL, 
     DT_entrada_cargo DATE NOT NULL,
@@ -62,20 +62,20 @@ CREATE TABLE TB_cargo_membro(
 
 -- 8
 CREATE TABLE TB_cidade(
-    ID_cidade INT NOT NULL,
+    ID_cidade SERIAL NOT NULL,
     ID_estado INT NOT NULL,
     nome VARCHAR(50) NOT NULL
 );
 
 -- 9
 CREATE TABLE TB_comite_organizador(
-    ID_comite_organizador INT NOT NULL,
+    ID_comite_organizador SERIAL NOT NULL,
     ID_evento INT NOT NULL,
     ID_membro INT NOT NULL
 );
 
 CREATE TABLE TB_conta_clube(
-    ID_conta_clube INT NOT NULL,
+    ID_conta_clube SERIAL NOT NULL,
     ID_membro INT NOT NULL,
     login VARCHAR(100) NOT NULL,
     pontos_jpq INT NOT NULL,
@@ -84,20 +84,20 @@ CREATE TABLE TB_conta_clube(
 
 -- 10
 CREATE TABLE TB_curso(
-    ID_curso INT NOT NULL,
+    ID_curso SERIAL NOT NULL,
     nome VARCHAR(50) NOT NULL UNIQUE
 );
 
 -- 11
 CREATE TABLE TB_curso_instituicao(
-    ID_curso_instituicao INT NOT NULL,
+    ID_curso_instituicao SERIAL NOT NULL,
     ID_curso INT NOT NULL,
     ID_instituicao INT NOT NULL
 );
 
 -- 12
 CREATE TABLE TB_encontro(
-    ID_encontro INT NOT NULL,
+    ID_encontro SERIAL NOT NULL,
     ID_organizador INT NOT NULL,
     ID_projeto INT NOT NULL,
     DT_inicio DATE,
@@ -106,21 +106,21 @@ CREATE TABLE TB_encontro(
 
 -- 13
 CREATE TABLE TB_encontro_online(
-    ID_encontro_online INT NOT NULL,
+    ID_encontro_online SERIAL NOT NULL,
     ID_plataforma INT NOT NULL,
     ID_encontro INT NOT NULL
 );
 
 -- 14
 CREATE TABLE TB_encontro_presencial(
-    ID_encontro_presencial INT NOT NULL,
+    ID_encontro_presencial SERIAL NOT NULL,
     ID_encontro INT NOT NULL,
     ID_local INT NOT NULL
 );
 
 -- 15
 CREATE TABLE TB_equipe(
-    ID_equipe INT NOT NULL,
+    ID_equipe SERIAL NOT NULL,
     ID_capitao INT NOT NULL,
     DT_criacao DATE NOT NULL,
     nome VARCHAR(50) NOT NULL
@@ -128,7 +128,7 @@ CREATE TABLE TB_equipe(
 
 -- 16
 CREATE TABLE TB_equipe_torneio(
-    ID_equipe_torneio INT NOT NULL,
+    ID_equipe_torneio SERIAL NOT NULL,
     ID_equipe INT NOT NULL,
     ID_torneio INT NOT NULL,
     colocacao INT NOT NULL UNIQUE
@@ -136,7 +136,7 @@ CREATE TABLE TB_equipe_torneio(
 
 -- 17
 CREATE TABLE TB_equipe_torneio_fase(
-    ID_equipe_torneio_fase INT NOT NULL,
+    ID_equipe_torneio_fase SERIAL NOT NULL,
     ID_equipe_torneio INT NOT NULL,
     ID_fase INT NOT NULL,
     colocacao_fase INT NOT NULL UNIQUE,
@@ -145,14 +145,14 @@ CREATE TABLE TB_equipe_torneio_fase(
 
 -- 18
 CREATE TABLE TB_estado(
-    ID_estado INT NOT NULL,
+    ID_estado SERIAL NOT NULL,
     ID_pais INT NOT NULL,
     nome VARCHAR(50) NOT NULL
 );
 
 -- 19
 CREATE TABLE TB_evento(
-    ID_evento INT NOT NULL,
+    ID_evento SERIAL NOT NULL,
     ID_local INT NOT NULL,
     descricao VARCHAR(100),
     DT_inicio DATE,
@@ -162,7 +162,7 @@ CREATE TABLE TB_evento(
 
 -- 20
 CREATE TABLE TB_fase(
-    ID_fase INT NOT NULL,
+    ID_fase SERIAL NOT NULL,
     ID_torneio INT NOT NULL,
     numero INT NOT NULL,
     DT_inicio DATE NOT NULL,
@@ -171,21 +171,21 @@ CREATE TABLE TB_fase(
 
 -- 21
 CREATE TABLE TB_fase_online(
-    ID_fase_online INT NOT NULL,
+    ID_fase_online SERIAL NOT NULL,
     ID_fase INT NOT NULL,
     ID_plataforma INT NOT NULL
 );
 
 -- 22
 CREATE TABLE TB_fase_presencial(
-    ID_fase_presencial INT NOT NULL,
+    ID_fase_presencial SERIAL NOT NULL,
     ID_fase INT NOT NULL,
     ID_local INT NOT NULL
 );
 
 -- 23
 CREATE TABLE TB_fase_questao_equipe(
-    ID_fase_questao_equipe INT NOT NULL,
+    ID_fase_questao_equipe SERIAL NOT NULL,
     ID_equipe_torneio_fase INT NOT NULL,
     ID_questao INT NOT NULL,
     ID_status INT NOT NULL, 
@@ -194,65 +194,65 @@ CREATE TABLE TB_fase_questao_equipe(
 
 -- 24
 CREATE TABLE TB_funcao(
-    ID_funcao INT NOT NULL,
+    ID_funcao SERIAL NOT NULL,
     nome_funcao VARCHAR(50) NOT NULL,
     descricao_funcao VARCHAR(100) NOT NULL
 );
 
 -- 25
 CREATE TABLE TB_grau_dificuldade(
-    ID_grau_dificuldade INT NOT NULL,
+    ID_grau_dificuldade SERIAL NOT NULL,
     dificuldade VARCHAR(50) NOT NULL
 );
 
 -- 26
 CREATE TABLE TB_imagem(
-    ID_imagem INT NOT NULL,
+    ID_imagem SERIAL NOT NULL,
     ID_categoria_imagem INT NOT NULL,
     descricao VARCHAR(100),
-    imagem blob NOT NULL,
+    imagem oid NOT NULL,
     nome VARCHAR(200),
     DT_imagem DATE
 );
 
 -- 27
 CREATE TABLE TB_imagem_encontro(
-    ID_imagem_encontro INT NOT NULL,
+    ID_imagem_encontro SERIAL NOT NULL,
     ID_encontro INT NOT NULL,
     ID_imagem INT NOT NULL
 );
 
 -- 28
 CREATE TABLE TB_imagem_projeto(
-    ID_imagem_projeto INT NOT NULL,
+    ID_imagem_projeto SERIAL NOT NULL,
     ID_imagem INT NOT NULL,
     ID_projeto INT NOT NULL
 );
 
 -- 29
 CREATE TABLE TB_imagem_evento(
-    ID_imagem_evento INT NOT NULL,
+    ID_imagem_evento SERIAL NOT NULL,
     ID_evento INT NOT NULL,
     ID_imagem INT NOT NULL  
 );
 
 -- 30
 CREATE TABLE TB_instituicao_ensino(
-    ID_instituicao_ensino INT NOT NULL,
+    ID_instituicao_ensino SERIAL NOT NULL,
     ID_logradouro INT NOT NULL,
     nome VARCHAR(50) NOT NULL
 );
 
 -- 31
 CREATE TABLE TB_lider(
-    ID_lider INT NOT NULL,
+    ID_lider SERIAL NOT NULL,
     ID_membro INT NOT NULL,
     nome_lider VARCHAR(50) NOT NULL
 );
 
 -- 32
 CREATE TABLE TB_local(
-    ID_local INT NOT NULL,
+    ID_local SERIAL NOT NULL,
     ID_logradouro INT NOT NULL,
     descricao VARCHAR(50) NOT NULL,
     nome VARCHAR(50) NOT NULL
@@ -260,14 +260,14 @@ CREATE TABLE TB_local(
 
 -- 33
 CREATE TABLE TB_logradouro(
-    ID_logradouro INT NOT NULL,
+    ID_logradouro SERIAL NOT NULL,
     ID_cidade INT NOT NULL,
     nome VARCHAR(50)
 );
 
 -- 34
 CREATE TABLE TB_membro(
-    ID_membro INT NOT NULL,
+    ID_membro SERIAL NOT NULL,
     ID_curso_instituicao INT NOT NULL,
     ID_foto_membro INT NOT NULL,
     DT_nascimento DATE,
@@ -281,14 +281,14 @@ CREATE TABLE TB_membro(
 
 -- 35
 CREATE TABLE TB_membro_equipe(
-    ID_membro_equipe INT NOT NULL,
+    ID_membro_equipe SERIAL NOT NULL,
     ID_equipe INT NOT NULL,
     ID_membro INT NOT NULL
 );
 
 -- 36
 CREATE TABLE TB_membro_projeto(
-    ID_membro_projeto int NOT NULL,
+    ID_membro_projeto SERIAL NOT NULL,
     ID_membro INT NOT NULL,
     ID_projeto INT NOT NULL,
     ID_funcao INT NOT NULL,
@@ -298,7 +298,7 @@ CREATE TABLE TB_membro_projeto(
 
 -- 37
 CREATE TABLE TB_movimentacao_ponto(
-    ID_movimentacao_ponto INT NOT NULL,
+    ID_movimentacao_ponto SERIAL NOT NULL,
     ID_conta_clube INT NOT NULL,
     ID_tipo_movimentacao_ponto INT NOT NULL,
     quantidade_pontos_jpq INT
@@ -306,21 +306,21 @@ CREATE TABLE TB_movimentacao_ponto(
 
 -- 38
 CREATE TABLE TB_movimentacao_ponto_cargo(
-    ID_movimentacao_ponto_cargo INT NOT NULL,
+    ID_movimentacao_ponto_cargo SERIAL NOT NULL,
     ID_cargo_membro INT NOT NULL,
     ID_movimentacao_ponto INT NOT NULL
 );
 
 -- 39
 CREATE TABLE TB_movimentacao_ponto_evento(
-    ID_movimentacao_ponto_evento INT NOT NULL,
+    ID_movimentacao_ponto_evento SERIAL NOT NULL,
     ID_movimentacao_ponto INT NOT NULL,
     ID_presenca_evento INT NOT NULL
 );
 
 -- 40
 CREATE TABLE TB_movimentacao_ponto_projeto(
-    ID_movimentacao_ponto_projeto INT NOT NULL,
+    ID_movimentacao_ponto_projeto SERIAL NOT NULL,
     ID_movimentacao_ponto INT NOT NULL,
     ID_projeto INT NOT NULL,
     avaliacao_projeto VARCHAR(500)
@@ -328,7 +328,7 @@ CREATE TABLE TB_movimentacao_ponto_projeto(
 
 -- 41
 CREATE TABLE TB_movimentacao_ponto_questao(
-    ID_movimentacao_ponto_questao INT NOT NULL,
+    ID_movimentacao_ponto_questao SERIAL NOT NULL,
     ID_movimentacao_ponto INT NOT NULL,
     ID_questao INT NOT NULL,
     avaliacao_questao VARCHAR(500) 
@@ -336,34 +336,34 @@ CREATE TABLE TB_movimentacao_ponto_questao(
 
 -- 42
 CREATE TABLE TB_movimentacao_ponto_torneio(
-    ID_movimentacao_ponto_torneio INT NOT NULL,
+    ID_movimentacao_ponto_torneio SERIAL NOT NULL,
     ID_equipe_torneio_fase INT NOT NULL,
     ID_movimentacao_ponto INT NOT NULL
 );
 
 -- 43
 CREATE TABLE TB_organizador(
-    ID_organizador INT NOT NULL,
+    ID_organizador SERIAL NOT NULL,
     nome VARCHAR(50) NOT NULL,
     descricao VARCHAR(50)
 );
 
 -- 44
 CREATE TABLE TB_pais(
-    ID_pais INT NOT NULL,
+    ID_pais SERIAL NOT NULL,
     nome VARCHAR(50)
 );
 
 -- 45
 CREATE TABLE TB_presenca_encontro(
-    ID_presenca_encontro INT NOT NULL,
+    ID_presenca_encontro SERIAL NOT NULL,
     ID_encontro INT NOT NULL,
     ID_membro INT NOT NULL
 );
 
 -- 46
 CREATE TABLE TB_presenca_evento(
-    ID_presenca_evento INT NOT NULL,
+    ID_presenca_evento SERIAL NOT NULL,
     ID_membro INT NOT NULL,
     ID_evento INT NOT NULL,
     pontos_jpq_maximo INT 
@@ -371,13 +371,13 @@ CREATE TABLE TB_presenca_evento(
 
 -- 47
 CREATE TABLE TB_procedencia_questao(
-    ID_procedencia_questao INT NOT NULL,
+    ID_procedencia_questao SERIAL NOT NULL,
     procedencia_questao VARCHAR (100) NOT NULL
 );
 
 -- 48
 CREATE TABLE TB_projeto(
-    ID_projeto INT NOT NULL,
+    ID_projeto SERIAL NOT NULL,
     ID_tipo_projeto INT NOT NULL,
     ID_lider INT NOT NULL,
     descricao VARCHAR(100),
@@ -390,14 +390,14 @@ CREATE TABLE TB_projeto(
 
 -- 49
 CREATE TABLE TB_plataforma(
-    ID_plataforma INT NOT NULL,
+    ID_plataforma SERIAL NOT NULL,
     URL_plataforma VARCHAR(100) NOT NULL UNIQUE,
     nome_plataforma VARCHAR(50) NOT NULL UNIQUE
 );
 
 -- 50
 CREATE TABLE TB_questao( 
-    ID_questao INT NOT NULL,
+    ID_questao SERIAL NOT NULL,
     ID_grau_dificuldade INT NOT NULL,
     enunciado VARCHAR(200) NOT NULL,
     nome VARCHAR(100) NOT NULL,
@@ -407,88 +407,30 @@ CREATE TABLE TB_questao(
 
 -- 51
 CREATE TABLE TB_status(
-    ID_status INT NOT NULL,
+    ID_status SERIAL NOT NULL,
     descricao VARCHAR(100) NOT NULL
 );
 
 -- 52
 CREATE TABLE TB_tipo_movimentacao_ponto(
-    ID_tipo_movimentacao_ponto INT NOT NULL,
+    ID_tipo_movimentacao_ponto SERIAL  NOT NULL,
     tipo_movimentacao_ponto VARCHAR (100) NOT NULL
 );
 
 -- 53
 CREATE TABLE TB_tipo_projeto(
-    ID_tipo_projeto INT NOT NULL,
+    ID_tipo_projeto SERIAL NOT NULL,
     titulo VARCHAR(50) NOT NULL
 );
 
 -- 54
 CREATE TABLE TB_torneio(
-    ID_torneio INT NOT NULL,
+    ID_torneio SERIAL NOT NULL,
     ID_organizador INT NOT NULL,
     nome VARCHAR(50) NOT NULL,
     DT_inicio DATE,
     DT_termino DATE
 );
-
-
--- Criando as Sequencias necessarias para a construcao das chaves primarias das tabelas.
-CREATE SEQUENCE SQ_assunto;
-CREATE SEQUENCE SQ_assunto_encontro;
-CREATE SEQUENCE SQ_assunto_projeto;
-CREATE SEQUENCE SQ_assunto_questao;
-CREATE SEQUENCE SQ_cargo_membro;
-CREATE SEQUENCE SQ_categoria_imagem;
-CREATE SEQUENCE SQ_capitao;
-CREATE SEQUENCE SQ_cidade;
-CREATE SEQUENCE SQ_conta_clube;
-CREATE SEQUENCE SQ_comite_organizador;
-CREATE SEQUENCE SQ_curso;
-CREATE SEQUENCE SQ_curso_instituicao;
-CREATE SEQUENCE SQ_encontro;
-CREATE SEQUENCE SQ_encontro_online;
-CREATE SEQUENCE SQ_encontro_presencial;
-CREATE SEQUENCE SQ_equipe;
-CREATE SEQUENCE SQ_equipe_torneio;
-CREATE SEQUENCE SQ_equipe_torneio_fase;
-CREATE SEQUENCE SQ_estado;
-CREATE SEQUENCE SQ_evento;
-CREATE SEQUENCE SQ_fase;
-CREATE SEQUENCE SQ_fase_online;
-CREATE SEQUENCE SQ_fase_presencial;
-CREATE SEQUENCE SQ_fase_questao_equipe;
-CREATE SEQUENCE SQ_funcao;
-CREATE SEQUENCE SQ_grau_dificuldade;
-CREATE SEQUENCE SQ_imagem;
-CREATE SEQUENCE SQ_imagem_encontro;
-CREATE SEQUENCE SQ_imagem_projeto;
-CREATE SEQUENCE SQ_imagem_evento;
-CREATE SEQUENCE SQ_instituicao_ensino;
-CREATE SEQUENCE SQ_lider;
-CREATE SEQUENCE SQ_local;
-CREATE SEQUENCE SQ_logradouro;
-CREATE SEQUENCE SQ_membro;
-CREATE SEQUENCE SQ_membro_equipe;
-CREATE SEQUENCE SQ_membro_projeto;
-CREATE SEQUENCE SQ_movimentacao_ponto;
-CREATE SEQUENCE SQ_movimentacao_ponto_cargo;
-CREATE SEQUENCE SQ_movimentacao_ponto_evento;
-CREATE SEQUENCE SQ_movimentacao_ponto_projeto;
-CREATE SEQUENCE SQ_movimentacao_ponto_questao;
-CREATE SEQUENCE SQ_movimentacao_ponto_torneio;
-CREATE SEQUENCE SQ_organizador;
-CREATE SEQUENCE SQ_pais;
-CREATE SEQUENCE SQ_presenca_evento;
-CREATE SEQUENCE SQ_procedencia_questao;
-CREATE SEQUENCE SQ_presenca_encontro;
-CREATE SEQUENCE SQ_projeto;
-CREATE SEQUENCE SQ_plataforma;
-CREATE SEQUENCE SQ_questao;
-CREATE SEQUENCE SQ_status;
-CREATE SEQUENCE SQ_tipo_movimentacao_ponto;
-CREATE SEQUENCE SQ_tipo_projeto;
-CREATE SEQUENCE SQ_torneio;
 
 -- Restricao de genero.
 ALTER TABLE TB_membro ADD CONSTRAINT CK_GENERO_membro CHECK(genero in('F','M'));

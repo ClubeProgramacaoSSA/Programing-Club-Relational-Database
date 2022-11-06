@@ -12,7 +12,7 @@
 -- 1
 CREATE TABLE TB_assunto(
     ID_assunto SERIAL NOT NULL,
-    assunto VARCHAR(100)
+    assunto VARCHAR(500)
 );
 
 -- 2 
@@ -40,14 +40,14 @@ CREATE TABLE TB_assunto_questao(
 -- 5
 CREATE TABLE TB_categoria_imagem(
     ID_categoria_imagem SERIAL NOT NULL,
-    nome VARCHAR(50) UNIQUE
+    nome VARCHAR(500) UNIQUE
 ); 
 
 -- 6
 CREATE TABLE TB_capitao(
     ID_capitao SERIAL NOT NULL,
     ID_membro INT NOT NULL,
-    nome_capitao VARCHAR(50) NOT NULL
+    nome_capitao VARCHAR(500) NOT NULL
 );
 
 -- 7
@@ -64,7 +64,7 @@ CREATE TABLE TB_cargo_membro(
 CREATE TABLE TB_cidade(
     ID_cidade SERIAL NOT NULL,
     ID_estado INT NOT NULL,
-    nome VARCHAR(50) NOT NULL
+    nome VARCHAR(500) NOT NULL
 );
 
 -- 9
@@ -77,7 +77,7 @@ CREATE TABLE TB_comite_organizador(
 CREATE TABLE TB_conta_clube(
     ID_conta_clube SERIAL NOT NULL,
     ID_membro INT NOT NULL,
-    login VARCHAR(100) NOT NULL,
+    login VARCHAR(500) NOT NULL,
     pontos_jpq INT NOT NULL,
     senha VARCHAR(500) NOT NULL
 );
@@ -85,7 +85,7 @@ CREATE TABLE TB_conta_clube(
 -- 10
 CREATE TABLE TB_curso(
     ID_curso SERIAL NOT NULL,
-    nome VARCHAR(50) NOT NULL UNIQUE
+    nome VARCHAR(500) NOT NULL UNIQUE
 );
 
 -- 11
@@ -123,7 +123,7 @@ CREATE TABLE TB_equipe(
     ID_equipe SERIAL NOT NULL,
     ID_capitao INT NOT NULL,
     DT_criacao DATE NOT NULL,
-    nome VARCHAR(50) NOT NULL
+    nome VARCHAR(500) NOT NULL
 );
 
 -- 16
@@ -147,17 +147,17 @@ CREATE TABLE TB_equipe_torneio_fase(
 CREATE TABLE TB_estado(
     ID_estado SERIAL NOT NULL,
     ID_pais INT NOT NULL,
-    nome VARCHAR(50) NOT NULL
+    nome VARCHAR(500) NOT NULL
 );
 
 -- 19
 CREATE TABLE TB_evento(
     ID_evento SERIAL NOT NULL,
     ID_local INT NOT NULL,
-    descricao VARCHAR(100),
+    descricao VARCHAR(500),
     DT_inicio DATE,
     DT_fim DATE,
-    nome VARCHAR(50) NOT NULL
+    nome VARCHAR(500) NOT NULL
 );
 
 -- 20
@@ -195,22 +195,22 @@ CREATE TABLE TB_fase_questao_equipe(
 -- 24
 CREATE TABLE TB_funcao(
     ID_funcao SERIAL NOT NULL,
-    nome_funcao VARCHAR(50) NOT NULL,
-    descricao_funcao VARCHAR(100) NOT NULL
+    nome_funcao VARCHAR(500) NOT NULL,
+    descricao_funcao VARCHAR(500) NOT NULL
 );
 
 -- 25
 CREATE TABLE TB_grau_dificuldade(
     ID_grau_dificuldade SERIAL NOT NULL,
-    dificuldade VARCHAR(50) NOT NULL
+    dificuldade VARCHAR(500) NOT NULL
 );
 
 -- 26
 CREATE TABLE TB_imagem(
     ID_imagem SERIAL NOT NULL,
     ID_categoria_imagem INT NOT NULL,
-    descricao VARCHAR(100),
-    imagem oid NOT NULL,
+    descricao VARCHAR(500),
+    imagem bytea NOT NULL,
     nome VARCHAR(200),
     DT_imagem DATE
 );
@@ -240,29 +240,29 @@ CREATE TABLE TB_imagem_evento(
 CREATE TABLE TB_instituicao_ensino(
     ID_instituicao_ensino SERIAL NOT NULL,
     ID_logradouro INT NOT NULL,
-    nome VARCHAR(50) NOT NULL
+    nome VARCHAR(500) NOT NULL
 );
 
 -- 31
 CREATE TABLE TB_lider(
     ID_lider SERIAL NOT NULL,
     ID_membro INT NOT NULL,
-    nome_lider VARCHAR(50) NOT NULL
+    nome_lider VARCHAR(500) NOT NULL
 );
 
 -- 32
 CREATE TABLE TB_local(
     ID_local SERIAL NOT NULL,
     ID_logradouro INT NOT NULL,
-    descricao VARCHAR(50) NOT NULL,
-    nome VARCHAR(50) NOT NULL
+    descricao VARCHAR(500) NOT NULL,
+    nome VARCHAR(500) NOT NULL
 );    
 
 -- 33
 CREATE TABLE TB_logradouro(
     ID_logradouro SERIAL NOT NULL,
     ID_cidade INT NOT NULL,
-    nome VARCHAR(50)
+    nome VARCHAR(500)
 );
 
 -- 34
@@ -272,11 +272,10 @@ CREATE TABLE TB_membro(
     ID_foto_membro INT NOT NULL,
     DT_nascimento DATE,
     DT_ingresso_clube DATE NOT NULL,
-    DT_ingresso_faculdade DATE NOT NULL,
+    DT_ingresso_faculdade DATE,
     genero CHAR(1) NOT NULL,
-    login VARCHAR(50) NOT NULL,
-    nome_membro VARCHAR(50) NOT NULL,
-    oficio VARCHAR(50)
+    nome_membro VARCHAR(500) NOT NULL,
+    oficio VARCHAR(500)
 );
 
 -- 35
@@ -344,14 +343,14 @@ CREATE TABLE TB_movimentacao_ponto_torneio(
 -- 43
 CREATE TABLE TB_organizador(
     ID_organizador SERIAL NOT NULL,
-    nome VARCHAR(50) NOT NULL,
-    descricao VARCHAR(50)
+    nome VARCHAR(500) NOT NULL,
+    descricao VARCHAR(500)
 );
 
 -- 44
 CREATE TABLE TB_pais(
     ID_pais SERIAL NOT NULL,
-    nome VARCHAR(50)
+    nome VARCHAR(500)
 );
 
 -- 45
@@ -380,19 +379,19 @@ CREATE TABLE TB_projeto(
     ID_projeto SERIAL NOT NULL,
     ID_tipo_projeto INT NOT NULL,
     ID_lider INT NOT NULL,
-    descricao VARCHAR(100),
+    descricao VARCHAR(500),
     DT_inicio DATE,
     DT_fim_previsto DATE,
-    nome VARCHAR(50),
+    nome VARCHAR(500),
     pontos_jpq_maximo INT,
-    URL_gitHub VARCHAR(100)
+    URL_gitHub VARCHAR(500)
 );
 
 -- 49
 CREATE TABLE TB_plataforma(
     ID_plataforma SERIAL NOT NULL,
-    URL_plataforma VARCHAR(100) NOT NULL UNIQUE,
-    nome_plataforma VARCHAR(50) NOT NULL UNIQUE
+    URL_plataforma VARCHAR(500) NOT NULL UNIQUE,
+    nome_plataforma VARCHAR(500) NOT NULL UNIQUE
 );
 
 -- 50
@@ -400,7 +399,7 @@ CREATE TABLE TB_questao(
     ID_questao SERIAL NOT NULL,
     ID_grau_dificuldade INT NOT NULL,
     enunciado VARCHAR(200) NOT NULL,
-    nome VARCHAR(100) NOT NULL,
+    nome VARCHAR(500) NOT NULL,
     resposta_certa VARCHAR(500),
     pontos_jpq_maximo INT
 );
@@ -408,7 +407,7 @@ CREATE TABLE TB_questao(
 -- 51
 CREATE TABLE TB_status(
     ID_status SERIAL NOT NULL,
-    descricao VARCHAR(100) NOT NULL
+    descricao VARCHAR(500) NOT NULL
 );
 
 -- 52
@@ -420,14 +419,14 @@ CREATE TABLE TB_tipo_movimentacao_ponto(
 -- 53
 CREATE TABLE TB_tipo_projeto(
     ID_tipo_projeto SERIAL NOT NULL,
-    titulo VARCHAR(50) NOT NULL
+    titulo VARCHAR(500) NOT NULL
 );
 
 -- 54
 CREATE TABLE TB_torneio(
     ID_torneio SERIAL NOT NULL,
     ID_organizador INT NOT NULL,
-    nome VARCHAR(50) NOT NULL,
+    nome VARCHAR(500) NOT NULL,
     DT_inicio DATE,
     DT_termino DATE
 );

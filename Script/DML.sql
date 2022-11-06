@@ -9,303 +9,622 @@
         --Orlando Mota Pires | GitHub: https://github.com/orlandomotapires
 
 
+------------------------------------SCRIPT PARA DELETAR TODOS OS DADOS DE TODAS AS TABELAS------------------------------------
+
+-- do
+-- $$
+-- declare
+--   l_stmt text;
+-- begin
+--   select 'truncate ' || string_agg(format('%I.%I', schemaname, tablename), ',')
+--     into l_stmt
+--   from pg_tables
+--   where schemaname in ('public');
+
+--   execute l_stmt;
+-- end;
+-- $$
+
+
 --POVOAMENTO DA 1 CONSULTA
 
 ------------------------------------FORMATACAO DATA------------------------------------
-ALTER SESSION SET NLS_DATE_FORMAT = 'DD/MM/YYYY';
 
+--ALTER DATABASE "AAAAAAAAAAAAAAAAAAAAAAAAA" SET datestyle TO "ISO, DMY";
 ------------------------------------ASSUNTO------------------------------------
 INSERT INTO 
     TB_assunto
-    (id_assunto, assunto)
+    (assunto)
 VALUES
-(SQ_assunto.nextVal,'teste');
+    ('Teoria dos Grafos');
 
 INSERT INTO 
     TB_assunto
-    (id_assunto, assunto)
+    (assunto)
 VALUES
-(SQ_assunto.nextVal,'teste2');
+    ('Pilha');
+
+INSERT INTO 
+    TB_assunto
+    (assunto)
+VALUES
+    ('Fila');
+
+INSERT INTO 
+    TB_assunto
+    (assunto)
+VALUES
+    ('Árvore');
+
+INSERT INTO 
+    TB_assunto
+    (assunto)
+VALUES
+    ('Lógica de Programação');
+
+INSERT INTO 
+    TB_assunto
+    (assunto)
+VALUES
+    ('WebDev');
+
+INSERT INTO 
+    TB_assunto
+    (assunto)
+VALUES
+    ('Inteligência Artificial');
+    
+INSERT INTO 
+    TB_assunto
+    (assunto)
+VALUES
+    ('Banco de Dados');
 
 ------------------------------------CATEGORIA_IMAGEM------------------------------------
 INSERT INTO 
-TB_categoria_imagem
-(ID_categoria_imagem, nome)
+    TB_categoria_imagem
+    (nome)
 VALUES
-(SQ_categoria_imagem.nextVal, 'teste');
+    ('Foto');
 
+INSERT INTO 
+    TB_categoria_imagem
+    (nome)
+VALUES
+    ('Documentação');
+
+INSERT INTO 
+    TB_categoria_imagem
+    (nome)
+VALUES
+    ('FluxoGrama');
+
+INSERT INTO 
+    TB_categoria_imagem
+    (nome)
+VALUES
+    ('Gráfico');
+
+INSERT INTO 
+TB_categoria_imagem
+    (nome)
+VALUES
+    ('Logo');
 ------------------------------------PAIS------------------------------------
 INSERT INTO
-TB_pais
-(ID_pais, nome)
+    TB_pais
+    (nome)
 VALUES
-(SQ_pais.nextVal, 'Brasil');
+    ('Brasil');
 
-------------------------------------IMAGEM------------------------------------
-INSERT INTO 
-TB_imagem
-(ID_imagem, id_categoria_imagem, imagem, descricao,dt_imagem)
+INSERT INTO
+    TB_pais
+    (nome)
 VALUES
-(SQ_imagem.nextVal, (select id_categoria_imagem from tb_categoria_imagem where nome = 'teste'),utl_raw.cast_to_raw('imagem'),'uma imagem','01/09/2022');
+    ('Alemanha');
+
+INSERT INTO
+    TB_pais
+    (nome)
+VALUES
+    ('França');
+
+INSERT INTO
+    TB_pais
+    (nome)
+VALUES
+    ('Noruega');
+
+INSERT INTO
+    TB_pais
+    (nome)
+VALUES
+    ('Japão');
+    
+------------------------------------IMAGEM------------------------------------
+
+INSERT INTO 
+    TB_imagem
+    (ID_categoria_imagem, imagem, descricao, DT_imagem, nome)
+VALUES
+    ((select id_categoria_imagem from tb_categoria_imagem where nome = 'Documentação'), bytea('../Documentation/Modelo_Relacional_BD_Clube_Programacao.drawio.png'), 'Esquema de tabelas que compôem o o Banco de Dados do Clube de Programação','01-09-2022', 'Modelo Relacional do Banco de Dados do Clube');
+
+INSERT INTO 
+    TB_imagem
+    (ID_categoria_imagem, imagem, descricao, DT_imagem, nome)
+VALUES
+    ((select id_categoria_imagem from tb_categoria_imagem where nome = 'Documentação'),bytea('../Documentation/modelo_conceitual_clube_programacao.jpg'),'Esquema concentual de construção do Banco de Dados do Clube', '01-09-2022', 'Modelo Conceitual do Banco de Dados do Clube');
 
 ------------------------------------CURSO------------------------------------
 INSERT INTO
-TB_CURSO
-(ID_CURSO,NOME)
+    TB_CURSO
+    (NOME)
 VALUES
-(SQ_curso.nextVal,'ENG. COMPUTACAO');
+    ('Engenharia de Computação');
+
+INSERT INTO
+    TB_CURSO
+    (NOME)
+VALUES
+    ('Engenharia Mecânica');
+
+INSERT INTO
+    TB_CURSO
+    (NOME)
+VALUES
+    ('Análise e Desenvolvimento de Sistemas');
+
+INSERT INTO
+    TB_CURSO
+    (NOME)
+VALUES
+    ('Sistemas da Informação');
+
+INSERT INTO
+    TB_CURSO
+    (NOME)
+VALUES
+    ('Ciência da Computação');
 
 ------------------------------------FUNCAO------------------------------------
 INSERT INTO
-TB_FUNCAO
-(ID_FUNCAO, NOME_FUNCAO,DESCRICAO_FUNCAO)
+    TB_FUNCAO
+    (NOME_FUNCAO, DESCRICAO_FUNCAO)
 VALUES
-(SQ_funcao.nextVal,'Lider','lider');
+    ('Presidente','Cabeça do Clube');
+
+INSERT INTO
+    TB_FUNCAO
+    (NOME_FUNCAO, DESCRICAO_FUNCAO)
+VALUES
+    ('Vice-Presidente','Cabeça do Clube quando o cabeça falta');
+
+INSERT INTO
+    TB_FUNCAO
+    (NOME_FUNCAO, DESCRICAO_FUNCAO)
+VALUES
+    ('Gerente de Marketing','Gerencia o Marketing do Clube de Programação');
+
+INSERT INTO
+    TB_FUNCAO
+    (NOME_FUNCAO, DESCRICAO_FUNCAO)
+VALUES
+    ('Projetista','Realiza Projetos dentro do clube');
+
+INSERT INTO
+    TB_FUNCAO
+    (NOME_FUNCAO, DESCRICAO_FUNCAO)
+VALUES
+    ('Organizador de Atração','Organiza Atrações naquele evento');
+
+INSERT INTO
+    TB_FUNCAO
+    (NOME_FUNCAO, DESCRICAO_FUNCAO)
+VALUES
+    ('Palestrante','Palestra naquele evento');
+
+INSERT INTO
+    TB_FUNCAO
+    (NOME_FUNCAO, DESCRICAO_FUNCAO)
+VALUES
+    ('Marketing do Projeto','Realiza Marketing do projeto');
 
 ------------------------------------ESTADO------------------------------------
 INSERT INTO
-TB_ESTADO
-(ID_ESTADO, ID_PAIS, NOME)
+    TB_ESTADO
+    (ID_PAIS, NOME)
 VALUES
-(SQ_estado.nextVal,(select id_pais from tb_pais where nome='Brasil'),'Bahia');
+    ((select id_pais from tb_pais where nome='Brasil'),'Bahia');
 
 ------------------------------------CIDADE------------------------------------
 INSERT INTO 
-TB_CIDADE
-(ID_CIDADE, ID_ESTADO,NOME)
+    TB_CIDADE
+    (ID_ESTADO,NOME)
 VALUES
-(SQ_cidade.nextVal,(SELECT id_estado from tb_estado where nome='Bahia'),'Salvador');
+    ((SELECT id_estado from tb_estado where nome='Bahia'),'Salvador');
 
 ------------------------------------LOGRADOURO------------------------------------
 INSERT INTO 
-TB_LOGRADOURO
-(ID_LOGRADOURO, ID_CIDADE,NOME)
+    TB_LOGRADOURO
+    (ID_CIDADE,NOME)
 VALUES
-(SQ_logradouro.nextVal,(select id_cidade from tb_cidade where nome='Salvador'),'Patamares');
+    ((select id_cidade from tb_cidade where nome='Salvador'),'Patamares');
 
 ------------------------------------INSTITUICAO_ENSINO------------------------------------
 INSERT INTO 
-TB_INSTITUICAO_ENSINO
-(ID_instituicao_ensino,id_logradouro,nome)
+    TB_INSTITUICAO_ENSINO
+    (id_logradouro,nome)
 VALUES
-(SQ_instituicao_ensino.nextVal,(select id_logradouro from tb_logradouro where nome='Patamares'),'CIMATEC');
+    ((select id_logradouro from tb_logradouro where nome='Patamares'),'CIMATEC');
 
 ------------------------------------CURSO_INSITUICAO------------------------------------
 INSERT INTO 
-TB_curso_instituicao
-(ID_CURSO_INSTITUICAO, ID_CURSO, ID_INSTITUICAO)
+    TB_curso_instituicao
+    (ID_CURSO, ID_INSTITUICAO)
 VALUES
-(SQ_curso_instituicao.nextVal,(select id_curso from tb_curso where nome ='ENG. COMPUTACAO'),(select id_instituicao_ensino from tb_instituicao_ensino where nome='CIMATEC'));
+    ((select id_curso from tb_curso where nome ='Engenharia de Computação'),(select id_instituicao_ensino from tb_instituicao_ensino where nome='CIMATEC'));
 
 ------------------------------------MEMBROS------------------------------------
 INSERT INTO
 	TB_MEMBRO
+    (ID_curso_instituicao, ID_foto_membro, DT_nascimento, DT_ingresso_clube, DT_ingresso_faculdade, genero, nome_membro, oficio)
 VALUES
-	(SQ_MEMBRO.NEXTVAL,(select id_imagem from tb_imagem where descricao ='uma imagem'),(select id_instituicao_ensino from tb_instituicao_ensino where id_instituicao_ensino = 1),(select id_curso_instituicao from tb_curso_instituicao where id_curso_instituicao = 1),(select id_funcao from tb_funcao where nome_funcao='Lider'),'FERNANDO','M','ADM','20A234','01/02/2001','01/01/2021','01/01/2022');
-	
-INSERT INTO
-	TB_MEMBRO
-VALUES
-	(SQ_MEMBRO.NEXTVAL,(select id_imagem from tb_imagem where descricao ='uma imagem'),(select id_instituicao_ensino from tb_instituicao_ensino where id_instituicao_ensino = 1),(select id_curso_instituicao from tb_curso_instituicao where id_curso_instituicao = 1),(select id_funcao from tb_funcao where nome_funcao='Lider'),'ADRIAN','M','ADM MARKETING','20A235','22/05/2001','01/01/2021','01/01/2022');
+	((select ID_curso_instituicao from TB_curso_instituicao A, TB_curso B, TB_instituicao_ensino C WHERE A.ID_curso = B.ID_curso AND A.ID_instituicao = C.ID_instituicao_ensino AND B.nome = 'Engenharia de Computação' AND C.nome = 'CIMATEC'), 
+     (select id_imagem from tb_imagem where nome='Modelo Relacional do Banco de Dados do Clube'),
+     '14-08-2003','27-10-2021', '27-10-2021', 'M','Fernando Schettini','Estudante');
 
 INSERT INTO
 	TB_MEMBRO
+    (ID_curso_instituicao, ID_foto_membro, DT_nascimento, DT_ingresso_clube, DT_ingresso_faculdade, genero, nome_membro, oficio)
 VALUES
-	(SQ_MEMBRO.NEXTVAL,(select id_imagem from tb_imagem where descricao ='uma imagem'),(select id_instituicao_ensino from tb_instituicao_ensino where id_instituicao_ensino = 1),(select id_curso_instituicao from tb_curso_instituicao where id_curso_instituicao = 1),(select id_funcao from tb_funcao where nome_funcao='Lider'),'HORACIO','M','ADM','20A236','24/11/2001','01/01/2021','01/01/2022');
+	((select ID_curso_instituicao from TB_curso_instituicao A, TB_curso B, TB_instituicao_ensino C WHERE A.ID_curso = B.ID_curso AND A.ID_instituicao = C.ID_instituicao_ensino AND B.nome = 'Engenharia de Computação' AND C.nome = 'CIMATEC'), 
+     (select id_imagem from tb_imagem where nome='Modelo Relacional do Banco de Dados do Clube'),
+     '24-12-2002','27-10-2021', '27-10-2021', 'M','Orlando Mota','Estudante');
 
 INSERT INTO
 	TB_MEMBRO
+    (ID_curso_instituicao, ID_foto_membro, DT_nascimento, DT_ingresso_clube, DT_ingresso_faculdade, genero, nome_membro, oficio)
 VALUES
-	(SQ_MEMBRO.NEXTVAL,(select id_imagem from tb_imagem where descricao ='uma imagem'),(select id_instituicao_ensino from tb_instituicao_ensino where id_instituicao_ensino = 1),(select id_curso_instituicao from tb_curso_instituicao where id_curso_instituicao = 1),(select id_funcao from tb_funcao where nome_funcao='Lider'),'ORLANDO','M','ADM','20A237','03/09/2001','01/01/2021','01/01/2022');
+	((select ID_curso_instituicao from TB_curso_instituicao A, 
+ TB_curso B, TB_instituicao_ensino C WHERE A.ID_curso = B.ID_curso AND 
+ A.ID_instituicao = C.ID_instituicao_ensino AND B.nome = 'Engenharia de Computação' AND C.nome = 'CIMATEC'), 
+     (select id_imagem from tb_imagem where nome='Modelo Relacional do Banco de Dados do Clube'),
+     '24-11-2001','27-10-2021', '27-10-2021', 'M','Antônio Horácio','Estudante');
 
 INSERT INTO
 	TB_MEMBRO
+    (ID_curso_instituicao, ID_foto_membro, DT_nascimento, DT_ingresso_clube, DT_ingresso_faculdade, genero, nome_membro, oficio)
 VALUES
-	(SQ_MEMBRO.NEXTVAL,(select id_imagem from tb_imagem where descricao ='uma imagem'),(select id_instituicao_ensino from tb_instituicao_ensino where id_instituicao_ensino = 1),(select id_curso_instituicao from tb_curso_instituicao where id_curso_instituicao = 1),(select id_funcao from tb_funcao where nome_funcao='Lider'),'LUIZ GUILHERME','M','ASSISTENTE DE MARKETING','20A238','01/02/2001','05/12/2021','01/01/2022');
-
+	((select ID_curso_instituicao from TB_curso_instituicao A, TB_curso B, TB_instituicao_ensino C WHERE A.ID_curso = B.ID_curso AND 
+ A.ID_instituicao = C.ID_instituicao_ensino AND B.nome = 'Engenharia de Computação' AND C.nome = 'CIMATEC'), 
+     (select id_imagem from tb_imagem where nome='Modelo Relacional do Banco de Dados do Clube'),
+     '04-12-1500','27-10-2021', '27-10-2021', 'M','Pedro Facundes','Estagiário Sênior');
+     
 ------------------------------------LIDERES------------------------------------
 INSERT INTO
     TB_LIDER
+    (ID_membro, nome_lider)
 VALUES
-    (SQ_LIDER.NEXTVAL,(SELECT ID_MEMBRO FROM TB_MEMBRO WHERE ID_MEMBRO = 1),'FERNANDO');
+    ((SELECT ID_MEMBRO FROM TB_MEMBRO WHERE nome_membro = 'Fernando Schettini'),'Fernando Schettini');
 
 INSERT INTO
     TB_LIDER
+	(ID_membro, nome_lider)
 VALUES
-    (SQ_LIDER.NEXTVAL,(SELECT ID_MEMBRO FROM TB_MEMBRO WHERE ID_MEMBRO = 2),'FERNANDO');
+    ((SELECT ID_MEMBRO FROM TB_MEMBRO WHERE nome_membro = 'Orlando Mota'), 'Orlando Mota');
 
 INSERT INTO
     TB_LIDER
+	(ID_membro, nome_lider)
 VALUES
-    (SQ_LIDER.NEXTVAL,(SELECT ID_MEMBRO FROM TB_MEMBRO WHERE ID_MEMBRO = 3),'FERNANDO');
+    ((SELECT ID_MEMBRO FROM TB_MEMBRO WHERE nome_membro = 'Antônio Horácio'), 'Antônio Horácio');
 
 INSERT INTO
     TB_LIDER
+	(ID_membro, nome_lider)
 VALUES
-    (SQ_LIDER.NEXTVAL,(SELECT ID_MEMBRO FROM TB_MEMBRO WHERE ID_MEMBRO = 4),'FERNANDO');
+    ((SELECT ID_MEMBRO FROM TB_MEMBRO WHERE nome_membro = 'Pedro Facundes'), 'Pedro Facundes');
 
-INSERT INTO
-    TB_LIDER
-VALUES
-    (SQ_LIDER.NEXTVAL,(SELECT ID_MEMBRO FROM TB_MEMBRO WHERE ID_MEMBRO = 5),'FERNANDO');
 ------------------------------------PLATAFORMA------------------------------------
 INSERT INTO 
 TB_plataforma
-(ID_plataforma, URL_plataforma, nome_plataforma)
+    (URL_plataforma, nome_plataforma)
 VALUES
-(SQ_plataforma.nextVal, 'www.uri.com.br','uri');
+    ('www.beecrowd.com.br','beecrowd');
 
-------------------------------------ORGANIZADOR------------------------------------
+------------------------------------organizador------------------------------------
 INSERT INTO 
-    TB_ORGANIZADOR
+    TB_organizador
+    (nome, descricao)
 VALUES
-    (SQ_ORGANIZADOR.NEXTVAL,'SOCIEDADE BRASILEIRA DE COMPUTACAO','MARATONA DE PROGRAMACAO');
+    ('SBC','SOCIEDADE BRASILEIRA DE COMPUTACAO, reponsável pelos computadores do Brasil');
 
 ------------------------------------TORNEIO------------------------------------
 INSERT INTO
     TB_TORNEIO
+    (ID_organizador, nome, DT_inicio, DT_termino )
 VALUES
-    (SQ_TORNEIO.NEXTVAL,(SELECT ID_ORGANIZADOR FROM TB_ORGANIZADOR WHERE ID_ORGANIZADOR = 1),'SBC','01/10/2022','01/10/2022');
+    ((SELECT ID_organizador FROM TB_organizador WHERE nome = 'SBC'), 'ICPC', '01-10-2022','01-10-2022');
+
+------------------------------------Capitao------------------------------------
+INSERT INTO
+	TB_capitao
+    (ID_membro, nome_capitao)
+VALUES
+	((SELECT ID_membro FROM TB_membro WHERE nome_membro = 'Fernando Schettini'),'Fernando Schettini');
 
 ------------------------------------EQUIPE------------------------------------
 INSERT INTO
 	TB_EQUIPE
+    (ID_capitao, DT_criacao, nome)
 VALUES
-	(SQ_EQUIPE.NEXTVAL,'LARANJINHAS','FERNANDO','01/07/2022');
+	((SELECT ID_capitao FROM TB_capitao WHERE nome_capitao = 'Fernando Schettini'),'05-11-2022','N-Laranjinhas');
 	
 ------------------------------------EQUIPE_TORNEIO------------------------------------
 INSERT INTO
 	TB_EQUIPE_TORNEIO
+    (ID_equipe, ID_torneio, colocacao)
 VALUES
-	(SQ_EQUIPE_TORNEIO.NEXTVAL,(SELECT ID_EQUIPE FROM TB_EQUIPE WHERE ID_EQUIPE = 1),(SELECT ID_TORNEIO FROM TB_TORNEIO WHERE ID_TORNEIO = 1),1);
+	((SELECT ID_EQUIPE FROM TB_EQUIPE WHERE nome='N-Laranjinhas'),(SELECT ID_TORNEIO FROM TB_TORNEIO WHERE nome='ICPC'), 2);
 
 ------------------------------------MEMBRO_EQUIPE------------------------------------
 INSERT INTO
 	TB_MEMBRO_EQUIPE
+    (ID_equipe, ID_membro)
 VALUES
-	(SQ_MEMBRO_EQUIPE.NEXTVAL,(select id_membro from tb_membro where id_membro = 1),(select id_equipe from tb_equipe where id_equipe = 1));
+    ((select ID_equipe from TB_equipe where nome = 'N-Laranjinhas'), (select ID_membro from TB_membro where nome_membro = 'Fernando Schettini'));
 
 INSERT INTO
 	TB_MEMBRO_EQUIPE
+    (ID_equipe, ID_membro)
 VALUES
-	(SQ_MEMBRO_EQUIPE.NEXTVAL,(select id_membro from tb_membro where id_membro = 2),(select id_equipe from tb_equipe where id_equipe = 1));
+    ((select ID_equipe from TB_equipe where nome = 'N-Laranjinhas'), (select ID_membro from TB_membro where nome_membro = 'Orlando Mota'));
 
 INSERT INTO
 	TB_MEMBRO_EQUIPE
+    (ID_equipe, ID_membro)
 VALUES
-	(SQ_MEMBRO_EQUIPE.NEXTVAL,(select id_membro from tb_membro where id_membro = 3),(select id_equipe from tb_equipe where id_equipe = 1));
+    ((select ID_equipe from TB_equipe where nome = 'N-Laranjinhas'), (select ID_membro from TB_membro where nome_membro = 'Antônio Horácio'));
 
 INSERT INTO
 	TB_MEMBRO_EQUIPE
+    (ID_equipe, ID_membro)
 VALUES
-	(SQ_MEMBRO_EQUIPE.NEXTVAL,(select id_membro from tb_membro where id_membro = 4),(select id_equipe from tb_equipe where id_equipe = 1));
+    ((select ID_equipe from TB_equipe where nome = 'N-Laranjinhas'), (select ID_membro from TB_membro where nome_membro = 'Pedro Facundes'));
+
+
+------------------------------------TIPO_PROJETO------------------------------------
+INSERT INTO
+    TB_tipo_projeto
+    (titulo)
+VALUES
+    ('WorkShop');
 
 INSERT INTO
-	TB_MEMBRO_EQUIPE
+    TB_tipo_projeto
+    (titulo)
 VALUES
-	(SQ_MEMBRO_EQUIPE.NEXTVAL,(select id_membro from tb_membro where id_membro = 5),(select id_equipe from tb_equipe where id_equipe = 1));
+    ('Aula');
+
+INSERT INTO
+    TB_tipo_projeto
+    (titulo)
+VALUES
+    ('Maratona');
+
+INSERT INTO
+    TB_tipo_projeto
+    (titulo)
+VALUES
+    ('Evento');
+
+INSERT INTO
+    TB_tipo_projeto
+    (titulo)
+VALUES
+    ('Desenvolvimento de Produto');
 
 ------------------------------------PROJETO------------------------------------
+INSERT INTO
+    TB_projeto 
+    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_fim_previsto, nome, pontos_jpq_maximo, URL_github)
+VALUES
+    ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE titulo = 'Desenvolvimento de Produto'), 
+     (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Fernando Schettini'),'Desenvolvimento de um Banco de Dados para controle e gestão do clube de Programação', '02-02-2022', '02-02-2050','Banco de Dados Relacional', 100, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
 
 INSERT INTO
-    TB_projeto (ID_PROJETO, ID_LIDER,nome, URL_github, descricao, data_inicio, DT_fim_previsto)
+    TB_projeto 
+    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_fim_previsto, nome, pontos_jpq_maximo)
 VALUES
-    (SQ_projeto.nextVal,(SELECT TB_LIDER FROM TB_LIDER WHERE ID_LIDER = 1),'Banco','www','É um banco','01/07/2022','01/10/2022');
+    ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE titulo = 'Evento'), 
+     (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Fernando Schettini'),'Realização da Semana de Computação, para o curso de Engenharia de Computação', '14-08-2022', '22-11-2022', 'Primeira Semana de Computação', 150);
 
 INSERT INTO
-    TB_PROJETO
+    TB_projeto 
+    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_fim_previsto, nome, pontos_jpq_maximo)
 VALUES
-    (SQ_PROJETO.NEXTVAL, (select id_lider from tb_lider where id_lider = 5), 'Introducao a programacao','https://github.com/ClubeProgramacaoSSA/Programacao','Ensino basico de programacao em linguagem c','01/01/2022','01/06/2022');
+    ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE titulo = 'Aula'), 
+     (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Orlando Mota'),
+     'Desenvolvimento de aulas para os calouros para suprir uma necessidade deles de ter mais aulas de programação', 
+     '02-05-2022', '21-11-2022','Aula Calouros', 100);
 
 INSERT INTO
-    TB_PROJETO
+    TB_projeto 
+    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_fim_previsto, nome, pontos_jpq_maximo)
 VALUES
-    (SQ_PROJETO.NEXTVAL, (select id_lider from tb_lider where id_lider = 4),'Introducao a AED','https://github.com/ClubeProgramacaoSSA/AED','Ensino de estruturas de dados em linguagem c','01/01/2022','01/06/2022');
-    	
-INSERT INTO
-    TB_PROJETO
-VALUES
-    (SQ_PROJETO.NEXTVAL,(select id_lider from tb_lider where id_lider = 3), 'Introducao a linguagem Java','https://github.com/ClubeProgramacaoSSA/Java','Introducao a orientacao a objetos na linguagem java','01/02/2022','01/04/2022');
+    ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE titulo = 'Desenvolvimento de Produto'), 
+     (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Pedro Facundes'),
+     'Desenvolvimento de um site para divulgação e gestão do Clube de Programação, integrando o Banco de Dados', 
+     '15-06-2022', '30-11-2022','Site do Clube de Programação', 100);
 
-
-INSERT INTO
-    TB_PROJETO
-VALUES
-    (SQ_PROJETO.NEXTVAL, (select id_lider from tb_lider where id_lider = 2),'Projeto SBC','https://github.com/ClubeProgramacaoSSA/SBC','Projeto preparatorio para a maratona de programacao SBC','01/07/2022','01/10/2022');
-
-INSERT INTO
-    TB_PROJETO
-VALUES
-    (SQ_PROJETO.NEXTVAL, (select id_lider from tb_lider where id_lider = 1),'Projeto Batalha da Patonia','https://github.com/ClubeProgramacaoSSA/Patonia','Projeto para a criacao de um game','01/03/2022','28/04/2022');
-    
-
---POVOAMENTO DA 2 CONSULTA
 
 ------------------------------------LOCAL------------------------------------
 INSERT INTO
     TB_local
+    (ID_logradouro, descricao, nome)
 VALUES
-    (SQ_local.NEXTVAL, (SELECT ID_logradouro FROM TB_logradouro WHERE ID_logradouro = 1), 'Rua do lado do mercado','Rua dos bobos');
+    ((SELECT ID_logradouro FROM TB_logradouro WHERE nome = 'Patamares'), 'Centro de convenções de Salvador usado para realizar eventos', 'Centro de Convenções');
     
 ------------------------------------ENCONTRO------------------------------------
 INSERT INTO 
-    TB_encontro (ID_ENCONTRO, ID_membro, ID_projeto, DT_inicio, DT_fim, ID_local)
+    TB_encontro
+    (ID_organizador, ID_projeto, DT_inicio, DT_termino)
 VALUES
-    (SQ_encontro.nextVal,(SELECT ID_ORGANIZADOR FROM TB_ORGANIZADOR WHERE ID_ORGANIZADOR = 1),(SELECT ID_PROJETO FROM TB_PROJETO WHERE ID_PROJETO = 1),'01/10/2022','01/10/2022', (SELECT ID_LOCAL FROM TB_LOCAL WHERE ID_LOCAL = 1));
+    ((SELECT ID_membro FROM TB_membro WHERE nome_membro = 'Fernando Schettini'),(SELECT ID_PROJETO FROM TB_PROJETO WHERE nome = 'Site do Clube de Programação'), '05-11-2022','05-11-2022');
 
 INSERT INTO
-    TB_encontro(ID_ENCONTRO, ID_membro, ID_projeto, DT_inicio, DT_fim, ID_local)
+    TB_encontro
+    (ID_organizador, ID_projeto, DT_inicio, DT_termino)
 VALUES
-    (SQ_encontro.nextVal,(SELECT ID_ORGANIZADOR FROM TB_ORGANIZADOR WHERE ID_ORGANIZADOR = 1),(SELECT ID_PROJETO FROM TB_PROJETO WHERE ID_PROJETO = 2),'01/10/2022','01/10/2022', (SELECT ID_LOCAL FROM TB_LOCAL WHERE ID_LOCAL = 1));
+    ((SELECT ID_membro FROM TB_membro WHERE nome_membro = 'Orlando Mota'),(SELECT ID_PROJETO FROM TB_PROJETO WHERE nome = 'Primeira Semana de Computação'),'25-10-2022','25-10-2022');
 
 ------------------------------------PRESENCA_ENCONTRO------------------------------------
 INSERT INTO 
-    TB_presenca_encontro (ID_PRESENCA_ENCONTRO, ID_membro, ID_encontro)
+    TB_presenca_encontro 
+    (ID_encontro, ID_membro)
 VALUES
-    (SQ_presenca_encontro.nextVal,(SELECT ID_MEMBRO FROM TB_MEMBRO WHERE ID_MEMBRO = 1),(SELECT ID_ENCONTRO FROM TB_ENCONTRO WHERE ID_ENCONTRO = 1));
+    ((SELECT ID_encontro FROM TB_encontro A, TB_projeto B WHERE A.ID_PROJETO = B.ID_projeto AND A.DT_inicio = '2022-11-05' AND B.nome = 'Site do Clube de Programação'),
+     (SELECT ID_MEMBRO FROM TB_MEMBRO WHERE nome_membro = 'Fernando Schettini'));
+     
+INSERT INTO 
+    TB_presenca_encontro 
+    (ID_encontro, ID_membro)
+VALUES
+    ((SELECT ID_encontro FROM TB_encontro A, TB_projeto B WHERE A.ID_PROJETO = B.ID_projeto AND A.DT_inicio = '2022-11-05' AND B.nome = 'Site do Clube de Programação'),
+     (SELECT ID_MEMBRO FROM TB_MEMBRO WHERE nome_membro = 'Orlando Mota'));
 
 INSERT INTO 
-    TB_presenca_encontro (ID_PRESENCA_ENCONTRO, ID_membro, ID_encontro)
+    TB_presenca_encontro 
+    (ID_encontro, ID_membro)
 VALUES
-    (SQ_presenca_encontro.nextVal,(SELECT ID_MEMBRO FROM TB_MEMBRO WHERE ID_MEMBRO = 2),(SELECT ID_ENCONTRO FROM TB_ENCONTRO WHERE ID_ENCONTRO = 1));
-
---POVOAMENTO DA 3 CONSULTA
+    ((SELECT ID_encontro FROM TB_encontro A, TB_projeto B WHERE A.ID_PROJETO = B.ID_projeto AND A.DT_inicio = '2022-11-05' AND B.nome = 'Site do Clube de Programação'),
+     (SELECT ID_MEMBRO FROM TB_MEMBRO WHERE nome_membro = 'Pedro Facundes'));
 
 ----------------------MEMBRO_PROJETO------------------------------------
 
 INSERT INTO
-    TB_membro_projeto (ID_membro_projeto, ID_projeto, ID_membro, ID_funcao)
+    TB_membro_projeto
+    (ID_membro, ID_projeto, ID_funcao, DT_entrada_projeto, DT_saida_projeto)
 VALUES
-    (SQ_membro_projeto.NEXTVAL,(SELECT ID_membro FROM TB_membro WHERE ID_membro = 1),
-    (SELECT ID_lider FROM TB_projeto WHERE ID_projeto = 1),
-    (SELECT ID_lider FROM TB_lider WHERE ID_lider = 1));
+    ((SELECT ID_membro FROM TB_membro WHERE nome_membro = 'Fernando Schettini'),
+    (SELECT ID_projeto FROM TB_projeto WHERE nome = 'Primeira Semana de Computação'),
+    (SELECT ID_funcao FROM TB_funcao WHERE nome_funcao = 'Organizador de Atração'),
+    '14-09-2022',
+    '22-11-2022');
 
 INSERT INTO
-    TB_membro_projeto (ID_membro_projeto, ID_projeto, ID_membro, ID_funcao)
+    TB_membro_projeto
+    (ID_membro, ID_projeto, ID_funcao, DT_entrada_projeto, DT_saida_projeto)
 VALUES
-    (SQ_membro_projeto.NEXTVAL,(SELECT ID_membro FROM TB_membro WHERE ID_membro = 2),
-    (SELECT ID_PROJETO FROM TB_PROJETO WHERE ID_PROJETO = 1),
-    (SELECT ID_LIDER FROM TB_LIDER WHERE ID_LIDER = 1));
+    ((SELECT ID_membro FROM TB_membro WHERE nome_membro = 'Orlando Mota'),
+    (SELECT ID_projeto FROM TB_projeto WHERE nome = 'Primeira Semana de Computação'),
+    (SELECT ID_funcao FROM TB_funcao WHERE nome_funcao = 'Organizador de Atração'),
+    '14-09-2022',
+    '22-11-2022');
 
 INSERT INTO
-    TB_membro_projeto (ID_membro_projeto, ID_projeto, ID_membro, ID_funcao)
+    TB_membro_projeto
+    (ID_membro, ID_projeto, ID_funcao, DT_entrada_projeto, DT_saida_projeto)
 VALUES
-    (SQ_membro_projeto.NEXTVAL,(SELECT ID_membro FROM TB_membro WHERE ID_membro = 3),
-    (SELECT ID_PROJETO FROM TB_PROJETO WHERE ID_PROJETO = 1),
-    (SELECT ID_LIDER FROM TB_LIDER WHERE ID_LIDER = 1));
+    ((SELECT ID_membro FROM TB_membro WHERE nome_membro = 'Antônio Horácio'),
+    (SELECT ID_projeto FROM TB_projeto WHERE nome = 'Primeira Semana de Computação'),
+    (SELECT ID_funcao FROM TB_funcao WHERE nome_funcao = 'Organizador de Atração'),
+    '14-09-2022',
+    '22-11-2022');
 
 INSERT INTO
-    TB_membro_projeto (ID_membro_projeto, ID_projeto, ID_membro, ID_funcao)
+    TB_membro_projeto
+    (ID_membro, ID_projeto, ID_funcao, DT_entrada_projeto, DT_saida_projeto)
 VALUES
-    (SQ_membro_projeto.NEXTVAL,(SELECT ID_membro FROM TB_membro WHERE ID_membro = 4),
-    (SELECT ID_PROJETO FROM TB_PROJETO WHERE ID_PROJETO = 1),
-    (SELECT ID_LIDER FROM TB_LIDER WHERE ID_LIDER = 1));
+    ((SELECT ID_membro FROM TB_membro WHERE nome_membro = 'Pedro Facundes'),
+    (SELECT ID_projeto FROM TB_projeto WHERE nome = 'Primeira Semana de Computação'),
+    (SELECT ID_funcao FROM TB_funcao WHERE nome_funcao = 'Organizador de Atração'),
+    '14-09-2022',
+    '22-11-2022');
+
+    
+INSERT INTO
+    TB_membro_projeto
+    (ID_membro, ID_projeto, ID_funcao, DT_entrada_projeto, DT_saida_projeto)
+VALUES
+    ((SELECT ID_membro FROM TB_membro WHERE nome_membro = 'Fernando Schettini'),
+    (SELECT ID_projeto FROM TB_projeto WHERE nome = 'Site do Clube de Programação'),
+    (SELECT ID_funcao FROM TB_funcao WHERE nome_funcao = 'Projetista'),
+    '14-09-2022',
+    '22-11-2022');
 
 INSERT INTO
-    TB_membro_projeto (ID_membro_projeto, ID_projeto, ID_membro, ID_funcao)
+    TB_membro_projeto
+    (ID_membro, ID_projeto, ID_funcao, DT_entrada_projeto, DT_saida_projeto)
 VALUES
-    (SQ_membro_projeto.NEXTVAL,(SELECT ID_membro FROM TB_membro WHERE ID_membro = 5),
-    (SELECT ID_PROJETO FROM TB_PROJETO WHERE ID_PROJETO = 1),
-    (SELECT ID_LIDER FROM TB_LIDER WHERE ID_LIDER = 1));
+    ((SELECT ID_membro FROM TB_membro WHERE nome_membro = 'Orlando Mota'),
+    (SELECT ID_projeto FROM TB_projeto WHERE nome = 'Site do Clube de Programação'),
+    (SELECT ID_funcao FROM TB_funcao WHERE nome_funcao = 'Projetista'),
+    '14-09-2022',
+    '22-11-2022');
 
+INSERT INTO
+    TB_membro_projeto
+    (ID_membro, ID_projeto, ID_funcao, DT_entrada_projeto, DT_saida_projeto)
+VALUES
+    ((SELECT ID_membro FROM TB_membro WHERE nome_membro = 'Antônio Horácio'),
+    (SELECT ID_projeto FROM TB_projeto WHERE nome = 'Site do Clube de Programação'),
+    (SELECT ID_funcao FROM TB_funcao WHERE nome_funcao = 'Projetista'),
+    '14-09-2022',
+    '22-11-2022');
+
+INSERT INTO
+    TB_membro_projeto
+    (ID_membro, ID_projeto, ID_funcao, DT_entrada_projeto, DT_saida_projeto)
+VALUES
+    ((SELECT ID_membro FROM TB_membro WHERE nome_membro = 'Pedro Facundes'),
+    (SELECT ID_projeto FROM TB_projeto WHERE nome = 'Site do Clube de Programação'),
+    (SELECT ID_funcao FROM TB_funcao WHERE nome_funcao = 'Projetista'),
+    '14-09-2022',
+    '22-11-2022');
+
+----------------------IMAGEM_PROJETO------------------------------------
+INSERT INTO
+    TB_imagem_projeto
+    (ID_imagem, ID_projeto)
+VALUES
+    ((SELECT ID_imagem FROM TB_imagem WHERE nome = 'Modelo Conceitual do Banco de Dados do Clube'),
+    (SELECT ID_projeto FROM TB_projeto WHERE nome = 'Site do Clube de Programação'));
+
+INSERT INTO
+    TB_imagem_projeto
+    (ID_imagem, ID_projeto)
+VALUES
+    ((SELECT ID_imagem FROM TB_imagem WHERE nome = 'Modelo Conceitual do Banco de Dados do Clube'),
+    (SELECT ID_projeto FROM TB_projeto WHERE nome = 'Primeira Semana de Computação'));
+
+INSERT INTO
+    TB_imagem_projeto
+    (ID_imagem, ID_projeto)
+VALUES
+    ((SELECT ID_imagem FROM TB_imagem WHERE nome = 'Modelo Conceitual do Banco de Dados do Clube'),
+    (SELECT ID_projeto FROM TB_projeto WHERE nome = 'Banco de Dados Relacional'));
+
+----------------------ASSUNTO_PROJETO------------------------------------
+
+INSERT INTO
+    TB_assunto_projeto
+    (ID_assunto, ID_projeto)
+VALUES
+    ((SELECT ID_assunto FROM TB_assunto WHERE assunto = 'Teoria dos Grafos'),
+    (SELECT ID_projeto FROM TB_projeto WHERE nome = 'Banco de Dados Relacional'));
+
+INSERT INTO
+    TB_assunto_projeto
+    (ID_assunto, ID_projeto)
+VALUES
+    ((SELECT ID_assunto FROM TB_assunto WHERE assunto = 'Pilha'),
+    (SELECT ID_projeto FROM TB_projeto WHERE nome = 'Site do Clube de Programação'));
+
+INSERT INTO
+    TB_assunto_projeto
+    (ID_assunto, ID_projeto)
+VALUES
+    ((SELECT ID_assunto FROM TB_assunto WHERE assunto = 'Árvore'),
+    (SELECT ID_projeto FROM TB_projeto WHERE nome = 'Primeira Semana de Computação'));
 

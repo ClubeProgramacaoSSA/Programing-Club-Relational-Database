@@ -165,8 +165,8 @@ CREATE TABLE TB_fase(
     ID_fase SERIAL NOT NULL,
     ID_torneio INT NOT NULL,
     DT_inicio DATE NOT NULL,
-    DT_termino DATE NOT NULL
-    numero INT NOT NULL,
+    DT_termino DATE NOT NULL,
+    numero INT NOT NULL
 );
 
 -- 22
@@ -311,7 +311,6 @@ CREATE TABLE TB_movimentacao_ponto_cargo(
 );
 
 -- 409
-CREAT
 CREATE TABLE TB_movimentacao_ponto_evento(
     ID_movimentacao_ponto_evento SERIAL NOT NULL,
     ID_movimentacao_ponto INT NOT NULL,
@@ -344,8 +343,8 @@ CREATE TABLE TB_movimentacao_ponto_torneio(
 -- 44
 CREATE TABLE TB_organizador(
     ID_organizador SERIAL NOT NULL,
-    descricao VARCHAR(500)
-    nome VARCHAR(500) NOT NULL,
+    descricao VARCHAR(500),
+    nome VARCHAR(500) NOT NULL
 );
 
 -- 45
@@ -404,8 +403,8 @@ CREATE TABLE TB_questao(
     ID_procedencia_questao INT NOT NULL,
     enunciado VARCHAR(200) NOT NULL,
     nome_questao VARCHAR(500) NOT NULL,
-    ponto_jpq_maximo INT
-    resposta_certa VARCHAR(500),
+    ponto_jpq_maximo INT,
+    resposta_certa VARCHAR(500)
 );
 
 -- 52

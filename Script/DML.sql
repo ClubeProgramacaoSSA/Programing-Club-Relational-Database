@@ -30,7 +30,7 @@
 
 ------------------------------------FORMATACAO DATA------------------------------------
 
---ALTER DATABASE "AAAAAAAAAAAAAAAAAAAAAAAAA" SET datestyle TO "ISO, DMY";
+--ALTER DATABASE "TesteNandao" SET datestyle TO "ISO, DMY";
 ------------------------------------ASSUNTO------------------------------------
 INSERT INTO 
     TB_assunto
@@ -396,63 +396,63 @@ VALUES
 ------------------------------------TIPO_PROJETO------------------------------------
 INSERT INTO
     TB_tipo_projeto
-    (titulo)
+    (tipo)
 VALUES
     ('WorkShop');
 
 INSERT INTO
     TB_tipo_projeto
-    (titulo)
+    (tipo)
 VALUES
     ('Aula');
 
 INSERT INTO
     TB_tipo_projeto
-    (titulo)
+    (tipo)
 VALUES
     ('Maratona');
 
 INSERT INTO
     TB_tipo_projeto
-    (titulo)
+    (tipo)
 VALUES
     ('Evento');
 
 INSERT INTO
     TB_tipo_projeto
-    (titulo)
+    (tipo)
 VALUES
     ('Desenvolvimento de Produto');
 
 ------------------------------------PROJETO------------------------------------
 INSERT INTO
     TB_projeto 
-    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_fim_previsto, nome, pontos_jpq_maximo, URL_github)
+    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_termino_previsto, nome, ponto_jpq_maximo, URL_github)
 VALUES
-    ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE titulo = 'Desenvolvimento de Produto'), 
+    ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE tipo = 'Desenvolvimento de Produto'), 
      (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Fernando Schettini'),'Desenvolvimento de um Banco de Dados para controle e gestão do clube de Programação', '02-02-2022', '02-02-2050','Banco de Dados Relacional', 100, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
 
 INSERT INTO
     TB_projeto 
-    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_fim_previsto, nome, pontos_jpq_maximo)
+    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_termino_previsto, nome, ponto_jpq_maximo)
 VALUES
-    ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE titulo = 'Evento'), 
+    ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE tipo = 'Evento'), 
      (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Fernando Schettini'),'Realização da Semana de Computação, para o curso de Engenharia de Computação', '14-08-2022', '22-11-2022', 'Primeira Semana de Computação', 150);
 
 INSERT INTO
     TB_projeto 
-    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_fim_previsto, nome, pontos_jpq_maximo)
+    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_termino_previsto, nome, ponto_jpq_maximo)
 VALUES
-    ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE titulo = 'Aula'), 
+    ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE tipo = 'Aula'), 
      (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Orlando Mota'),
      'Desenvolvimento de aulas para os calouros para suprir uma necessidade deles de ter mais aulas de programação', 
      '02-05-2022', '21-11-2022','Aula Calouros', 100);
 
 INSERT INTO
     TB_projeto 
-    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_fim_previsto, nome, pontos_jpq_maximo)
+    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_termino_previsto, nome, ponto_jpq_maximo)
 VALUES
-    ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE titulo = 'Desenvolvimento de Produto'), 
+    ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE tipo = 'Desenvolvimento de Produto'), 
      (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Pedro Facundes'),
      'Desenvolvimento de um site para divulgação e gestão do Clube de Programação, integrando o Banco de Dados', 
      '15-06-2022', '30-11-2022','Site do Clube de Programação', 100);
@@ -627,4 +627,3 @@ INSERT INTO
 VALUES
     ((SELECT ID_assunto FROM TB_assunto WHERE assunto = 'Árvore'),
     (SELECT ID_projeto FROM TB_projeto WHERE nome = 'Primeira Semana de Computação'));
-

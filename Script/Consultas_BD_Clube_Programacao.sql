@@ -22,7 +22,7 @@ Um relatório construído com base para informar sobre o status de andamento de 
 --Primeira consulta:
 
 SELECT
-    T.NOME,E.NOME,M.NOME,ET.COLOCACAO
+    T.NOME_torneio,E.NOME_equipe,M.NOME_membro,ET.COLOCACAO
 FROM
     TB_EQUIPE E
 JOIN 
@@ -32,8 +32,8 @@ JOIN
 JOIN
     TB_MEMBRO M ON (M.ID_MEMBRO = EM.ID_MEMBRO)
 JOIN
-    TB_TORNEIO T ON (T.ID_TORNEIO = ET.ID_TORNEIO);
-ORDER BY E.NOME ASC;
+    TB_TORNEIO T ON (T.ID_TORNEIO = ET.ID_TORNEIO)
+ORDER BY E.NOME_equipe ASC;
 
 -- Segunda consulta:
 
@@ -49,7 +49,7 @@ ON
 --Terceira consulta:
 
 SELECT
-    P.ID_LIDER,P.NOME,P.DESCRICAO,M.NOME,M.ID_MEMBRO,P.DATA_INICIO,P.DT_FIM_PREVISTO
+    P.ID_LIDER,P.NOME_projeto,P.DESCRICAO,M.NOME_membro,M.ID_MEMBRO,P.DT_INICIO,P.DT_TERMINO_PREVISTO
 FROM
     TB_PROJETO P
 JOIN

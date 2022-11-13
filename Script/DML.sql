@@ -5,9 +5,7 @@
         --Adrian WIDmer | GitHub: https://github.com/Awi-24
         --Antonio Horácio Magalhaes | GitHub: https://github.com/antoniohoracio77
         --Fernando Antonio Marques Schettini | GitHub: https://github.com/FernandoSchett
-        --João Pedro Moreira de AlmeIDa Santos | GitHub: https://github.com/joao7878
         --Orlando Mota Pires | GitHub: https://github.com/orlandomotapires
-
 
 ------------------------------------SCRIPT PARA DELETAR TODOS OS DADOS DE TODAS AS TABELAS------------------------------------
 

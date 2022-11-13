@@ -39,7 +39,7 @@ CREATE TABLE TB_assunto_questao(
 -- 5
 CREATE TABLE TB_categoria_imagem(
     ID_categoria_imagem SERIAL NOT NULL,
-    nome VARCHAR(500) UNIQUE
+    nome_categoria_imagem VARCHAR(500) UNIQUE
 ); 
 
 -- 6
@@ -63,7 +63,7 @@ CREATE TABLE TB_cargo_membro(
 CREATE TABLE TB_cidade(
     ID_cidade SERIAL NOT NULL,
     ID_estado INT NOT NULL,
-    nome VARCHAR(500) NOT NULL
+    nome_cidade VARCHAR(500) NOT NULL
 );
 
 -- 9
@@ -85,7 +85,7 @@ CREATE TABLE TB_conta_clube(
 -- 11
 CREATE TABLE TB_curso(
     ID_curso SERIAL NOT NULL,
-    nome VARCHAR(500) NOT NULL UNIQUE
+    nome_curso VARCHAR(500) NOT NULL UNIQUE
 );
 
 -- 12
@@ -123,7 +123,7 @@ CREATE TABLE TB_equipe(
     ID_equipe SERIAL NOT NULL,
     ID_capitao INT NOT NULL,
     DT_criacao DATE NOT NULL,
-    nome VARCHAR(500) NOT NULL
+    nome_equipe VARCHAR(500) NOT NULL
 );
 
 -- 17
@@ -147,7 +147,7 @@ CREATE TABLE TB_equipe_torneio_fase(
 CREATE TABLE TB_estado(
     ID_estado SERIAL NOT NULL,
     ID_pais INT NOT NULL,
-    nome VARCHAR(500) NOT NULL
+    nome_estado VARCHAR(500) NOT NULL
 );
 
 -- 20
@@ -157,7 +157,7 @@ CREATE TABLE TB_evento(
     descricao VARCHAR(500),
     DT_inicio DATE,
     DT_termino DATE,
-    nome VARCHAR(500) NOT NULL
+    nome_evento VARCHAR(500) NOT NULL
 );
 
 -- 21
@@ -212,7 +212,7 @@ CREATE TABLE TB_imagem(
     descricao VARCHAR(500),
     DT_imagem DATE,
     imagem bytea NOT NULL,
-    nome VARCHAR(200)
+    nome_imagem VARCHAR(200)
 );
 
 -- 28
@@ -240,7 +240,7 @@ CREATE TABLE TB_imagem_evento(
 CREATE TABLE TB_instituicao_ensino(
     ID_instituicao_ensino SERIAL NOT NULL,
     ID_logradouro INT NOT NULL,
-    nome VARCHAR(500) NOT NULL
+    nome_instituicao_ensino VARCHAR(500) NOT NULL
 );
 
 -- 32
@@ -255,14 +255,14 @@ CREATE TABLE TB_local(
     ID_local SERIAL NOT NULL,
     ID_logradouro INT NOT NULL,
     descricao VARCHAR(500) NOT NULL,
-    nome VARCHAR(500) NOT NULL
+    nome_local VARCHAR(500) NOT NULL
 );    
 
 -- 34
 CREATE TABLE TB_logradouro(
     ID_logradouro SERIAL NOT NULL,
     ID_cidade INT NOT NULL,
-    nome VARCHAR(500)
+    nome_logradouro VARCHAR(500)
 );
 
 -- 35
@@ -344,13 +344,13 @@ CREATE TABLE TB_movimentacao_ponto_torneio(
 CREATE TABLE TB_organizador(
     ID_organizador SERIAL NOT NULL,
     descricao VARCHAR(500),
-    nome VARCHAR(500) NOT NULL
+    nome_organizador VARCHAR(500) NOT NULL
 );
 
 -- 45
 CREATE TABLE TB_pais(
     ID_pais SERIAL NOT NULL,
-    nome VARCHAR(500)
+    nome_pais VARCHAR(500)
 );
 
 -- 46
@@ -384,7 +384,7 @@ CREATE TABLE TB_projeto(
     descricao VARCHAR(500),
     DT_inicio DATE NOT NULL,
     DT_termino_previsto DATE,
-    nome VARCHAR(500),
+    nome_projeto VARCHAR(500),
     ponto_jpq_maximo INT,
     URL_gitHub VARCHAR(500)
 );
@@ -431,7 +431,7 @@ CREATE TABLE TB_torneio(
     ID_organizador INT NOT NULL,
     DT_inicio DATE NOT NULL,
     DT_termino DATE,
-    nome VARCHAR(500) NOT NULL
+    nome_torneio VARCHAR(500) NOT NULL
 );
 
 -- Restricao de genero.

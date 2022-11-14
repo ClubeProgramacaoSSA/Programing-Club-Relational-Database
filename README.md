@@ -38,7 +38,7 @@
 &emsp;&emsp;&emsp;Below is the relational data model, in which a schematic of the database is represented, with the tables, attributes and associative tables that will be in the final database:
 	
 <div align="center">
-	<img  height = 500em src = "./Documentation/modelo_relacional_clube_programacao.drawio.png" />
+	<img  height = 500em src = "./Documentation/Modelo_Relacional_BD_Clube_Programacao.drawio.png" />
 </div>
 <br>
 	

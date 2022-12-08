@@ -8,7 +8,7 @@
         --João Pedro Moreira de AlmeIDa Santos | GitHub: https://github.com/joao7878
         --Orlando Mota Pires | GitHub: https://github.com/orlandomotapires
         
-        
+         
 /* Primeira proposta: Relatório do Torneio. 
 Um relatório construído com base para informar sobre um certo torneio, nosso escopo para consulta resultará em: nome do torneio, quantas fases compuseram o torneio, o nome das equipes que participaram do torneio, seus integrantes, o nome de seu capitão, suas colocações, questões que eles erraram e quais acertaram,quantas tentativas demoraram, questões que foram aplicadas no torneio, seu assuntos, dificuldade estimada.
 Segunda proposta: Relatório dos encontros realizados em um mês específico.

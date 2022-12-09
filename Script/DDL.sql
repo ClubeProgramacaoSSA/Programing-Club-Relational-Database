@@ -341,6 +341,13 @@ CREATE TABLE TB_movimentacao_ponto_torneio(
 );
 
 -- 44
+
+CREATE TABLE TB_oficio(
+    ID_oficio SERIAL NOT NULL,
+    nome_oficio VARCHAR(500) NOT NULL
+);
+ 
+-- 44
 CREATE TABLE TB_organizador(
     ID_organizador SERIAL NOT NULL,
     descricao VARCHAR(500),
@@ -604,6 +611,7 @@ ALTER TABLE TB_logradouro ADD CONSTRAINT FK_logradouro_cidade FOREIGN KEY (ID_ci
 -- TB_membro
 ALTER TABLE TB_membro ADD CONSTRAINT FK_membro_curso_instituicao FOREIGN KEY (ID_curso_instituicao) REFERENCES  TB_curso_instituicao(ID_curso_instituicao);
 ALTER TABLE TB_membro ADD CONSTRAINT FK_membro_imagem FOREIGN KEY (ID_foto_membro) REFERENCES  TB_imagem(ID_imagem);
+ALTER TABLE TB_membro ADD CONSTRAINT FK_membro_oficio FOREIGN KEY (ID_oficio) REFERENCES  TB_oficio(ID_oficio);
 
 -- TB_membro_equipe
 ALTER TABLE TB_membro_equipe ADD CONSTRAINT FK_membro_equipe_equipe FOREIGN KEY(ID_equipe) REFERENCES  TB_equipe(ID_equipe);

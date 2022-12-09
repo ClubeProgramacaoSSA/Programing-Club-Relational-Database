@@ -28,7 +28,7 @@
 
 ------------------------------------FORMATACAO DATA------------------------------------
 
---ALTER DATABASE "TesteNandao" SET datestyle TO "ISO, DMY";
+ALTER DATABASE "buglol" SET datestyle TO "ISO, DMY";
 ------------------------------------ASSUNTO------------------------------------
 INSERT INTO 
     TB_assunto
@@ -142,12 +142,8 @@ VALUES
 ------------------------------------IMAGEM------------------------------------
 
 INSERT INTO 
-    TB_imagemINSERT INTO 
-TB_categoria_imagem
-    (nome_categoria_imagem)
-VALUES
-    ('Logo');
-    (ID_categoria_imagem, imagem, descricao, DT_imagem, nome_imagem)
+    TB_imagem
+	(ID_categoria_imagem, imagem, descricao, DT_imagem, nome_imagem)
 VALUES
     ((select id_categoria_imagem from tb_categoria_imagem where nome_categoria_imagem = 'Documentação'), bytea('../Documentation/Modelo_Relacional_BD_Clube_Programacao.drawio.png'), 'Esquema de tabelas que compôem o o Banco de Dados do Clube de Programação','01-09-2022', 'Modelo Relacional do Banco de Dados do Clube');
 
@@ -266,10 +262,28 @@ INSERT INTO
 VALUES
     ((select id_curso from tb_curso where nome_curso ='Engenharia de Computação'),(select id_instituicao_ensino from tb_instituicao_ensino where nome_instituicao_ensino='CIMATEC'));
 
+----------------------OFICIO------------------------------------
+INSERT INTO
+    TB_oficio
+    (nome_oficio)
+VALUES
+    ('Professor');
+
+INSERT INTO
+    TB_oficio
+    (nome_oficio)
+VALUES
+    ('Estudante');
+INSERT INTO
+    TB_oficio
+    (nome_oficio)
+VALUES
+    ('Estagiário Senior');
+	
 ------------------------------------MEMBROS------------------------------------
 INSERT INTO
 	TB_MEMBRO
-    (ID_curso_instituicao, ID_foto_membro, DT_nascimento, DT_ingresso_clube, DT_ingresso_faculdade, genero, nome_membro, oficio)
+    (ID_curso_instituicao, ID_foto_membro, DT_nascimento, DT_ingresso_clube, DT_ingresso_faculdade, genero, nome_membro, ID_oficio)
 VALUES
 	((select ID_curso_instituicao from TB_curso_instituicao A, TB_curso B, TB_instituicao_ensino C WHERE A.ID_curso = B.ID_curso AND A.ID_instituicao = C.ID_instituicao_ensino AND B.nome_curso = 'Engenharia de Computação' AND C.nome_instituicao_ensino = 'CIMATEC'), 
      (select id_imagem from tb_imagem where nome_imagem = 'Modelo Relacional do Banco de Dados do Clube'),
@@ -279,7 +293,7 @@ VALUES
 
 INSERT INTO
 	TB_MEMBRO
-    (ID_curso_instituicao, ID_foto_membro, DT_nascimento, DT_ingresso_clube, DT_ingresso_faculdade, genero, nome_membro, oficio)
+    (ID_curso_instituicao, ID_foto_membro, DT_nascimento, DT_ingresso_clube, DT_ingresso_faculdade, genero, nome_membro, ID_oficio)
 VALUES
 	((select ID_curso_instituicao from TB_curso_instituicao A, TB_curso B, TB_instituicao_ensino C WHERE A.ID_curso = B.ID_curso AND A.ID_instituicao = C.ID_instituicao_ensino AND B.nome_curso = 'Engenharia de Computação' AND C.nome_instituicao_ensino = 'CIMATEC'), 
      (select id_imagem from tb_imagem where nome_imagem = 'Modelo Relacional do Banco de Dados do Clube'),
@@ -289,7 +303,7 @@ VALUES
 
 INSERT INTO
 	TB_MEMBRO
-    (ID_curso_instituicao, ID_foto_membro, DT_nascimento, DT_ingresso_clube, DT_ingresso_faculdade, genero, nome_membro, oficio)
+    (ID_curso_instituicao, ID_foto_membro, DT_nascimento, DT_ingresso_clube, DT_ingresso_faculdade, genero, nome_membro, ID_oficio)
 VALUES
 	((select ID_curso_instituicao from TB_curso_instituicao A, 
  TB_curso B, TB_instituicao_ensino C WHERE A.ID_curso = B.ID_curso AND 
@@ -301,7 +315,7 @@ VALUES
 
 INSERT INTO
 	TB_MEMBRO
-    (ID_curso_instituicao, ID_foto_membro, DT_nascimento, DT_ingresso_clube, DT_ingresso_faculdade, genero, nome_membro, oficio)
+    (ID_curso_instituicao, ID_foto_membro, DT_nascimento, DT_ingresso_clube, DT_ingresso_faculdade, genero, nome_membro, ID_oficio)
 VALUES
 	((select ID_curso_instituicao from TB_curso_instituicao A, TB_curso B, TB_instituicao_ensino C WHERE A.ID_curso = B.ID_curso AND 
  A.ID_instituicao = C.ID_instituicao_ensino AND B.nome_curso = 'Engenharia de Computação' AND C.nome_instituicao_ensino = 'CIMATEC'), 
@@ -343,7 +357,7 @@ VALUES
     ('www.beecrowd.com.br','beecrowd');
 
 ------------------------------------organizador------------------------------------
-INSERT INTO Estagiário Senior
+INSERT INTO 
     TB_organizador
     (nome_organizador, descricao)
 VALUES
@@ -443,26 +457,29 @@ VALUES
      (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Fernando Schettini'),'Desenvolvimento de um Banco de Dados para controle e gestão do clube de Programação', '02-02-2022', '02-02-2050','Banco de Dados Relacional', 100, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
 
 INSERT INTO
-    TB_projeto Estagiário Senior'Evento'), 
-     (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Fernando Schettini'),'Realização da Semana de Computação, para o curso de Engenharia de Computação', '14-08-2022', '22-11-2022', 'Primeira Semana de Computação', 150);
+    TB_projeto
+	(ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_termino_previsto, nome_projeto, ponto_jpq_maximo, URL_github)
+VALUES
+	((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE tipo = 'Evento'),
+     (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Fernando Schettini'),'Realização da Semana de Computação, para o curso de Engenharia de Computação', '14-08-2022', '22-11-2022', 'Primeira Semana de Computação', 150, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
 
 INSERT INTO
     TB_projeto 
-    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_termino_previsto, nome_projeto, ponto_jpq_maximo)
+    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_termino_previsto, nome_projeto, ponto_jpq_maximo, URL_github)
 VALUES
     ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE tipo = 'Aula'), 
      (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Orlando Mota'),
      'Desenvolvimento de aulas para os calouros para suprir uma necessidade deles de ter mais aulas de programação', 
-     '02-05-2022', '21-11-2022','Aula Calouros', 100);
+     '02-05-2022', '21-11-2022','Aula Calouros', 100, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
 
 INSERT INTO
     TB_projeto 
-    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_termino_previsto, nome_projeto, ponto_jpq_maximo)
+    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_termino_previsto, nome_projeto, ponto_jpq_maximo, URL_github)
 VALUES
     ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE tipo = 'Desenvolvimento de Produto'), 
      (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Pedro Facundes'),
      'Desenvolvimento de um site para divulgação e gestão do Clube de Programação, integrando o Banco de Dados', 
-     '15-06-2022', '30-11-2022','Site do Clube de Programação', 100);
+     '15-06-2022', '30-11-2022','Site do Clube de Programação', 100, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
 
 
 ------------------------------------LOCAL------------------------------------
@@ -634,22 +651,3 @@ INSERT INTO
 VALUES
     ((SELECT ID_assunto FROM TB_assunto WHERE assunto = 'Árvore'),
     (SELECT ID_projeto FROM TB_projeto WHERE nome_projeto = 'Primeira Semana de Computação'));
-
-
-----------------------OFICIO------------------------------------
-INSERT INTO
-    TB_oficio
-    (nome_oficio)
-VALUES
-    ('Professor');
-
-INSERT INTO
-    TB_oficio
-    (nome_oficio)
-VALUES
-    ('Estudante');
-INSERT INTO
-    TB_oficio
-    (nome_oficio)
-VALUES
-    ('Estagiário Senior');

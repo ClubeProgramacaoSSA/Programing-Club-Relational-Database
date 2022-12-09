@@ -270,12 +270,12 @@ CREATE TABLE TB_membro(
     ID_membro SERIAL NOT NULL,
     ID_curso_instituicao INT NOT NULL,
     ID_foto_membro INT NOT NULL,
+    ID_oficio INT NOT NULL,
     DT_ingresso_clube DATE NOT NULL,
     DT_ingresso_faculdade DATE,
     DT_nascimento DATE,
     genero CHAR(1) NOT NULL,
-    nome_membro VARCHAR(500) NOT NULL,
-    oficio VARCHAR(500)
+    nome_membro VARCHAR(500) NOT NULL
 );
 
 -- 36
@@ -488,6 +488,7 @@ ALTER TABLE TB_movimentacao_ponto_evento ADD CONSTRAINT PK_movimentacao_ponto_ev
 ALTER TABLE TB_movimentacao_ponto_projeto ADD CONSTRAINT PK_movimentacao_ponto_projeto PRIMARY KEY (ID_movimentacao_ponto_projeto); 
 ALTER TABLE TB_movimentacao_ponto_questao ADD CONSTRAINT PK_movimentacao_ponto_questao PRIMARY KEY (ID_movimentacao_ponto_questao); 
 ALTER TABLE TB_movimentacao_ponto_torneio ADD CONSTRAINT PK_movimentacao_ponto_torneio PRIMARY KEY (ID_movimentacao_ponto_torneio); 
+ALTER TABLE TB_oficio ADD CONSTRAINT PK_oficio PRIMARY KEY(ID_oficio);
 ALTER TABLE TB_organizador ADD CONSTRAINT PK_organizador PRIMARY KEY(ID_organizador);
 ALTER TABLE TB_pais ADD CONSTRAINT PK_pais PRIMARY KEY (ID_pais); 
 ALTER TABLE TB_presenca_encontro ADD CONSTRAINT PK_preseca_encontro PRIMARY KEY (ID_presenca_encontro); 

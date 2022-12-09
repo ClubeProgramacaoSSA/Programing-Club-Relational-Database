@@ -28,7 +28,7 @@
 
 ------------------------------------FORMATACAO DATA------------------------------------
 
-ALTER DATABASE "buglol" SET datestyle TO "ISO, DMY";
+--ALTER DATABASE (SELECT current_database()) SET datestyle TO "ISO, DMY";
 ------------------------------------ASSUNTO------------------------------------
 INSERT INTO 
     TB_assunto
@@ -187,73 +187,80 @@ VALUES
 ------------------------------------FUNCAO------------------------------------
 INSERT INTO
     TB_FUNCAO
-    (NOME_FUNCAO, DESCRICAO_FUNCAO)
+    (NOME_FUNCAO, DESCRICAO_FUNCAO, ponto_jpq_maximo)
 VALUES
-    ('Presidente','Cabeça do Clube');
+    ('Presidente','Cabeça do Clube', 100);
 
 INSERT INTO
     TB_FUNCAO
-    (NOME_FUNCAO, DESCRICAO_FUNCAO)
+    (NOME_FUNCAO, DESCRICAO_FUNCAO, ponto_jpq_maximo)
 VALUES
-    ('Vice-Presidente','Cabeça do Clube quando o cabeça falta');
+    ('Vice-Presidente','Cabeça do Clube quando o cabeça falta', 60);
 
 INSERT INTO
     TB_FUNCAO
-    (NOME_FUNCAO, DESCRICAO_FUNCAO)
+    (NOME_FUNCAO, DESCRICAO_FUNCAO, ponto_jpq_maximo)
 VALUES
-    ('Gerente de Marketing','Gerencia o Marketing do Clube de Programação');
+    ('Gerente de Marketing','Gerencia o Marketing do Clube de Programação', 50);
 
 INSERT INTO
     TB_FUNCAO
-    (NOME_FUNCAO, DESCRICAO_FUNCAO)
+    (NOME_FUNCAO, DESCRICAO_FUNCAO, ponto_jpq_maximo)
 VALUES
-    ('Projetista','Realiza Projetos dentro do clube');
+    ('Projetista','Realiza Projetos dentro do clube', 200);
 
 INSERT INTO
     TB_FUNCAO
-    (NOME_FUNCAO, DESCRICAO_FUNCAO)
+    (NOME_FUNCAO, DESCRICAO_FUNCAO, ponto_jpq_maximo)
 VALUES
-    ('Organizador de Atração','Organiza Atrações naquele evento');
+    ('Organizador de Atração','Organiza Atrações naquele evento', 100);
 
 INSERT INTO
     TB_FUNCAO
-    (NOME_FUNCAO, DESCRICAO_FUNCAO)
+    (NOME_FUNCAO, DESCRICAO_FUNCAO, ponto_jpq_maximo)
 VALUES
-    ('Palestrante','Palestra naquele evento');
+    ('Palestrante','Palestra naquele evento', 80);
 
 INSERT INTO
     TB_FUNCAO
-    (NOME_FUNCAO, DESCRICAO_FUNCAO)
+    (NOME_FUNCAO, DESCRICAO_FUNCAO, ponto_jpq_maximo)
 VALUES
-    ('Marketing do Projeto','Realiza Marketing do projeto');
+    ('Marketing do Projeto','Realiza Marketing do projeto', 90);
 
 ------------------------------------ESTADO------------------------------------
 INSERT INTO
     TB_ESTADO
     (ID_PAIS, nome_estado)
 VALUES
-    ((select id_pais from tb_pais where nome_pais='Brasil'),'Bahia');
+    ((select id_pais from tb_pais where nome_pais = 'Brasil'),'Bahia');
 
 ------------------------------------CIDADE------------------------------------
 INSERT INTO 
     TB_CIDADE
     (ID_ESTADO,nome_cidade)
 VALUES
-    ((SELECT id_estado from tb_estado where nome_estado='Bahia'),'Salvador');
+    ((SELECT id_estado from tb_estado where nome_estado = 'Bahia'),'Salvador');
 
 ------------------------------------LOGRADOURO------------------------------------
 INSERT INTO 
     TB_LOGRADOURO
-    (ID_CIDADE,nome_logradouro)
+    (ID_CIDADE, CEP, nome_bairro, nome_rua, numero)
 VALUES
-    ((select id_cidade from tb_cidade where nome_cidade = 'Salvador'),'Patamares');
+    ((select id_cidade from tb_cidade where nome_cidade = 'Salvador'), '41650-010', 'Piata', 'Orlando Gomes', '1845');
 
+------------------------------------LOCAL------------------------------------
+INSERT INTO
+    TB_local
+    (ID_logradouro, descricao, nome_local)
+VALUES
+    ((SELECT ID_logradouro FROM TB_logradouro WHERE CEP = '41650-010' AND nome_bairro = 'Piata' AND nome_rua = 'Orlando Gomes' AND numero = '1845'), 'Centro de convenções de Salvador usado para realizar eventos', 'Centro de Convenções');
+  
 ------------------------------------INSTITUICAO_ENSINO------------------------------------
 INSERT INTO 
     TB_INSTITUICAO_ENSINO
-    (id_logradouro,nome_instituicao_ensino)
+    (id_local, nome_instituicao_ensino)
 VALUES
-    ((select id_logradouro from tb_logradouro where nome_logradouro='Patamares'),'CIMATEC');
+    ((select id_local from tb_local where nome_local = 'Centro de Convenções'),'CIMATEC');
 
 ------------------------------------CURSO_INSITUICAO------------------------------------
 INSERT INTO 
@@ -451,44 +458,36 @@ VALUES
 ------------------------------------PROJETO------------------------------------
 INSERT INTO
     TB_projeto 
-    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_termino_previsto, nome_projeto, ponto_jpq_maximo, URL_github)
+    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_termino_previsto, DT_termino, nome_projeto, ponto_jpq_maximo, URL_github)
 VALUES
     ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE tipo = 'Desenvolvimento de Produto'), 
-     (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Fernando Schettini'),'Desenvolvimento de um Banco de Dados para controle e gestão do clube de Programação', '02-02-2022', '02-02-2050','Banco de Dados Relacional', 100, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
+     (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Fernando Schettini'),'Desenvolvimento de um Banco de Dados para controle e gestão do clube de Programação', '02-02-2022', '02-02-2050', '02-02-2055','Banco de Dados Relacional', 100, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
 
 INSERT INTO
     TB_projeto
-	(ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_termino_previsto, nome_projeto, ponto_jpq_maximo, URL_github)
+	(ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_termino_previsto, DT_termino, nome_projeto, ponto_jpq_maximo, URL_github)
 VALUES
 	((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE tipo = 'Evento'),
-     (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Fernando Schettini'),'Realização da Semana de Computação, para o curso de Engenharia de Computação', '14-08-2022', '22-11-2022', 'Primeira Semana de Computação', 150, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
+     (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Fernando Schettini'),'Realização da Semana de Computação, para o curso de Engenharia de Computação', '14-08-2022', '22-11-2022', '22-11-2025','Primeira Semana de Computação', 150, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
 
 INSERT INTO
     TB_projeto 
-    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_termino_previsto, nome_projeto, ponto_jpq_maximo, URL_github)
+    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_termino_previsto, DT_termino, nome_projeto, ponto_jpq_maximo, URL_github)
 VALUES
     ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE tipo = 'Aula'), 
      (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Orlando Mota'),
      'Desenvolvimento de aulas para os calouros para suprir uma necessidade deles de ter mais aulas de programação', 
-     '02-05-2022', '21-11-2022','Aula Calouros', 100, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
+     '02-05-2022', '21-11-2022', '21-11-2028', 'Aula Calouros', 100, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
 
 INSERT INTO
     TB_projeto 
-    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_termino_previsto, nome_projeto, ponto_jpq_maximo, URL_github)
+    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_termino_previsto, DT_termino, nome_projeto, ponto_jpq_maximo, URL_github)
 VALUES
     ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE tipo = 'Desenvolvimento de Produto'), 
      (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Pedro Facundes'),
      'Desenvolvimento de um site para divulgação e gestão do Clube de Programação, integrando o Banco de Dados', 
-     '15-06-2022', '30-11-2022','Site do Clube de Programação', 100, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
-
-
-------------------------------------LOCAL------------------------------------
-INSERT INTO
-    TB_local
-    (ID_logradouro, descricao, nome_local)
-VALUES
-    ((SELECT ID_logradouro FROM TB_logradouro WHERE nome_logradouro = 'Patamares'), 'Centro de convenções de Salvador usado para realizar eventos', 'Centro de Convenções');
-    
+     '15-06-2022', '30-11-2022', '30-11-2024', 'Site do Clube de Programação', 100, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
+  
 ------------------------------------ENCONTRO------------------------------------
 INSERT INTO 
     TB_encontro

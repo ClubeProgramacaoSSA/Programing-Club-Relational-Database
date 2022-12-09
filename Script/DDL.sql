@@ -55,8 +55,19 @@ CREATE TABLE TB_cargo_membro(
     ID_cargo INT NOT NULL,
     ID_membro INT NOT NULL, 
     DT_entrada_cargo DATE NOT NULL,
-    DT_saida_cargo DATE,
-    ponto_jpq_maximo INT
+    DT_saida_cargo DATE
+  
+);
+
+-- 8
+CREATE TABLE TB_certificado(
+    ID_certificado SERIAL NOT NULL,
+    ID_membro INT NOT NULL,
+    descricao VARCHAR(500),
+    DT_emissao DATE NOT NULL,
+    horas INT NOT NULL,
+    pontos_meta VARCHAR(500) NOT NULL,
+    URL_certificado INT NOT NULL
 );
 
 -- 8
@@ -108,7 +119,9 @@ CREATE TABLE TB_encontro(
 CREATE TABLE TB_encontro_online(
     ID_encontro_online SERIAL NOT NULL,
     ID_plataforma INT NOT NULL,
-    ID_encontro INT NOT NULL
+    ID_encontro INT NOT NULL,
+    URL_encontro VARCHAR(500),
+    URL_gravacao VARCHAR(500)
 );
 
 -- 15
@@ -161,6 +174,14 @@ CREATE TABLE TB_evento(
 );
 
 -- 21
+CREATE TABLE TB_evento_projeto(
+    ID_evento_projeto SERIAL NOT NULL,
+    ID_evento SERIAL NOT NULL,
+    ID_projeto INT NOT NULL,
+    descricao VARCHAR(300) NOT NULL
+);
+
+-- 21
 CREATE TABLE TB_fase(
     ID_fase SERIAL NOT NULL,
     ID_torneio INT NOT NULL,
@@ -184,8 +205,8 @@ CREATE TABLE TB_fase_presencial(
 );
 
 -- 24
-CREATE TABLE TB_fase_questao_equipe(
-    ID_fase_questao_equipe SERIAL NOT NULL,
+CREATE TABLE TB_equipe_torneio_fase_questao(
+    ID_equipe_torneio_fase_questao SERIAL NOT NULL,
     ID_equipe_torneio_fase INT NOT NULL,
     ID_questao INT NOT NULL,
     ID_status INT NOT NULL, 
@@ -196,7 +217,8 @@ CREATE TABLE TB_fase_questao_equipe(
 CREATE TABLE TB_funcao(
     ID_funcao SERIAL NOT NULL,
     descricao_funcao VARCHAR(500) NOT NULL,
-    nome_funcao VARCHAR(500) NOT NULL
+    nome_funcao VARCHAR(500) NOT NULL,
+    ponto_jpq_maximo INT
 );
 
 -- 26
@@ -239,7 +261,7 @@ CREATE TABLE TB_imagem_evento(
 -- 31
 CREATE TABLE TB_instituicao_ensino(
     ID_instituicao_ensino SERIAL NOT NULL,
-    ID_logradouro INT NOT NULL,
+    ID_local INT NOT NULL,
     nome_instituicao_ensino VARCHAR(500) NOT NULL
 );
 
@@ -262,7 +284,12 @@ CREATE TABLE TB_local(
 CREATE TABLE TB_logradouro(
     ID_logradouro SERIAL NOT NULL,
     ID_cidade INT NOT NULL,
-    nome_logradouro VARCHAR(500)
+    CEP VARCHAR(100) NOT NULL,
+    complemento VARCHAR(500),
+    nome_bairro VARCHAR(100) NOT NULL,
+    nome_rua VARCHAR(100) NOT NULL,
+    numero VARCHAR(50) NOT NULL
+   
 );
 
 -- 35
@@ -391,6 +418,7 @@ CREATE TABLE TB_projeto(
     descricao VARCHAR(500),
     DT_inicio DATE NOT NULL,
     DT_termino_previsto DATE,
+    DT_termino DATE,
     nome_projeto VARCHAR(500),
     ponto_jpq_maximo INT,
     URL_gitHub VARCHAR(500)
@@ -452,6 +480,7 @@ ALTER TABLE TB_assunto_questao ADD CONSTRAINT PK_assunto_questao PRIMARY KEY(ID_
 ALTER TABLE TB_categoria_imagem ADD CONSTRAINT PK_categoria_imagem PRIMARY KEY (ID_categoria_imagem); 
 ALTER TABLE TB_capitao ADD CONSTRAINT PK_capitao PRIMARY KEY (ID_capitao); 
 ALTER TABLE TB_cargo_membro ADD CONSTRAINT PK_cargo_membro PRIMARY KEY (ID_cargo_membro);
+ALTER TABLE TB_certificado ADD CONSTRAINT PK_certificado PRIMARY KEY (ID_certificado);
 ALTER TABLE TB_cidade ADD CONSTRAINT PK_cidade PRIMARY KEY (ID_cidade); 
 ALTER TABLE TB_comite_organizador ADD CONSTRAINT PK_comite_organizador PRIMARY KEY (ID_comite_organizador); 
 ALTER TABLE TB_conta_clube ADD CONSTRAINT PK_conta_clube PRIMARY KEY (ID_conta_clube);
@@ -465,10 +494,11 @@ ALTER TABLE TB_equipe_torneio ADD CONSTRAINT PK_equipe_torneio PRIMARY KEY (ID_e
 ALTER TABLE TB_equipe_torneio_fase ADD CONSTRAINT PK_equipe_torneio_fase PRIMARY KEY (ID_equipe_torneio_fase); 
 ALTER TABLE TB_estado ADD CONSTRAINT PK_estado PRIMARY KEY (ID_estado); 
 ALTER TABLE TB_evento ADD CONSTRAINT PK_evento PRIMARY KEY (ID_evento); 
+ALTER TABLE TB_evento_projeto ADD CONSTRAINT PK_evento_projeto PRIMARY KEY (ID_evento_projeto);
 ALTER TABLE TB_fase ADD CONSTRAINT PK_fase PRIMARY KEY (ID_fase); 
 ALTER TABLE TB_fase_online ADD CONSTRAINT PK_fase_online PRIMARY KEY (ID_fase_online); 
 ALTER TABLE TB_fase_presencial ADD CONSTRAINT PK_fase_presencial PRIMARY KEY (ID_fase_presencial); 
-ALTER TABLE TB_fase_questao_equipe ADD CONSTRAINT PK_fase_questao_equipe PRIMARY KEY (ID_fase_questao_equipe); 
+ALTER TABLE TB_equipe_torneio_fase_questao ADD CONSTRAINT PK_equipe_torneio_fase_questao PRIMARY KEY (ID_equipe_torneio_fase_questao); 
 ALTER TABLE TB_funcao ADD CONSTRAINT PK_funcao PRIMARY KEY (ID_funcao); 
 ALTER TABLE TB_grau_dificuldade ADD CONSTRAINT PK_grau_dificuldade PRIMARY KEY (ID_grau_dificuldade); 
 ALTER TABLE TB_imagem ADD CONSTRAINT PK_imagem PRIMARY KEY (ID_imagem); 
@@ -523,6 +553,9 @@ ALTER TABLE TB_capitao ADD CONSTRAINT FK_capitao_membro FOREIGN KEY (ID_membro) 
 ALTER TABLE TB_cargo_membro ADD CONSTRAINT FK_cargo_membro_funcao FOREIGN KEY (ID_cargo) REFERENCES TB_funcao(ID_funcao);
 ALTER TABLE TB_cargo_membro ADD CONSTRAINT FK_cargo_membro_membro FOREIGN KEY (ID_membro) REFERENCES TB_membro(ID_membro);
 
+--TB_certificado
+ALTER TABLE TB_certificado ADD CONSTRAINT FK_certificado_membro FOREIGN KEY (ID_membro) REFERENCES TB_membro(ID_membro);
+
 -- TB_cidade
 ALTER TABLE TB_cidade ADD CONSTRAINT FK_cidade_estado FOREIGN KEY (ID_estado) REFERENCES TB_estado(ID_estado);
 
@@ -566,6 +599,10 @@ ALTER TABLE TB_estado ADD CONSTRAINT FK_estado_pais FOREIGN KEY (ID_pais) REFERE
 -- TB_evento
 ALTER TABLE TB_evento ADD CONSTRAINT FK_evento_local FOREIGN KEY (ID_local) REFERENCES TB_local(ID_local);
 
+--TB_evento_projeto
+ALTER TABLE TB_evento_projeto ADD CONSTRAINT FK_evento_projeto_evento FOREIGN KEY (ID_evento) REFERENCES TB_evento(ID_evento);
+ALTER TABLE TB_evento_projeto ADD CONSTRAINT FK_evento_projeto_projeto FOREIGN KEY (ID_projeto) REFERENCES TB_projeto(ID_projeto);
+
 -- TB_fase
 ALTER TABLE TB_fase ADD CONSTRAINT FK_fase_torneio FOREIGN KEY (ID_torneio) REFERENCES  TB_torneio (ID_torneio);
 
@@ -577,10 +614,10 @@ ALTER TABLE TB_fase_online ADD CONSTRAINT FK_fase_online_plataforma FOREIGN KEY 
 ALTER TABLE TB_fase_presencial ADD CONSTRAINT FK_fase_presencial_fase FOREIGN KEY (ID_fase) REFERENCES  TB_fase(ID_fase);
 ALTER TABLE TB_fase_presencial ADD CONSTRAINT FK_fase_presencial_local FOREIGN KEY (ID_local) REFERENCES  TB_local(ID_local);
 
--- TB_fase_questao_equipe
-ALTER TABLE TB_fase_questao_equipe ADD CONSTRAINT FK_fase_questao_equipe_equipe_torneio_fase FOREIGN KEY (ID_equipe_torneio_fase) REFERENCES  TB_equipe_torneio_fase (ID_equipe_torneio_fase);
-ALTER TABLE TB_fase_questao_equipe ADD CONSTRAINT FK_fase_questao_equipe_questao FOREIGN KEY (ID_questao) REFERENCES  TB_questao(ID_questao);
-ALTER TABLE TB_fase_questao_equipe ADD CONSTRAINT FK_fase_questao_equipe_status FOREIGN KEY (ID_status) REFERENCES  TB_status(ID_status);
+-- TB_equipe_torneio_fase_questao
+ALTER TABLE TB_equipe_torneio_fase_questao ADD CONSTRAINT FK_equipe_torneio_fase_questao_equipe_torneio_fase FOREIGN KEY (ID_equipe_torneio_fase) REFERENCES  TB_equipe_torneio_fase (ID_equipe_torneio_fase);
+ALTER TABLE TB_equipe_torneio_fase_questao ADD CONSTRAINT FK_equipe_torneio_fase_questao_questao FOREIGN KEY (ID_questao) REFERENCES  TB_questao(ID_questao);
+ALTER TABLE TB_equipe_torneio_fase_questao ADD CONSTRAINT FK_equipe_torneio_fase_questao_status FOREIGN KEY (ID_status) REFERENCES  TB_status(ID_status);
 
 -- TB_imagem
 ALTER TABLE TB_imagem ADD CONSTRAINT FK_imagem_categoria_imagem FOREIGN KEY (ID_categoria_imagem) REFERENCES TB_categoria_imagem(ID_categoria_imagem);
@@ -598,7 +635,7 @@ ALTER TABLE TB_imagem_evento ADD CONSTRAINT FK_imagem_evento_evento FOREIGN KEY 
 ALTER TABLE TB_imagem_evento ADD CONSTRAINT FK_imagem_evento_imagem FOREIGN KEY (ID_imagem) REFERENCES  TB_imagem(ID_imagem);
 
 -- TB_instituicao_ensino
-ALTER TABLE TB_instituicao_ensino ADD CONSTRAINT FK_instituicao_ensino_logradouro FOREIGN KEY (ID_logradouro) REFERENCES  TB_logradouro (ID_logradouro);
+ALTER TABLE TB_instituicao_ensino ADD CONSTRAINT FK_instituicao_ensino_local FOREIGN KEY (ID_local) REFERENCES  TB_local (ID_local);
 
 -- TB_lider
 ALTER TABLE TB_lider ADD CONSTRAINT FK_lider_membro FOREIGN KEY (ID_membro) REFERENCES  TB_membro (ID_membro);

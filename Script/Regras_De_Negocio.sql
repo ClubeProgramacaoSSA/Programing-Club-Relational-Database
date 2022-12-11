@@ -104,17 +104,51 @@ BEGIN
         (SELECT ID_movimentacao_ponto FROM TB_movimentacao_ponto WHERE HR_transacao = hora_atual,
          ID_procedencia
         );
-
     ELSE
-        RAISE 'associacao_movimentacao de movimentacao desconhecida' USING ERRCODE = '23421';
+        RAISE 'Tipo de movimentacao desconhecida.' USING ERRCODE = '23421';
     END CASE;
 
     IF quantidade_ponto_jqp < 0 OR quantidade_ponto_jqp > pontos_maximo THEN
-            RAISE 'Quantidade de pontos invalida' USING ERRCODE = '23420';
+            RAISE 'Quantidade de pontos invalida.' USING ERRCODE = '23420';
     END IF;
     
 END; $$
 LANGUAGE plpgsql;
 
 
+CREATE OR REPLACE PROCEDURE PC_preenche_pontos(ID_tipo_movimentacao_ponto INT,ID_conta_clube INT, quantidade_ponto_jqp INT,ID_procedencia INT, associacao_movimentacao TEXT, avaliacao TEXT)
+   AS $$
+DECLARE 
+BEGIN
+END; $$
+LANGUAGE plpgsql;
 
+
+
+
+CREATE OR REPLACE PROCEDURE PC_gera_certificados(ID_membro INT)
+   AS $$
+DECLARE 
+    data_emissao date default current_date;
+    pontos_total_membro integer;
+BEGIN
+    SELECT ponto_jpq FROM TB_conta_clube CC WHERE ID_membro = CC.ID_membro INTO pontos_total_membro;
+
+        IF pontos_total_membro >= 1000 THEN 
+            INSERT INTO TB_certificado(ID_membro, descricao, DT_emissao,horas, pontos_meta, URL_certificado)
+            VALUES
+                (ID_membro, descricao, data_emissao, 15, 1000, URL_certificado);
+        ELSIF pontos_total_membro >= 500 THEN
+            INSERT INTO TB_certificado(ID_membro, descricao,DT_emissao,horas,pontos_meta,URL_certificado)
+            VALUES
+                (ID_membro, descricao,data_emissao, 8, 500, URL_certificado);
+        ELSIF pontos_total_membro >= 250 THEN
+            INSERT INTO TB_certificado(ID_membro, descricao, DT_emissao, horas, pontos_meta, URL_certificado)
+            VALUES
+                (ID_membro, descricao, data_emissao, 5, 250, URL_certificado);
+        ELSE
+            RAISE 'Quantidade de pontos insuficientes para a retirada de certificado' USING ERRCODE = '69420';
+        END IF;
+
+END; $$
+LANGUAGE plpgsql

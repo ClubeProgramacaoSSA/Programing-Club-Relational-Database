@@ -56,7 +56,6 @@ CREATE TABLE TB_cargo_membro(
     ID_membro INT NOT NULL, 
     DT_entrada_cargo DATE NOT NULL,
     DT_saida_cargo DATE
-  
 );
 
 -- 8

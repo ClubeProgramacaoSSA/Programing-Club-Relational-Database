@@ -325,7 +325,7 @@ CREATE TABLE TB_membro_projeto(
 CREATE TABLE TB_movimentacao_ponto(
     ID_movimentacao_ponto SERIAL NOT NULL,
     ID_conta_clube INT NOT NULL,
-    ID_tipo_movimenta   cao_ponto INT NOT NULL,
+    ID_tipo_movimentacao_ponto INT NOT NULL,
     quantidade_ponto_jpq INT
     HR_transacao TIME,
     DT_transacao DATE

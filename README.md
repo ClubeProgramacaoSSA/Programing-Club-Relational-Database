@@ -1,4 +1,3 @@
-
 <h1 align="center">🦆 Programing Club Relational Database 🦆</h1>
 
 <div align="center">
@@ -38,7 +37,7 @@
 &emsp;&emsp;&emsp;Below is the relational data model, in which a schematic of the database is represented, with the tables, attributes and associative tables that will be in the final database:
 	
 <div align="center">
-	<img  height = 500em src = "./Documentation/modelo_relacional_clube_programacao.png" />
+	<img  height = 500em src = "./Documentation/Modelo_Relacional_BD_Clube_Programacao.png" />
 </div>
 <br>
 	
@@ -83,4 +82,3 @@ About the Bank Reports:
 [1] SOUSSA, Marcio. SQL. 22 de junho de 2022.
 	
 [2] SQL Tutorial, W3 School. Avaliable in: <https://www.w3schools.com/sql/default.asp>. Access in em 22 de junho de 2022.
-

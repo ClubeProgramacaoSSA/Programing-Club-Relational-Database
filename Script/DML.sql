@@ -28,7 +28,7 @@
 
 ------------------------------------FORMATACAO DATA------------------------------------
 
---ALTER DATABASE (SELECT current_database()) SET datestyle TO "ISO, DMY";
+--ALTER DATABASE "NOMEDOBANCO" SET datestyle TO "ISO, DMY";
 ------------------------------------ASSUNTO------------------------------------
 INSERT INTO 
     TB_assunto
@@ -83,7 +83,19 @@ INSERT INTO
     TB_categoria_imagem
     (nome_categoria_imagem)
 VALUES
+    ('Foto de Membro');
+
+INSERT INTO 
+    TB_categoria_imagem
+    (nome_categoria_imagem)
+VALUES
     ('Foto');
+
+INSERT INTO 
+    TB_categoria_imagem
+    (nome_categoria_imagem)
+VALUES
+    ('Capa de Projeto');
 
 INSERT INTO 
     TB_categoria_imagem
@@ -143,15 +155,131 @@ VALUES
 
 INSERT INTO 
     TB_imagem
-	(ID_categoria_imagem, imagem, descricao, DT_imagem, nome_imagem)
+	(ID_categoria_imagem, descricao_imagem, DT_imagem, imagem, nome_imagem)
 VALUES
-    ((select id_categoria_imagem from tb_categoria_imagem where nome_categoria_imagem = 'Documentação'), bytea('../Documentation/Modelo_Relacional_BD_Clube_Programacao.drawio.png'), 'Esquema de tabelas que compôem o o Banco de Dados do Clube de Programação','01-09-2022', 'Modelo Relacional do Banco de Dados do Clube');
+    ((select id_categoria_imagem from tb_categoria_imagem where UPPER(nome_categoria_imagem) = UPPER('Foto de Membro') ), 'Esquema de tabelas que compôem o o Banco de Dados do Clube de Programação','01-09-2022', bytea('../Documentation/modelo_relacional_clube_programacao.jpg'), 'Modelo Relacional do Banco de Dados do Clube');
+
+
 
 INSERT INTO 
     TB_imagem
-    (ID_categoria_imagem, imagem, descricao, DT_imagem, nome_imagem)
+    (ID_categoria_imagem, descricao_imagem, DT_imagem, imagem, nome_imagem)
 VALUES
-    ((select id_categoria_imagem from tb_categoria_imagem where nome_categoria_imagem = 'Documentação'),bytea('../Documentation/modelo_conceitual_clube_programacao.jpg'),'Esquema concentual de construção do Banco de Dados do Clube', '01-09-2022', 'Modelo Conceitual do Banco de Dados do Clube');
+    ((select id_categoria_imagem from tb_categoria_imagem where UPPER(nome_categoria_imagem) = UPPER('Foto de Membro') ), 'Esquema concentual de construção do Banco de Dados do Clube', '01-09-2022', bytea('../Documentation/modelo_conceitual_clube_programacao.jpg'), 'Modelo Conceitual do Banco de Dados do Clube');
+
+-- 1
+INSERT INTO 
+    TB_imagem
+	(ID_categoria_imagem, descricao_imagem, DT_imagem, nome_imagem, URL_imagem)
+VALUES
+    ((select id_categoria_imagem from tb_categoria_imagem where UPPER(nome_categoria_imagem) = UPPER('Foto de Membro') ), 'Foto do membro Antônio Horácio','01-09-2022', 'FT_membro_Antonio_Horacio', 'https://drive.google.com/uc?export=view&id=17mscIXTo5WaapnTOQPGZI2r1P7k9Kr51');
+    
+
+-- 2
+INSERT INTO 
+    TB_imagem
+	(ID_categoria_imagem, descricao_imagem, DT_imagem, nome_imagem, URL_imagem)
+VALUES
+    ((select id_categoria_imagem from tb_categoria_imagem where UPPER(nome_categoria_imagem) = UPPER('Foto de Membro') ), 'Foto do membro Felipe Leão','01-09-2022', 'FT_membro_Felipe_Leao', 'https://drive.google.com/uc?export=view&id=1jwsfW1s-4YSTOCoqj_sHA8SEGpQnFt-T');
+
+-- 3
+INSERT INTO 
+    TB_imagem
+	(ID_categoria_imagem, descricao_imagem, DT_imagem, nome_imagem, URL_imagem)
+VALUES
+    ((select id_categoria_imagem from tb_categoria_imagem where UPPER(nome_categoria_imagem) = UPPER('Foto de Membro') ), 'Foto do membro Fernando Schettini','01-09-2022', 'FT_membro_Fernando_Schettini', 'https://drive.google.com/uc?export=view&id=14VD8zwwk5TdNHy-uU7GObFDGgqXu5QZF');
+
+-- 4
+INSERT INTO 
+    TB_imagem
+	(ID_categoria_imagem, descricao_imagem, DT_imagem, nome_imagem, URL_imagem)
+VALUES
+    ((select id_categoria_imagem from tb_categoria_imagem where UPPER(nome_categoria_imagem) = UPPER('Foto de Membro') ), 'Foto do membro Luiz Guilherme','01-09-2022', 'FT_membro_Luiz_Guilherme', 'https://drive.google.com/uc?export=view&id=1P75mL_1uNMcQquvhlmYktQR1cjDCKqaQ');
+
+-- 5
+INSERT INTO 
+    TB_imagem
+	(ID_categoria_imagem, descricao_imagem, DT_imagem, nome_imagem, URL_imagem)
+VALUES
+    ((select id_categoria_imagem from tb_categoria_imagem where UPPER(nome_categoria_imagem) = UPPER('Foto de Membro') ), 'Foto do membro Marcio Soussa','01-09-2022', 'FT_membro_Marcio_Soussa', 'https://drive.google.com/uc?export=view&id=1nI3KrQVdiYtQPMnxq1kRhv3EjM-MYjOZ');
+
+-- 6
+INSERT INTO 
+    TB_imagem
+	(ID_categoria_imagem, descricao_imagem, DT_imagem, nome_imagem, URL_imagem)
+VALUES
+    ((select id_categoria_imagem from tb_categoria_imagem where UPPER(nome_categoria_imagem) = UPPER('Foto de Membro') ), 'Foto do membro Maria Eduarda Brito','01-09-2022', 'FT_membro_Maria_Eduarda', 'https://drive.google.com/uc?export=view&id=1y2FCDNOobPoue7mFlPQPvqoBLZe1ELZ3');
+
+-- 7
+INSERT INTO 
+    TB_imagem
+	(ID_categoria_imagem, descricao_imagem, DT_imagem, nome_imagem, URL_imagem)
+VALUES
+    ((select id_categoria_imagem from tb_categoria_imagem where UPPER(nome_categoria_imagem) = UPPER('Foto de Membro') ), 'Foto do membro Orlando Mota','01-09-2022', 'FT_membro_Orlando_Mota', 'https://drive.google.com/uc?export=view&id=12gZYpt51vfCuOEbnuP0c-ZpYBmki86X5');
+
+-- 8
+INSERT INTO 
+    TB_imagem
+	(ID_categoria_imagem, descricao_imagem, DT_imagem, nome_imagem, URL_imagem)
+VALUES
+    ((select id_categoria_imagem from tb_categoria_imagem where UPPER(nome_categoria_imagem) = UPPER('Foto de Membro')), 'Foto do membro Pedro Barros','01-09-2022', 'FT_membro_Pedro_Barros', 'https://drive.google.com/uc?export=view&id=1cypEMmBP7Ea5vwvEE6HEG1yICeTWQqEy');
+
+-- 9
+INSERT INTO 
+    TB_imagem
+	(ID_categoria_imagem, descricao_imagem, DT_imagem, nome_imagem, URL_imagem)
+VALUES
+    ((select id_categoria_imagem from tb_categoria_imagem where UPPER(nome_categoria_imagem) = UPPER('Foto de Membro')), 'Foto do membro Pedro Felipe Facundes','01-09-2022', 'FT_membro_Pedro_Facundes', 'https://drive.google.com/uc?export=view&id=1R6GWLISMvtSV0SZxFDB4ROOg_a0ExIMv');
+
+-- 10
+INSERT INTO 
+    TB_imagem
+	(ID_categoria_imagem, descricao_imagem, DT_imagem, nome_imagem, URL_imagem)
+VALUES
+    ((select id_categoria_imagem from tb_categoria_imagem where UPPER(nome_categoria_imagem) = UPPER('Foto') ), 'Foto da administração do Clube de Programação com professor e orientador Márcio Soussa','01-09-2022', 'FT_adm_clube_2', 'https://drive.google.com/uc?export=view&id=18UcyunlRHKRBYGcUPudYl3RQbC3meact');
+
+-- 11
+INSERT INTO 
+    TB_imagem
+	(ID_categoria_imagem, descricao_imagem, DT_imagem, nome_imagem, URL_imagem)
+VALUES
+    ((select id_categoria_imagem from tb_categoria_imagem where UPPER(nome_categoria_imagem) = UPPER('Foto') ), 'Foto da administração do Clube de Programação','01-09-2022', 'FT_adm_clube', 'https://drive.google.com/uc?export=view&id=1nR5T1Giq06gaaw0rDVkf7aY5-i-0Sau7');
+
+-- 12
+INSERT INTO 
+    TB_imagem
+	(ID_categoria_imagem, descricao_imagem, DT_imagem, nome_imagem, URL_imagem)
+VALUES
+    ((select id_categoria_imagem from tb_categoria_imagem where UPPER(nome_categoria_imagem) = UPPER('Capa de Projeto') ), 'Capa do projeto de Algoritmos e estruturas de dados','01-09-2022', 'CAPA_projeto_aed', 'https://drive.google.com/uc?export=view&id=1rGCJaW4F0V8U9YTE4YKTK7lEDQ_EB9el');
+
+-- 13
+INSERT INTO 
+    TB_imagem
+	(ID_categoria_imagem, descricao_imagem, DT_imagem, nome_imagem, URL_imagem)
+VALUES
+    ((select id_categoria_imagem from tb_categoria_imagem where UPPER(nome_categoria_imagem) = UPPER('Capa de Projeto') ), 'Capa do projeto de Introdução a algoritmos','01-09-2022', 'CAPA_projeto_aula_algoritmos', 'https://drive.google.com/uc?export=view&id=1oIvueM34_8H4SOfnFYeyfrbz5n4PZ1zP');
+
+-- 14
+INSERT INTO 
+    TB_imagem
+	(ID_categoria_imagem, descricao_imagem, DT_imagem, nome_imagem, URL_imagem)
+VALUES
+    ((select id_categoria_imagem from tb_categoria_imagem where UPPER(nome_categoria_imagem) = UPPER('Capa de Projeto') ), 'Capa do projeto do Banco de dados do Clube de Programação','01-09-2022', 'CAPA_projeto_banco_de_dados', 'https://drive.google.com/uc?export=view&id=17wyEMAfjtHHUknfrT3duPKPIYS_CcuoU');
+
+-- 15
+INSERT INTO 
+    TB_imagem
+	(ID_categoria_imagem, descricao_imagem, DT_imagem, nome_imagem, URL_imagem)
+VALUES
+    ((select id_categoria_imagem from tb_categoria_imagem where UPPER(nome_categoria_imagem) = UPPER('Capa de Projeto') ), 'Capa do projeto da primeira Semana de computação', '01-09-2022', 'CAPA_projeto_semana_computacao', 'https://drive.google.com/uc?export=view&id=1mdrryMslOaWjet5cqaPijEuLXiTVUBWn');
+
+-- 16
+INSERT INTO 
+    TB_imagem
+	(ID_categoria_imagem, descricao_imagem, DT_imagem, nome_imagem, URL_imagem)
+VALUES
+    ((select id_categoria_imagem from tb_categoria_imagem where UPPER(nome_categoria_imagem) = UPPER('Capa de Projeto') ), 'Capa do projeto do Site do Clube de Programação','01-09-2022', 'CAPA_projeto_site_clube', 'https://drive.google.com/uc?export=view&id=102jzrhlC7gMw9vqGk6hKNzuC01e9B5YU');
+
 
 ------------------------------------CURSO------------------------------------
 INSERT INTO
@@ -251,7 +379,7 @@ VALUES
 ------------------------------------LOCAL------------------------------------
 INSERT INTO
     TB_local
-    (ID_logradouro, descricao, nome_local)
+    (ID_logradouro, descricao_local, nome_local)
 VALUES
     ((SELECT ID_logradouro FROM TB_logradouro WHERE CEP = '41650-010' AND nome_bairro = 'Piata' AND nome_rua = 'Orlando Gomes' AND numero = '1845'), 'Centro de convenções de Salvador usado para realizar eventos', 'Centro de Convenções');
   
@@ -366,7 +494,7 @@ VALUES
 ------------------------------------organizador------------------------------------
 INSERT INTO 
     TB_organizador
-    (nome_organizador, descricao)
+    (nome_organizador, descricao_organizador)
 VALUES
     ('SBC','SOCIEDADE BRASILEIRA DE COMPUTACAO, reponsável pelos computadores do Brasil');
 
@@ -458,35 +586,55 @@ VALUES
 ------------------------------------PROJETO------------------------------------
 INSERT INTO
     TB_projeto 
-    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_termino_previsto, DT_termino, nome_projeto, ponto_jpq_maximo, URL_github)
+    (ID_tipo_projeto, ID_lider, ID_imagem_capa, descricao_projeto, DT_inicio, DT_termino_previsto, DT_termino, nome_projeto, ponto_jpq_maximo, URL_github)
 VALUES
-    ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE tipo = 'Desenvolvimento de Produto'), 
-     (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Fernando Schettini'),'Desenvolvimento de um Banco de Dados para controle e gestão do clube de Programação', '02-02-2022', '02-02-2050', '02-02-2055','Banco de Dados Relacional', 100, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
+    ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE UPPER(tipo) = UPPER('Desenvolvimento de Produto') ), 
+     (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Fernando Schettini'),
+     (SELECT ID_imagem FROM TB_imagem WHERE UPPER(nome_imagem) = UPPER('CAPA_projeto_banco_de_dados') ),
+     'Desenvolvimento de um Banco de Dados para controle e gestão do clube de Programação', '02-02-2022', '02-02-2050', '02-02-2055','Banco de Dados Relacional', 100, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
+
 
 INSERT INTO
     TB_projeto
-	(ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_termino_previsto, DT_termino, nome_projeto, ponto_jpq_maximo, URL_github)
+	(ID_tipo_projeto, ID_lider, ID_imagem_capa, descricao_projeto, DT_inicio, DT_termino_previsto, DT_termino, nome_projeto, ponto_jpq_maximo, URL_github)
 VALUES
-	((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE tipo = 'Evento'),
-     (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Fernando Schettini'),'Realização da Semana de Computação, para o curso de Engenharia de Computação', '14-08-2022', '22-11-2022', '22-11-2025','Primeira Semana de Computação', 150, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
+	((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE UPPER(tipo) = UPPER('Evento') ),
+     (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Fernando Schettini'),
+     (SELECT ID_imagem FROM TB_imagem WHERE UPPER(nome_imagem) = UPPER('CAPA_projeto_semana_computacao') ),
+     'Realização da Semana de Computação, para o curso de Engenharia de Computação', '14-08-2022', '22-11-2022', '22-11-2025','Primeira Semana de Computação', 150, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
+
 
 INSERT INTO
     TB_projeto 
-    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_termino_previsto, DT_termino, nome_projeto, ponto_jpq_maximo, URL_github)
+    (ID_tipo_projeto, ID_lider, ID_imagem_capa, descricao_projeto, DT_inicio, DT_termino_previsto, DT_termino, nome_projeto, ponto_jpq_maximo, URL_github)
 VALUES
-    ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE tipo = 'Aula'), 
+    ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE UPPER(tipo) = UPPER('workshop') ), 
      (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Orlando Mota'),
+     (SELECT ID_imagem FROM TB_imagem WHERE UPPER(nome_imagem) = UPPER('CAPA_projeto_aula_algoritmos') ),
      'Desenvolvimento de aulas para os calouros para suprir uma necessidade deles de ter mais aulas de programação', 
-     '02-05-2022', '21-11-2022', '21-11-2028', 'Aula Calouros', 100, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
+     '02-05-2022', '21-11-2022', '21-11-2028', 'Introducao a algoritmos', 100, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
+
 
 INSERT INTO
     TB_projeto 
-    (ID_tipo_projeto, ID_lider, descricao, DT_inicio, DT_termino_previsto, DT_termino, nome_projeto, ponto_jpq_maximo, URL_github)
+    (ID_tipo_projeto, ID_lider, ID_imagem_capa, descricao_projeto, DT_inicio, DT_termino_previsto, DT_termino, nome_projeto, ponto_jpq_maximo, URL_github)
 VALUES
-    ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE tipo = 'Desenvolvimento de Produto'), 
+    ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE UPPER(tipo) = UPPER('Desenvolvimento de Produto') ), 
      (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Pedro Facundes'),
+     (SELECT ID_imagem FROM TB_imagem WHERE UPPER(nome_imagem) = UPPER('CAPA_projeto_site_clube') ),
      'Desenvolvimento de um site para divulgação e gestão do Clube de Programação, integrando o Banco de Dados', 
-     '15-06-2022', '30-11-2022', '30-11-2024', 'Site do Clube de Programação', 100, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
+     '15-06-2022', '30-11-2022', '30-11-2024', 'Site do Clube de Programação', 100, 'https://github.com/ClubeProgramacaoSSA/Back-End-Site-Clube-de-Programacao');
+
+
+INSERT INTO
+    TB_projeto 
+    (ID_tipo_projeto, ID_lider, ID_imagem_capa, descricao_projeto, DT_inicio, DT_termino_previsto, DT_termino, nome_projeto, ponto_jpq_maximo, URL_github)
+VALUES
+    ((SELECT ID_tipo_projeto FROM TB_tipo_projeto WHERE UPPER(tipo) = UPPER('workshop') ), 
+     (SELECT ID_lider FROM TB_lider WHERE nome_lider = 'Fernando Schettini'),
+     (SELECT ID_imagem FROM TB_imagem WHERE UPPER(nome_imagem) = UPPER('CAPA_projeto_aed') ),
+     'Desenvolvimento de aulas de reforço para os alunos de AED (Algoritmos e estruturas de dados)', 
+     '15-06-2022', '30-11-2022', '30-11-2024', 'Projeto AED', 100, 'https://github.com/ClubeProgramacaoSSA/Back-End-Site-Clube-de-Programacao');
   
 ------------------------------------ENCONTRO------------------------------------
 INSERT INTO 

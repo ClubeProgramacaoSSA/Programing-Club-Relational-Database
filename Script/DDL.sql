@@ -62,7 +62,7 @@ CREATE TABLE TB_cargo_membro(
 CREATE TABLE TB_certificado(
     ID_certificado SERIAL NOT NULL,
     ID_membro INT NOT NULL,
-    descricao VARCHAR(500),
+    descricao_certificado VARCHAR(500),
     DT_emissao DATE NOT NULL,
     horas INT NOT NULL,
     pontos_meta VARCHAR(500) NOT NULL,
@@ -166,7 +166,7 @@ CREATE TABLE TB_estado(
 CREATE TABLE TB_evento(
     ID_evento SERIAL NOT NULL,
     ID_local INT NOT NULL,
-    descricao VARCHAR(500),
+    descricao_evento VARCHAR(500),
     DT_inicio DATE,
     DT_termino DATE,
     nome_evento VARCHAR(500) NOT NULL
@@ -177,7 +177,7 @@ CREATE TABLE TB_evento_projeto(
     ID_evento_projeto SERIAL NOT NULL,
     ID_evento SERIAL NOT NULL,
     ID_projeto INT NOT NULL,
-    descricao VARCHAR(300) NOT NULL
+    descricao_evento_projeto VARCHAR(300) NOT NULL
 );
 
 -- 21
@@ -230,10 +230,11 @@ CREATE TABLE TB_grau_dificuldade(
 CREATE TABLE TB_imagem(
     ID_imagem SERIAL NOT NULL,
     ID_categoria_imagem INT NOT NULL,
-    descricao VARCHAR(500),
+    descricao_imagem VARCHAR(500),
     DT_imagem DATE,
-    imagem bytea NOT NULL,
-    nome_imagem VARCHAR(200)
+    imagem bytea,
+    nome_imagem VARCHAR(200),
+    URL_imagem VARCHAR(500)
 );
 
 -- 28
@@ -275,7 +276,7 @@ CREATE TABLE TB_lider(
 CREATE TABLE TB_local(
     ID_local SERIAL NOT NULL,
     ID_logradouro INT NOT NULL,
-    descricao VARCHAR(500) NOT NULL,
+    descricao_local VARCHAR(500) NOT NULL,
     nome_local VARCHAR(500) NOT NULL
 );    
 
@@ -326,7 +327,7 @@ CREATE TABLE TB_movimentacao_ponto(
     ID_movimentacao_ponto SERIAL NOT NULL,
     ID_conta_clube INT NOT NULL,
     ID_tipo_movimentacao_ponto INT NOT NULL,
-    quantidade_ponto_jpq INT
+    quantidade_ponto_jpq INT,
     HR_transacao TIME,
     DT_transacao DATE
 );
@@ -378,7 +379,7 @@ CREATE TABLE TB_oficio(
 -- 44
 CREATE TABLE TB_organizador(
     ID_organizador SERIAL NOT NULL,
-    descricao VARCHAR(500),
+    descricao_organizador VARCHAR(500),
     nome_organizador VARCHAR(500) NOT NULL
 );
 
@@ -415,8 +416,9 @@ CREATE TABLE TB_procedencia_questao(
 CREATE TABLE TB_projeto(
     ID_projeto SERIAL NOT NULL,
     ID_lider INT NOT NULL,
+    ID_imagem_capa INT NOT NULL,
     ID_tipo_projeto INT NOT NULL,
-    descricao VARCHAR(500),
+    descricao_projeto VARCHAR(500),
     DT_inicio DATE NOT NULL,
     DT_termino_previsto DATE,
     DT_termino DATE,
@@ -446,7 +448,7 @@ CREATE TABLE TB_questao(
 -- 52
 CREATE TABLE TB_status(
     ID_status SERIAL NOT NULL,
-    descricao VARCHAR(500) NOT NULL
+    descricao_status VARCHAR(500) NOT NULL
 );
 
 -- 53
@@ -696,6 +698,7 @@ ALTER TABLE TB_presenca_encontro ADD CONSTRAINT FK_presenca_encontro_membro FORE
 -- TB_projeto
 ALTER TABLE TB_projeto ADD CONSTRAINT FK_projeto_lider FOREIGN KEY (ID_lider) REFERENCES  TB_lider(ID_lider);
 ALTER TABLE TB_projeto ADD CONSTRAINT FK_projeto_tipo_projeto FOREIGN KEY (ID_tipo_projeto) REFERENCES TB_tipo_projeto (ID_tipo_projeto);
+ALTER TABLE TB_projeto ADD CONSTRAINT FK_projeto_imagem_capa FOREIGN KEY (ID_imagem_capa) REFERENCES TB_imagem (ID_imagem);
 
 -- TB_questao
 ALTER TABLE TB_questao ADD CONSTRAINT FK_questao_grau_dificuldade FOREIGN KEY (ID_grau_dificuldade) REFERENCES  TB_grau_dificuldade(ID_grau_dificuldade);

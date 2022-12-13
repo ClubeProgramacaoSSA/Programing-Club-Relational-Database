@@ -66,7 +66,7 @@ CREATE TABLE TB_certificado(
     DT_emissao DATE NOT NULL,
     horas INT NOT NULL,
     pontos_meta VARCHAR(500) NOT NULL,
-    URL_certificado INT NOT NULL
+    URL_certificado VARCHAR(500) NOT NULL
 );
 
 -- 8

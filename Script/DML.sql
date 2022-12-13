@@ -798,3 +798,44 @@ INSERT INTO
 VALUES
     ((SELECT ID_assunto FROM TB_assunto WHERE assunto = 'Árvore'),
     (SELECT ID_projeto FROM TB_projeto WHERE nome_projeto = 'Primeira Semana de Computação'));
+
+
+----------------------TB_CONTA_CLUBE------------------------------------
+
+INSERT INTO
+    TB_conta_clube
+    (ID_membro, login, ponto_jpq, senha)
+VALUES
+    ((SELECT ID_membro FROM TB_membro WHERE nome_membro = 'Fernando Schettini'),
+    'nandin_ceo_google', 200, 'paocombanana');
+
+----------------------TB_cargo_membro------------------------------------
+
+INSERT INTO
+    TB_cargo_membro
+    (ID_cargo, ID_membro, 
+    DT_entrada_cargo,
+    DT_saida_cargo)
+VALUES
+    ((SELECT ID_cargo FROM TB_funcao WHERE nome_funcao = 'Presidente'),(SELECT ID_membro FROM TB_membro WHERE nome_membro = 'Fernando Schettini')
+    '2022-11-05', null);
+
+
+----------------------TB_tipo_movimentacao------------------------------------
+INSERT INTO
+    TB_tipo_movimentacao_ponto
+    (tipo_movimentacao_ponto)
+VALUES
+    ('Depósito');
+
+INSERT INTO
+    TB_tipo_movimentacao_ponto
+    (tipo_movimentacao_ponto)
+VALUES
+    ('Saque');
+
+INSERT INTO
+    TB_tipo_movimentacao_ponto
+    (tipo_movimentacao_ponto)
+VALUES
+    ('Punição');

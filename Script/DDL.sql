@@ -339,7 +339,7 @@ CREATE TABLE TB_movimentacao_ponto_cargo(
     ID_movimentacao_ponto INT NOT NULL
 );
 
--- 409
+-- 40
 CREATE TABLE TB_movimentacao_ponto_evento(
     ID_movimentacao_ponto_evento SERIAL NOT NULL,
     ID_movimentacao_ponto INT NOT NULL,

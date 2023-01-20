@@ -28,7 +28,7 @@
 
 ------------------------------------FORMATACAO DATA------------------------------------
 
---ALTER DATABASE "NOMEDOBANCO" SET datestyle TO "ISO, DMY";
+--ALTER DATABASE "NOMEBANCO" SET datestyle TO "ISO, DMY";
 ------------------------------------ASSUNTO------------------------------------
 INSERT INTO 
     TB_assunto
@@ -817,8 +817,7 @@ INSERT INTO
     DT_entrada_cargo,
     DT_saida_cargo)
 VALUES
-    ((SELECT ID_cargo FROM TB_funcao WHERE nome_funcao = 'Presidente'),(SELECT ID_membro FROM TB_membro WHERE nome_membro = 'Fernando Schettini')
-    '2022-11-05', null);
+    ((SELECT ID_funcao FROM TB_funcao WHERE nome_funcao = 'Presidente'),(SELECT ID_membro FROM TB_membro WHERE nome_membro = 'Fernando Schettini'), '2022-11-05', null);
 
 
 ----------------------TB_tipo_movimentacao------------------------------------

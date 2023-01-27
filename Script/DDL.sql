@@ -186,7 +186,7 @@ CREATE TABLE TB_fase(
     ID_torneio INT NOT NULL,
     DT_inicio DATE NOT NULL,
     DT_termino DATE NOT NULL,
-    numero INT NOT NULL
+    numero_fase INT NOT NULL
 );
 
 -- 22
@@ -232,7 +232,7 @@ CREATE TABLE TB_imagem(
     ID_categoria_imagem INT NOT NULL,
     descricao_imagem VARCHAR(500),
     DT_imagem DATE,
-    imagem bytea,
+    imagem BYTEA,
     nome_imagem VARCHAR(200),
     URL_imagem VARCHAR(500)
 );
@@ -327,9 +327,9 @@ CREATE TABLE TB_movimentacao_ponto(
     ID_movimentacao_ponto SERIAL NOT NULL,
     ID_conta_clube INT NOT NULL,
     ID_tipo_movimentacao_ponto INT NOT NULL,
-    quantidade_ponto_jpq INT,
-    HR_transacao TIME,
-    DT_transacao DATE
+    quantidade_ponto_jpq INT NOT NULL,
+    HR_transacao TIME NOT NULL,
+    DT_transacao DATE NOT NULL
 );
 
 -- 39
@@ -340,7 +340,7 @@ CREATE TABLE TB_movimentacao_ponto_cargo(
 );
 
 -- 40
-CREATE TABLE TB_movimentacao_ponto_evento(
+CREATE TABLE TB_movimentacao_ponto_evento_presenca(
     ID_movimentacao_ponto_evento SERIAL NOT NULL,
     ID_movimentacao_ponto INT NOT NULL,
     ID_presenca_evento INT NOT NULL
@@ -363,9 +363,9 @@ CREATE TABLE TB_movimentacao_ponto_questao(
 );
 
 -- 43
-CREATE TABLE TB_movimentacao_ponto_torneio(
-    ID_movimentacao_ponto_torneio SERIAL NOT NULL,
-    ID_equipe_torneio_fase INT NOT NULL,
+CREATE TABLE TB_movimentacao_ponto_torneio_equipe_fase(
+    ID_movimentacao_ponto_torneio_equipe_fase SERIAL NOT NULL,
+    ID_equipe_torneio_equipe_fase INT NOT NULL,
     ID_movimentacao_ponto INT NOT NULL
 );
 
@@ -454,13 +454,13 @@ CREATE TABLE TB_status(
 -- 53
 CREATE TABLE TB_tipo_movimentacao_ponto(
     ID_tipo_movimentacao_ponto SERIAL  NOT NULL,
-    tipo_movimentacao_ponto VARCHAR (100) NOT NULL
+    tipo_movimentacao_ponto V:ARCHAR (100) NOT NULL
 );
 
 -- 54
 CREATE TABLE TB_tipo_projeto(
     ID_tipo_projeto SERIAL NOT NULL,
-    tipo VARCHAR(500) NOT NULL
+    tipo_projeto VARCHAR(500) NOT NULL
 );
 
 -- 55
@@ -517,7 +517,7 @@ ALTER TABLE TB_membro_equipe ADD CONSTRAINT PK_membro_equipe PRIMARY KEY (ID_mem
 ALTER TABLE TB_membro_projeto ADD CONSTRAINT PK_membro_projeto PRIMARY KEY (ID_membro_projeto); 
 ALTER TABLE TB_movimentacao_ponto ADD CONSTRAINT PK_movimentacao_ponto PRIMARY KEY (ID_movimentacao_ponto); 
 ALTER TABLE TB_movimentacao_ponto_cargo ADD CONSTRAINT PK_movimentacao_ponto_cargo PRIMARY KEY (ID_movimentacao_ponto_cargo); 
-ALTER TABLE TB_movimentacao_ponto_evento ADD CONSTRAINT PK_movimentacao_ponto_evento PRIMARY KEY (ID_movimentacao_ponto_evento); 
+ALTER TABLE TB_movimentacao_ponto_evento_presenca ADD CONSTRAINT PK_movimentacao_ponto_evento PRIMARY KEY (ID_movimentacao_ponto_evento); 
 ALTER TABLE TB_movimentacao_ponto_projeto ADD CONSTRAINT PK_movimentacao_ponto_projeto PRIMARY KEY (ID_movimentacao_ponto_projeto); 
 ALTER TABLE TB_movimentacao_ponto_questao ADD CONSTRAINT PK_movimentacao_ponto_questao PRIMARY KEY (ID_movimentacao_ponto_questao); 
 ALTER TABLE TB_movimentacao_ponto_torneio ADD CONSTRAINT PK_movimentacao_ponto_torneio PRIMARY KEY (ID_movimentacao_ponto_torneio); 
@@ -671,9 +671,9 @@ ALTER TABLE TB_movimentacao_ponto ADD CONSTRAINT FK_movimentacao_ponto_tipo_movi
 ALTER TABLE TB_movimentacao_ponto_cargo ADD CONSTRAINT FK_movimentacao_ponto_cargo_cargo_membro FOREIGN KEY (ID_cargo_membro) REFERENCES  TB_cargo_membro(ID_cargo_membro);
 ALTER TABLE TB_movimentacao_ponto_cargo ADD CONSTRAINT FK_movimentacao_ponto_cargo_movimentacao_ponto FOREIGN KEY (ID_movimentacao_ponto) REFERENCES  TB_movimentacao_ponto(ID_movimentacao_ponto);
 
---TB_movimentacao_ponto_evento
-ALTER TABLE TB_movimentacao_ponto_evento ADD CONSTRAINT FK_movimentacao_ponto_evento_movimentacao_ponto FOREIGN KEY (ID_movimentacao_ponto) REFERENCES  TB_movimentacao_ponto(ID_movimentacao_ponto);
-ALTER TABLE TB_movimentacao_ponto_evento ADD CONSTRAINT FK_movimentacao_ponto_presenca_evento FOREIGN KEY (ID_presenca_evento) REFERENCES  TB_presenca_evento(ID_presenca_evento);
+--TB_movimentacao_ponto_evento_presenca
+ALTER TABLE TB_movimentacao_ponto_evento_presenca ADD CONSTRAINT FK_movimentacao_ponto_evento_movimentacao_ponto FOREIGN KEY (ID_movimentacao_ponto) REFERENCES  TB_movimentacao_ponto(ID_movimentacao_ponto);
+ALTER TABLE TB_movimentacao_ponto_evento_presenca ADD CONSTRAINT FK_movimentacao_ponto_presenca_evento FOREIGN KEY (ID_presenca_evento) REFERENCES  TB_presenca_evento(ID_presenca_evento);
 
 -- TB_movimentacao_ponto_projeto
 ALTER TABLE TB_movimentacao_ponto_projeto ADD CONSTRAINT FK_movimentacao_ponto_projeto_movimentacao_ponto FOREIGN KEY (ID_movimentacao_ponto) REFERENCES TB_movimentacao_ponto(ID_movimentacao_ponto);

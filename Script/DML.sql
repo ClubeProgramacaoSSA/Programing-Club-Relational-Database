@@ -26,7 +26,7 @@
 
 ------------------------------------DATA FORMAT------------------------------------
 
---ALTER DATABASE "DATABASENAME" SET datestyle TO "ISO, DMY";
+--ALTER DATABASE "DASDAS" SET datestyle TO "ISO, DMY";
 ------------------------------------subject------------------------------------
 INSERT INTO 
     TB_subject
@@ -593,23 +593,23 @@ VALUES
 
 INSERT INTO
     TB_project
-	(ID_project_type, ID_leader, ID_face_image, project_description, DT_start, DT_foreseen_end, DT_end, project_name, max_jpq_score, URL_github)
+	(ID_project_type, ID_leader, ID_face_image, project_description, DT_start, DT_foreseen_end, DT_end, project_name, max_jpq_score)
 VALUES
 	((SELECT ID_project_type FROM TB_project_type WHERE UPPER(project_type) = UPPER('Evento') ),
      (SELECT ID_leader FROM TB_leader WHERE leader_name = 'Fernando Schettini'),
      (SELECT ID_image FROM TB_image WHERE UPPER(image_name) = UPPER('CAPA_project_semana_computacao') ),
-     'Realização da Semana de Computação, para o COURSE de Engenharia de Computação', '14-08-2022', '22-11-2022', '22-11-2025','Primeira Semana de Computação', 150, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
+     'Realização da Semana de Computação, para o COURSE de Engenharia de Computação', '14-08-2022', '22-11-2022', '22-11-2025','Primeira Semana de Computação', 150);
 
 
 INSERT INTO
     TB_project 
-    (ID_project_type, ID_leader, ID_face_image, project_description, DT_start, DT_foreseen_end, DT_end, project_name, max_jpq_score, URL_github)
+    (ID_project_type, ID_leader, ID_face_image, project_description, DT_start, DT_foreseen_end, DT_end, project_name, max_jpq_score)
 VALUES
     ((SELECT ID_project_type FROM TB_project_type WHERE UPPER(project_type) = UPPER('workshop') ), 
      (SELECT ID_leader FROM TB_leader WHERE leader_name = 'Orlando Mota'),
      (SELECT ID_image FROM TB_image WHERE UPPER(image_name) = UPPER('CAPA_project_aula_algoritmos') ),
      'Desenvolvimento de aulas para os calouros para suprir uma necessidade deles de ter mais aulas de programação', 
-     '02-05-2022', '21-11-2022', '21-11-2028', 'Introducao a algoritmos', 100, 'https://github.com/ClubeProgramacaoSSA/Programing-Club-Relational-Database');
+     '02-05-2022', '21-11-2022', '21-11-2028', 'Introducao a algoritmos', 100);
 
 
 INSERT INTO
@@ -625,13 +625,13 @@ VALUES
 
 INSERT INTO
     TB_project 
-    (ID_project_type, ID_leader, ID_face_image, project_description, DT_start, DT_foreseen_end, DT_end, project_name, max_jpq_score, URL_github)
+    (ID_project_type, ID_leader, ID_face_image, project_description, DT_start, DT_foreseen_end, DT_end, project_name, max_jpq_score)
 VALUES
     ((SELECT ID_project_type FROM TB_project_type WHERE UPPER(project_type) = UPPER('workshop') ), 
      (SELECT ID_leader FROM TB_leader WHERE leader_name = 'Fernando Schettini'),
      (SELECT ID_image FROM TB_image WHERE UPPER(image_name) = UPPER('CAPA_project_aed') ),
      'Desenvolvimento de aulas de reforço para os alunos de AED (Algoritmos e estruturas de dados)', 
-     '15-06-2022', '30-11-2022', '30-11-2024', 'Projeto AED', 100, 'https://github.com/ClubeProgramacaoSSA/Back-End-Site-Clube-de-Programacao');
+     '15-06-2022', '30-11-2022', '30-11-2024', 'Projeto AED', 100);
   
 ------------------------------------ENCONTRO------------------------------------
 INSERT INTO 

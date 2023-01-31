@@ -20,24 +20,24 @@ CREATE TABLE IF NOT EXISTS TB_certificate(
     ID_certificate SERIAL NOT NULL PRIMARY KEY,
     ID_member INT NOT NULL,
     certificate_description VARCHAR(1000),
-    DT_emission DATE NOT NULL,
-    hours INT NOT NULL,
+    DT_emission DATE NOT NULL DEFAULT CURRENT_DATE,
+    hours INT NOT NULL CHECK (hours > 1),
     meta_points VARCHAR(1000) NOT NULL,
-    URL_certificate VARCHAR(1000) NOT NULL 
+    URL_certificate VARCHAR(1000) NOT NULL UNIQUE 
 );  
 
 -- 3
 CREATE TABLE IF NOT EXISTS TB_city(        
     ID_city SERIAL NOT NULL PRIMARY KEY,
     ID_state INT NOT NULL,
-    city_name VARCHAR(500) NOT NULL 
+    city_name VARCHAR(500) NOT NULL UNIQUE 
 );       
 
 -- 4
 CREATE TABLE IF NOT EXISTS TB_club_account(          
     ID_club_account SERIAL NOT NULL PRIMARY KEY,
     ID_member INT NOT NULL,
-    login VARCHAR(500) NOT NULL,
+    login VARCHAR(500) NOT NULL UNIQUE,
     jpq_score INT NOT NULL,
     password VARCHAR(1000) NOT NULL 
 );       
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS TB_club_account(
 -- 5
 CREATE TABLE IF NOT EXISTS TB_country(          
     ID_country SERIAL NOT NULL PRIMARY KEY,
-    country_name VARCHAR(500)  
+    country_name VARCHAR(500) UNIQUE NOT NULL  
 );        
 
 --6
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS TB_course(
 --7
 CREATE TABLE IF NOT EXISTS TB_difficulty_degree(          
     ID_difficulty_degree SERIAL NOT NULL PRIMARY KEY,
-    difficulty VARCHAR(500) NOT NULL 
+    difficulty VARCHAR(500) NOT NULL UNIQUE 
 );       
 
 --8
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS TB_encounter(
     ID_organizer INT NOT NULL,
     ID_project INT NOT NULL,
     DT_start DATE,
-    DT_end DATE  
+    DT_end DATE   
 );      
 
 --10
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS TB_event_attendance(
     ID_event INT NOT NULL,
     DT_start DATE,
     DT_end DATE,
-    max_jpq_score INT   
+    max_jpq_score INT DEFAULT 0   
 );       
 
 --15
@@ -129,15 +129,15 @@ CREATE TABLE IF NOT EXISTS TB_event_project(
     ID_event_project SERIAL NOT NULL PRIMARY KEY,
     ID_event INT NOT NULL,
     ID_project INT NOT NULL,
-    project_event_description VARCHAR(300) NOT NULL   
+    project_event_description VARCHAR(300)   
 );      
 
 --17
 CREATE TABLE IF NOT EXISTS TB_function(     
     ID_function SERIAL NOT NULL PRIMARY KEY,
-    function_name VARCHAR(500) NOT NULL,
-    function_description VARCHAR(500) NOT NULL,
-    max_jpq_score INT  
+    function_name VARCHAR(500) NOT NULL UNIQUE,
+    function_description VARCHAR(500) UNIQUE,
+    max_jpq_score INT DEFAULT 0 CHECK (max_jpq_score > -1) 
 );        
 
 --18
@@ -145,16 +145,16 @@ CREATE TABLE IF NOT EXISTS TB_image(
     ID_image SERIAL NOT NULL PRIMARY KEY,
     ID_image_category INT NOT NULL,
     image_description VARCHAR(500),
-    image BYTEA,
-    image_name VARCHAR(200),
-    DT_image DATE,
-    URL_image VARCHAR(1000) 
+    image BYTEA UNIQUE,
+    image_name VARCHAR(200) UNIQUE,
+    DT_image DATE DEFAULT CURRENT_DATE,
+    URL_image VARCHAR(1000) UNIQUE
 );       
 
 --19
 CREATE TABLE IF NOT EXISTS TB_image_category(     
     ID_image_category SERIAL NOT NULL PRIMARY KEY,
-    image_category_name VARCHAR(500) UNIQUE  
+    image_category_name VARCHAR(500) UNIQUE NOT NULL  
 );       
 
 --20
@@ -178,10 +178,10 @@ CREATE TABLE IF NOT EXISTS TB_member(
     ID_member_photo INT NOT NULL,
     ID_occupation INT NOT NULL,
     DT_birth DATE,
-    DT_club_entrance DATE NOT NULL,
+    DT_club_entrance DATE NOT NULL DEFAULT CURRENT_DATE,
     DT_college_entrance DATE NOT NULL,
     gender CHAR(1) NOT NULL,
-    member_name VARCHAR(500) NOT NULL 
+    member_name VARCHAR(500) NOT NULL UNIQUE 
 );      
 
 --23
@@ -190,7 +190,7 @@ CREATE TABLE IF NOT EXISTS TB_member_project(
     ID_member INT NOT NULL,
     ID_function INT NOT NULL,
     ID_project INT NOT NULL,
-    DT_enter_project DATE NOT NULL,
+    DT_enter_project DATE NOT NULL DEFAULT CURRENT_DATE,
     DT_exit_project DATE  
 );       
 
@@ -199,7 +199,7 @@ CREATE TABLE IF NOT EXISTS TB_member_role(
     ID_member_role SERIAL NOT NULL PRIMARY KEY,
     ID_role INT NOT NULL,
     ID_member INT NOT NULL,
-    DT_role_enter DATE NOT NULL,
+    DT_role_enter DATE NOT NULL DEFAULT CURRENT_DATE,
     DT_role_exit DATE 
 );      
 
@@ -214,7 +214,7 @@ CREATE TABLE IF NOT EXISTS TB_member_team(
 --26
 CREATE TABLE IF NOT EXISTS TB_occupation(     
     ID_occupation SERIAL NOT NULL PRIMARY KEY,
-    occupation_name VARCHAR(500) NOT NULL 
+    occupation_name VARCHAR(500) NOT NULL UNIQUE 
 );     
 
 --27
@@ -222,8 +222,8 @@ CREATE TABLE IF NOT EXISTS TB_online_encounter(
     ID_online_encounter SERIAL NOT NULL PRIMARY KEY,
     ID_platform INT NOT NULL,
     ID_encounter INT NOT NULL,
-    URL_encounter VARCHAR(1000),
-    URL_record VARCHAR(1000) 
+    URL_encounter VARCHAR(1000) UNIQUE,
+    URL_record VARCHAR(1000) UNIQUE
 );       
 
 --28
@@ -236,7 +236,7 @@ CREATE TABLE IF NOT EXISTS TB_online_phase(
 --29
 CREATE TABLE IF NOT EXISTS TB_organizer(     
     ID_organizer SERIAL NOT NULL PRIMARY KEY,
-    organizer_name VARCHAR(500) NOT NULL,
+    organizer_name VARCHAR(500) NOT NULL UNIQUE,
     organizer_description VARCHAR(500)  
 );      
 
@@ -253,7 +253,7 @@ CREATE TABLE IF NOT EXISTS TB_phase(
     ID_tournament INT NOT NULL,
     DT_start DATE NOT NULL,
     DT_end DATE NOT NULL,
-    number_phase INT NOT NULL 
+    number_phase INT NOT NULL DEFAULT 1
 );      
 
 --32
@@ -261,7 +261,7 @@ CREATE TABLE IF NOT EXISTS TB_place(
     ID_place SERIAL NOT NULL PRIMARY KEY,
     ID_public_place INT NOT NULL,
     place_description VARCHAR(500) NOT NULL,
-    place_name VARCHAR(500) NOT NULL 
+    place_name VARCHAR(500) NOT NULL UNIQUE 
 );       
 
 --33
@@ -292,12 +292,12 @@ CREATE TABLE IF NOT EXISTS TB_project(
     ID_leader INT NOT NULL,
     ID_project_type INT NOT NULL,
     project_description VARCHAR(500),
-    DT_start DATE,
+    DT_start DATE DEFAULT CURRENT_DATE,
     DT_end DATE,
     DT_foreseen_end DATE,
     project_name VARCHAR(500),
-    max_jpq_score INT,
-    URL_gitHub VARCHAR(500)  
+    max_jpq_score INT CHECK (max_jpq_score > 0),
+    URL_gitHub VARCHAR(500) UNIQUE
 );       
 
 --37
@@ -317,7 +317,7 @@ CREATE TABLE IF NOT EXISTS TB_project_subject(
 --39
 CREATE TABLE IF NOT EXISTS TB_project_type(     
     ID_project_type SERIAL NOT NULL PRIMARY KEY,
-    project_type VARCHAR(500) NOT NULL  
+    project_type VARCHAR(500) NOT NULL UNIQUE
 );    
 
 --40
@@ -338,7 +338,7 @@ CREATE TABLE IF NOT EXISTS TB_question(
     statement VARCHAR(200) NOT NULL,
     question_name VARCHAR(500) NOT NULL,
     correct_answer VARCHAR(1000),
-    max_jpq_score INT  
+    max_jpq_score INT CHECK (max_jpq_score > 0)
 );       
 
 --42
@@ -359,9 +359,9 @@ CREATE TABLE IF NOT EXISTS TB_score_transaction(
     ID_score_transaction SERIAL NOT NULL PRIMARY KEY,
     ID_club_account INT NOT NULL,
     ID_score_transaction_type INT NOT NULL,
-    DT_transaction DATE NOT NULL,
-    HR_transaction TIME NOT NULL,
-    score_jpq_quantity INT NOT NULL 
+    DT_transaction DATE NOT NULL DEFAULT CURRENT_DATE,
+    HR_transaction TIME NOT NULL DEFAULT CURRENT_TIME,
+    score_jpq_quantity INT NOT NULL
 );       
 
 --45
@@ -401,30 +401,29 @@ CREATE TABLE IF NOT EXISTS TB_score_transaction_tournament_team_phase(
     ID_score_transaction INT NOT NULL  
 );   
 
---100
+--50
 CREATE TABLE IF NOT EXISTS TB_score_transaction_type(     
     ID_score_transaction_type SERIAL NOT NULL PRIMARY KEY,     
-    score_transaction_type VARCHAR (500) NOT NULL 
+    score_transaction_type VARCHAR (500) NOT NULL UNIQUE
 );  
 
 --51
 CREATE TABLE IF NOT EXISTS TB_state(
     ID_state SERIAL NOT NULL PRIMARY KEY,
-    
     ID_country INT NOT NULL,
-    state_name VARCHAR(500) NOT NULL 
+    state_name VARCHAR(500) NOT NULL
 );
 
 --52
 CREATE TABLE IF NOT EXISTS TB_status(
     ID_status SERIAL NOT NULL PRIMARY KEY,
-    status_description VARCHAR(500) NOT NULL 
+    status_description VARCHAR(500) NOT NULL UNIQUE
 );
 
 --53
 CREATE TABLE IF NOT EXISTS TB_subject(
     ID_subject SERIAL NOT NULL PRIMARY KEY,
-    subject VARCHAR(500) 
+    subject VARCHAR(500) NOT NULL UNIQUE
 );
 
 --54
@@ -440,7 +439,7 @@ CREATE TABLE IF NOT EXISTS TB_tournament(
     ID_tournament SERIAL NOT NULL PRIMARY KEY,
     ID_organizer INT NOT NULL,     
     tournament_name VARCHAR(500) NOT NULL,     
-    DT_start DATE,     
+    DT_start DATE DEFAULT CURRENT_DATE,     
     DT_end DATE 
 );
 
@@ -449,15 +448,15 @@ CREATE TABLE IF NOT EXISTS TB_tournament_team(
     ID_tournament_team SERIAL NOT NULL PRIMARY KEY,
     ID_team INT NOT NULL,
     ID_tournament INT NOT NULL,
-    team_placing INT NOT NULL UNIQUE 
+    team_placing INT NOT NULL UNIQUE CHECK (team_placing > 0)
 );
 
 --57
 CREATE TABLE IF NOT EXISTS TB_tournament_team_phase(
     ID_tournament_team_phase SERIAL NOT NULL PRIMARY KEY,
     ID_tournament_team INT NOT NULL,
-    ID_phase INT NOT NULL , 
-    placing_phase INT NOT NULL UNIQUE,
+    ID_phase INT NOT NULL, 
+    placing_phase INT NOT NULL UNIQUE CHECK (placing_phase > 0),
     max_jpq_score INT 
 );
 
@@ -467,7 +466,7 @@ CREATE TABLE IF NOT EXISTS TB_tournament_team_phase_question(
     ID_tournament_team_phase INT NOT NULL,
     ID_question INT NOT NULL,
     ID_status INT NOT NULL,
-    attempts_number INT NOT NULL 
+    attempts_number INT DEFAULT 0 
 );   
  
 -- GENDER CONSTRAINT
